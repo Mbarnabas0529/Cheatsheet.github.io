@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dnsmasq – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. dnsmasq, dhcp, dns" />
+    </div>
+  </header>
+
+<section class="grid">
+
+<div class="card" data-tags="dnsmasq áttekintés">
+  <h2>Áttekintés</h2>
+  <p>A dnsmasq egy könnyű DNS és DHCP szerver Linux rendszerekhez. Használható DNS, DHCP vagy TFTP szolgáltatásként.</p>
+  <pre><code># Telepítés
+sudo apt install dnsmasq
+
+# Szolgáltatás állapota
+systemctl status dnsmasq</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq konfiguráció conf-dir">
+  <h2>Konfiguráció</h2>
+  <p>Az alapbeállítások a <code>/etc/dnsmasq.conf</code> fájlban találhatók. A saját konfigurációkat külön mappába érdemes tenni.</p>
+  <pre><code># Alap fájl szerkesztése
+nano /etc/dnsmasq.conf
+
+# conf-dir engedélyezése
+sudo sed -i 's|^#conf-dir=/etc/dnsmasq.d/,.*|conf-dir=/etc/dnsmasq.d/,*.conf|' /etc/dnsmasq.conf
+
+# Saját beállítások helye
+/etc/dnsmasq.d/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq interfész listen-address">
+  <h2>Interfészek beállítása</h2>
+  <p>Megadható, melyik hálózati interfészen vagy IP címen működjön a dnsmasq.</p>
+  <pre><code># Példa interfészre
+interface=enp0s3
+
+# Példa IP címekre
+listen-address=127.0.0.1,192.168.3.10</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq dns forwarder példa1">
+  <h2>DNS beállítások – Példa 1</h2>
+  <p>Egyszerű DNS forwarder konfiguráció.</p>
+  <pre><code># dns-forwarder.conf
+no-resolv      # Ne olvassa be a /etc/resolv.conf fájlt
+server=1.1.1.1 # Upstream DNS szerver
+server=8.8.8.8</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq dns helyi domain példa2">
+  <h2>DNS beállítások – Példa 2</h2>
+  <p>Helyi tartomány konfigurálása és gyorsítótár beállítása.</p>
+  <pre><code># basic-dns.conf
+domain-needed
+bogus-priv
+no-resolv
+server=1.1.1.1
+server=8.8.8.8
+cache-size=1000
+domain=helyi.lan
+expand-hosts
+addn-hosts=/etc/dnsmasq.hosts</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq hosts fájl">
+  <h2>Hostok hozzáadása</h2>
+  <p>Ismert gépek felvétele a <code>/etc/dnsmasq.hosts</code> fájlba.</p>
+  <pre><code>nano /etc/dnsmasq.hosts
+
+192.168.3.12   nas
+192.168.3.15   printer
+
+# /etc/hosts példa
+127.0.0.1   localhost
+127.0.1.1   dnsserver
+
+# resolv.conf példa
+nameserver 192.168.3.10</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq dhcp alap">
+  <h2>DHCP beállítások – Alap</h2>
+  <p>Alap DHCP tartomány és opciók.</p>
+  <pre><code># basic-dhcp.conf
+dhcp-range=192.168.3.50,192.168.3.200,12h
+dhcp-option=3,192.168.3.1
+dhcp-option=6,192.168.3.10
+dhcp-authoritative</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq dhcp fix címek">
+  <h2>DHCP beállítások – Fix címek</h2>
+  <p>Fix IP címek hozzárendelése MAC cím alapján.</p>
+  <pre><code>dhcp-host=AA:BB:CC:DD:EE:FF,192.168.3.20,nas,24h
+dhcp-host=11:22:33:44:55:66,192.168.3.30,printer,24h</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq tftp">
+  <h2>TFTP</h2>
+  <p>A dnsmasq TFTP szerverként is használható. A beállításokat külön konfigurációs fájlban kell megadni.</p>
+  <pre><code># Példa konfigurációhoz
+tftp-root=/srv/tftp
+enable-tftp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq élesítés systemd-resolved">
+  <h2>Élesítés</h2>
+  <p>A dnsmasq használatához érdemes letiltani a systemd-resolved szolgáltatást, majd újraindítani a dnsmasq-t.</p>
+  <pre><code># systemd-resolved leállítása
+systemctl stop systemd-resolved
+systemctl disable systemd-resolved
+
+# dnsmasq újraindítása
+sudo systemctl restart dnsmasq
+sudo systemctl enable dnsmasq</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq tűzfal ufw">
+  <h2>Tűzfal beállítása</h2>
+  <p>Engedélyezni kell a DNS és DHCP forgalmat a tűzfalon.</p>
+  <pre><code># DNS
+sudo ufw allow 53/tcp
+sudo ufw allow 53/udp
+
+# DHCP
+sudo ufw allow 67/udp
+sudo ufw allow 68/udp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="dnsmasq információ leases">
+  <h2>Információk</h2>
+  <p>A kibérelt DHCP címek listája a leases fájlban található.</p>
+  <pre><code>cat /var/lib/misc/dnsmasq.leases</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+</section>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      // kereső
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      // copy gomb
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Markdown - Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés…" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+     <div class="card" data-tags="markdown fejléc atx">
+  <h2>Markdown – Fejlécek (ATX stílus)</h2>
+  <p>Fejlécek létrehozása # jelek használatával:</p>
+  <pre><code># h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="markdown fejléc setext">
+  <h2>Markdown – Fejlécek (Setext stílus)</h2>
+  <p>Fejlécek létrehozása aláhúzással (= vagy -):</p>
+  <pre><code>Fejléc 1
+========
+
+Fejléc 2
+--------</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="markdown idézet blockquote">
+  <h2>Markdown – Idézetek</h2>
+  <p>Idézetek létrehozása > jel használatával:</p>
+  <pre><code>> Ez egy
+> idézet
+>
+> > Beágyazott
+> > idézet</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="markdown lista unordered checkbox">
+  <h2>Markdown – Felsorolásos lista</h2>
+  <p>Felsorolás létrehozása *, -, + jelekkel vagy jelölőnégyzetekkel:</p>
+  <pre><code>* Elem 1
+* Elem 2
+    * elem 3a
+    * elem 3b
+
+- Elem 1
+- Elem 2
+
++ Elem 1
++ Elem 2
+
+- [ ] Jelölőnégyzet ki
+- [x] Jelölőnégyzet be</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="markdown lista ordered">
+  <h2>Markdown – Számozott lista</h2>
+  <p>Számozott lista létrehozása:</p>
+  <pre><code>1. Elem 1
+2. Elem 2
+    a. elem 3a
+    b. elem 3b</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="markdown link hivatkozás">
+  <h2>Markdown – Hivatkozások</h2>
+  <p>Linkek létrehozása különböző formátumokban:</p>
+  <pre><code>[link](http://google.com)
+
+[link][google]
+[google]: http://google.com
+
+<http://google.com></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="markdown kiemelés emphasis bold italic code">
+  <h2>Markdown – Kiemelés</h2>
+  <p>Dőlt, félkövér, kód és áthúzott szöveg:</p>
+  <pre><code>*dőlt*
+_dőlt_
+
+**félkövér**
+__félkövér__
+
+`inline kód`
+~~áthúzott~~</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="markdown vízszintes vonal horizontal line">
+  <h2>Markdown – Vízszintes vonal</h2>
+  <p>Vízszintes elválasztó létrehozása:</p>
+  <pre><code>---
+***
+___</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="markdown escape karakterek backslash">
+  <h2>Markdown – Visszaperjelek (escape)</h2>
+  <p>Különleges karakterek megjelenítése visszaperjel használatával:</p>
+  <pre><code>\     \\     visszaperjel
+`     \`     backtick
+*     \*     csillag
+_     \_     aláhúzás
+{}    \{}    kapcsos zárójel
+[]    
+
+\[]    szögletes zárójel
+()    \()    kerek zárójel
+#     \#     kettőskereszt
++     \+     plusz jel
+-     \-     kötőjel
+.     \.     pont
+!     \!     felkiáltójel</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="markdown táblázat tables igazítás egyszerű stílus">
+  <h2>Markdown – Táblázatok</h2>
+  <p>Táblázatok létrehozása igazítással (balra, középre, jobbra) és egyszerű stílussal:</p>
+  <pre><code>| Bal oszlop | Középső oszlop | Jobb oszlop |
+|:-----------|:---------------:|------------:|
+| Cell 1     |    Középre      |        $1600 |
+| Cell 2     |     Cell 3      |          $12 |
+
+Bal oszlop | Középső oszlop | Jobb oszlop
+:---------:|:---------------:|:-----------:
+   Cell 1  |     Középre     |     $1600
+   Cell 2  |      Cell 3     |      $12
+
+Markdown táblázat generátor: tableconvert.com</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Másolva!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

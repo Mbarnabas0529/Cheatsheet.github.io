@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS parancsok – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+    }
+    .copy {
+  margin-top: 8px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.copy:hover {
+  background: #ff5fa3;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. flex, color, border" />
+    </div>
+  </header>
+
+<section class="grid">
+  <div class="card" data-tags="color szín">
+    <h2>color</h2>
+    <p>Szöveg színének beállítása.</p>
+    <pre><code>color: magenta;</code></pre>
+  </div>
+
+  <div class="card" data-tags="font-size betűméret">
+    <h2>font-size</h2>
+    <p>Szöveg méretének beállítása.</p>
+    <pre><code>font-size: 18px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="font-family betűtípus">
+    <h2>font-family</h2>
+    <p>Betűtípus meghatározása.</p>
+    <pre><code>font-family: Arial, sans-serif;</code></pre>
+  </div>
+
+  <div class="card" data-tags="line-height sorköz">
+    <h2>line-height</h2>
+    <p>Sorköz beállítása.</p>
+    <pre><code>line-height: 1.6;</code></pre>
+  </div>
+
+  <div class="card" data-tags="text-align igazítás">
+    <h2>text-align</h2>
+    <p>Szöveg vízszintes igazítása.</p>
+    <pre><code>text-align: center;</code></pre>
+  </div>
+
+  <div class="card" data-tags="margin külső térköz">
+    <h2>margin</h2>
+    <p>Külső térköz az elem körül.</p>
+    <pre><code>margin: 20px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="padding belső térköz">
+    <h2>padding</h2>
+    <p>Belső térköz az elem tartalma körül.</p>
+    <pre><code>padding: 12px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="border keret">
+    <h2>border</h2>
+    <p>Keret vastagsága, stílusa és színe.</p>
+    <pre><code>border: 1px solid #ff2e88;</code></pre>
+  </div>
+
+  <div class="card" data-tags="border-radius lekerekítés">
+    <h2>border-radius</h2>
+    <p>Sarkok lekerekítése.</p>
+    <pre><code>border-radius: 12px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="box-shadow árnyék">
+    <h2>box-shadow</h2>
+    <p>Doboz árnyékának beállítása.</p>
+    <pre><code>box-shadow: 0 4px 12px rgba(0,0,0,0.5);</code></pre>
+  </div>
+
+  <div class="card" data-tags="display flex block inline">
+    <h2>display</h2>
+    <p>Megjelenítési mód beállítása.</p>
+    <pre><code>display: flex;</code></pre>
+  </div>
+
+  <div class="card" data-tags="position absolute relative fixed">
+    <h2>position</h2>
+    <p>Elem pozicionálása a dokumentumban.</p>
+    <pre><code>position: absolute;</code></pre>
+  </div>
+
+  <div class="card" data-tags="z-index réteg">
+    <h2>z-index</h2>
+    <p>Elem rétegsorrendje más elemekhez képest.</p>
+    <pre><code>z-index: 10;</code></pre>
+  </div>
+
+  <div class="card" data-tags="opacity átlátszóság">
+    <h2>opacity</h2>
+    <p>Elem átlátszósága.</p>
+    <pre><code>opacity: 0.7;</code></pre>
+  </div>
+
+  <div class="card" data-tags="overflow túlcsordulás">
+    <h2>overflow</h2>
+    <p>Túlcsordulás kezelése.</p>
+    <pre><code>overflow: hidden;</code></pre>
+  </div>
+
+  <div class="card" data-tags="flex justify-content align-items">
+    <h2>flex</h2>
+    <p>Rugalmas elrendezés beállítása.</p>
+    <pre><code>display: flex;
+justify-content: center;
+align-items: center;</code></pre>
+  </div>
+
+  <div class="card" data-tags="grid layout">
+    <h2>grid</h2>
+    <p>Rácsalapú elrendezés.</p>
+    <pre><code>display: grid;
+grid-template-columns: repeat(3, 1fr);</code></pre>
+  </div>
+
+  <div class="card" data-tags="transition animáció">
+    <h2>transition</h2>
+    <p>Átmenet beállítása.</p>
+    <pre><code>transition: all 0.3s ease;</code></pre>
+  </div>
+
+  <div class="card" data-tags="transform scale rotate translate">
+    <h2>transform</h2>
+    <p>Elem átalakítása (nagyítás, forgatás, mozgatás).</p>
+    <pre><code>transform: rotate(45deg);</code></pre>
+  </div>
+
+  <div class="card" data-tags="animation keyframes">
+    <h2>animation</h2>
+    <p>Animáció beállítása.</p>
+    <pre><code>@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+animation: pulse 2s infinite;</code></pre>
+  </div>
+
+  <div class="card" data-tags="background-image háttérkép">
+    <h2>background-image</h2>
+    <p>Háttérkép beállítása.</p>
+    <pre><code>background-image: url('kep.jpg');</code></pre>
+  </div>
+
+  <div class="card" data-tags="filter blur brightness">
+    <h2>filter</h2>
+    <p>Képi effektek alkalmazása.</p>
+    <pre><code>filter: blur(4px);</code></pre>
+  </div>
+
+  <div class="card" data-tags="cursor pointer">
+    <h2>cursor</h2>
+    <p>Egérkurzor stílusa.</p>
+    <pre><code>cursor: pointer;</code></pre>
+  </div>
+
+  <div class="card" data-tags="user-select kijelölés">
+    <h2>user-select</h2>
+    <p>Szöveg kijelölhetőségének szabályozása.</p>
+    <pre><code>user-select: none;</code></pre>
+  </div>
+
+  <div class="card" data-tags="white-space tördelés">
+    <h2>white-space</h2>
+    <p>Szöveg tördelésének kezelése.</p>
+    <pre><code>white-space: nowrap;</code></pre>
+  </div>
+
+  <div class="card" data-tags="aspect-ratio képarány">
+    <h2>aspect-ratio</h2>
+    <p>Képarány beállítása.</p>
+    <pre><code>aspect-ratio: 16 / 9;</code></pre>
+  </div>
+
+  <div class="card" data-tags="object-fit kép illesztés">
+    <h2>object-fit</h2>
+    <p>Kép illesztése a keretbe.</p>
+    <pre><code>object-fit: cover;</code></pre>
+  </div>
+
+  <div class="card" data-tags="scroll-behavior görgetés">
+    <h2>scroll-behavior</h2>
+    <p>Görgetés stílusa.</p>
+    <pre><code>scroll-behavior: smooth;</code></pre>
+  </div>
+</section>
+<section class="grid">
+  <div class="card" data-tags="font-weight betűvastagság">
+    <h2>font-weight</h2>
+    <p>Betű vastagságának beállítása.</p>
+    <pre><code>font-weight: bold;</code></pre>
+  </div>
+
+  <div class="card" data-tags="text-shadow árnyék">
+    <h2>text-shadow</h2>
+    <p>Szöveg árnyékának beállítása.</p>
+    <pre><code>text-shadow: 2px 2px 4px #000;</code></pre>
+  </div>
+
+  <div class="card" data-tags="letter-spacing betűköz">
+    <h2>letter-spacing</h2>
+    <p>Betűk közötti térköz.</p>
+    <pre><code>letter-spacing: 2px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="word-spacing szóköz">
+    <h2>word-spacing</h2>
+    <p>Szavak közötti térköz.</p>
+    <pre><code>word-spacing: 6px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="background-size háttér méret">
+    <h2>background-size</h2>
+    <p>Háttérkép méretezése.</p>
+    <pre><code>background-size: cover;</code></pre>
+  </div>
+
+  <div class="card" data-tags="background-position háttér pozíció">
+    <h2>background-position</h2>
+    <p>Háttérkép pozíciója.</p>
+    <pre><code>background-position: center;</code></pre>
+  </div>
+
+  <div class="card" data-tags="clip-path kivágás">
+    <h2>clip-path</h2>
+    <p>Elem alakzatba vágása.</p>
+    <pre><code>clip-path: circle(50%);</code></pre>
+  </div>
+
+  <div class="card" data-tags="backdrop-filter háttér effekt">
+    <h2>backdrop-filter</h2>
+    <p>Háttér elmosása vagy szűrése.</p>
+    <pre><code>backdrop-filter: blur(6px);</code></pre>
+  </div>
+
+  <div class="card" data-tags="transform scale rotate translate">
+    <h2>transform</h2>
+    <p>Elem átalakítása (nagyítás, forgatás, mozgatás).</p>
+    <pre><code>transform: scale(1.2) rotate(15deg);</code></pre>
+  </div>
+
+  <div class="card" data-tags="transition ease animáció">
+    <h2>transition</h2>
+    <p>Átmenet beállítása.</p>
+    <pre><code>transition: background 0.3s ease;</code></pre>
+  </div>
+
+  <div class="card" data-tags="animation keyframes">
+    <h2>animation</h2>
+    <p>Animáció beállítása.</p>
+    <pre><code>@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+animation: fade 2s infinite;</code></pre>
+  </div>
+
+  <div class="card" data-tags="cursor pointer">
+    <h2>cursor</h2>
+    <p>Egérkurzor stílusa.</p>
+    <pre><code>cursor: pointer;</code></pre>
+  </div>
+
+  <div class="card" data-tags="pointer-events kattinthatóság">
+    <h2>pointer-events</h2>
+    <p>Kattinthatóság engedélyezése vagy tiltása.</p>
+    <pre><code>pointer-events: none;</code></pre>
+  </div>
+
+  <div class="card" data-tags="user-select kijelölés">
+    <h2>user-select</h2>
+    <p>Szöveg kijelölhetőségének szabályozása.</p>
+    <pre><code>user-select: none;</code></pre>
+  </div>
+
+  <div class="card" data-tags="text-overflow ellipsis">
+    <h2>text-overflow</h2>
+    <p>Túlcsorduló szöveg kezelése.</p>
+    <pre><code>text-overflow: ellipsis;</code></pre>
+  </div>
+
+  <div class="card" data-tags="overflow-wrap törés">
+    <h2>overflow-wrap</h2>
+    <p>Szavak törése túlcsordulásnál.</p>
+    <pre><code>overflow-wrap: break-word;</code></pre>
+  </div>
+
+  <div class="card" data-tags="aspect-ratio képarány">
+    <h2>aspect-ratio</h2>
+    <p>Képarány beállítása.</p>
+    <pre><code>aspect-ratio: 16 / 9;</code></pre>
+  </div>
+
+  <div class="card" data-tags="object-fit kép illesztés">
+    <h2>object-fit</h2>
+    <p>Kép illesztése a keretbe.</p>
+    <pre><code>object-fit: cover;</code></pre>
+  </div>
+
+  <div class="card" data-tags="scroll-behavior smooth">
+    <h2>scroll-behavior</h2>
+    <p>Görgetés stílusa.</p>
+    <pre><code>scroll-behavior: smooth;</code></pre>
+  </div>
+
+  <div class="card" data-tags="scroll-snap-type görgetés rögzítés">
+    <h2>scroll-snap-type</h2>
+    <p>Görgetés rögzítése adott pontokon.</p>
+    <pre><code>scroll-snap-type: x mandatory;</code></pre>
+  </div>
+</section>
+<section class="grid">
+  <div class="card" data-tags="text-transform nagybetű kisbetű">
+    <h2>text-transform</h2>
+    <p>Szöveg átalakítása nagybetűssé, kisbetűssé vagy kezdőbetűssé.</p>
+    <pre><code>text-transform: uppercase;</code></pre>
+  </div>
+
+  <div class="card" data-tags="writing-mode írásirány">
+    <h2>writing-mode</h2>
+    <p>Szöveg írásirányának beállítása.</p>
+    <pre><code>writing-mode: vertical-rl;</code></pre>
+  </div>
+
+  <div class="card" data-tags="columns többszörös oszlop">
+    <h2>columns</h2>
+    <p>Többszörös oszlopos tördelés.</p>
+    <pre><code>columns: 2;</code></pre>
+  </div>
+
+  <div class="card" data-tags="column-gap oszlop térköz">
+    <h2>column-gap</h2>
+    <p>Oszlopok közötti térköz.</p>
+    <pre><code>column-gap: 40px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="hyphens elválasztás">
+    <h2>hyphens</h2>
+    <p>Szavak automatikus elválasztása.</p>
+    <pre><code>hyphens: auto;</code></pre>
+  </div>
+
+  <div class="card" data-tags="minmax grid">
+    <h2>minmax()</h2>
+    <p>Grid oszlop/sor minimális és maximális méretének beállítása.</p>
+    <pre><code>grid-template-columns: repeat(3, minmax(200px, 1fr));</code></pre>
+  </div>
+
+  <div class="card" data-tags="clamp méret">
+    <h2>clamp()</h2>
+    <p>Érték beállítása minimum, ideális és maximum között.</p>
+    <pre><code>font-size: clamp(14px, 2vw, 20px);</code></pre>
+  </div>
+
+  <div class="card" data-tags="place-content grid igazítás">
+    <h2>place-content</h2>
+    <p>Grid tartalom igazítása vízszintesen és függőlegesen.</p>
+    <pre><code>place-content: center;</code></pre>
+  </div>
+
+  <div class="card" data-tags="grid-area cella">
+    <h2>grid-area</h2>
+    <p>Grid cella kijelölése névvel.</p>
+    <pre><code>grid-area: header;</code></pre>
+  </div>
+
+  <div class="card" data-tags="object-position kép pozíció">
+    <h2>object-position</h2>
+    <p>Kép pozíciója a kereten belül.</p>
+    <pre><code>object-position: top center;</code></pre>
+  </div>
+
+  <div class="card" data-tags="mix-blend-mode keverés">
+    <h2>mix-blend-mode</h2>
+    <p>Elem színének keverése a háttérrel.</p>
+    <pre><code>mix-blend-mode: multiply;</code></pre>
+  </div>
+
+  <div class="card" data-tags="isolation izoláció">
+    <h2>isolation</h2>
+    <p>Új keverési kontextus létrehozása.</p>
+    <pre><code>isolation: isolate;</code></pre>
+  </div>
+
+  <div class="card" data-tags="filter grayscale invert sepia">
+    <h2>filter</h2>
+    <p>Képi effektek: szürkeárnyalat, invertálás, szépia.</p>
+    <pre><code>filter: grayscale(100%) invert(1) sepia(0.5);</code></pre>
+  </div>
+
+  <div class="card" data-tags="backface-visibility 3D">
+    <h2>backface-visibility</h2>
+    <p>3D transzformált elem hátlapjának láthatósága.</p>
+    <pre><code>backface-visibility: hidden;</code></pre>
+  </div>
+
+  <div class="card" data-tags="perspective 3D">
+    <h2>perspective</h2>
+    <p>3D transzformáció mélységének beállítása.</p>
+    <pre><code>perspective: 800px;</code></pre>
+  </div>
+
+  <div class="card" data-tags="transform-style 3D">
+    <h2>transform-style</h2>
+    <p>3D transzformációk gyermekekre való alkalmazása.</p>
+    <pre><code>transform-style: preserve-3d;</code></pre>
+  </div>
+
+  <div class="card" data-tags="animation-delay késleltetés">
+    <h2>animation-delay</h2>
+    <p>Animáció kezdési késleltetése.</p>
+    <pre><code>animation-delay: 1s;</code></pre>
+  </div>
+
+  <div class="card" data-tags="animation-iteration-count ismétlés">
+    <h2>animation-iteration-count</h2>
+    <p>Animáció ismétlésszáma.</p>
+    <pre><code>animation-iteration-count: infinite;</code></pre>
+  </div>
+
+  <div class="card" data-tags="animation-direction irány">
+    <h2>animation-direction</h2>
+    <p>Animáció iránya (normál, fordított, váltakozó).</p>
+    <pre><code>animation-direction: alternate;</code></pre>
+  </div>
+
+  
+
+</section>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase();
+        cards.forEach(card => {
+          const tags = card.dataset.tags || "";
+          const text = card.innerText.toLowerCase();
+          const match = tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+    });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector("input[type=search]");
+  const cards = document.querySelectorAll(".card");
+
+  // kereső
+  input.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || "").toLowerCase();
+      const text = card.innerText.toLowerCase();
+      const match = !q || tags.includes(q) || text.includes(q);
+      card.style.display = match ? "block" : "none";
+    });
+  });
+
+  // copy gomb automatikusan minden kártyához
+  cards.forEach(card => {
+    const btn = document.createElement("button");
+    btn.className = "copy";
+    btn.textContent = "Copy";
+    card.appendChild(btn);
+
+    btn.addEventListener("click", () => {
+      const code = card.querySelector("code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy", 1500);
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>

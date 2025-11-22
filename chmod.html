@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chmod – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <a href="../index.html" class="back">← Vissza</a>
+  <div class="search">
+    <input type="search" placeholder="Keresés… pl. chmod, jogosultság, számkód" />
+  </div>
+</header>
+
+<section class="grid">
+  <!-- Ide jönnek majd a chmod kártyák -->
+
+  <div class="card" data-tags="chmod syntax példák recursive">
+    <h2>Szintex</h2>
+    <p>Jogosultságok beállítása fájlokra és könyvtárakra.</p>
+    <pre><code>$ chmod [opciók] &lt;jogosultság&gt; &lt;fájl&gt;
+
+# Példák
+$ chmod 755 foo.txt
+$ chmod +x quickref.py
+$ chmod u-x quickref.py
+$ chmod u=rwx,g=rx,o= quickref.sh
+
+# Rekurzív mód
+$ chmod -R 755 my_directory</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="chmod magyarázat ls jogosultság">
+    <h2>Magyarázat</h2>
+    <p>Jogosultságok elemzése a <code>ls -l</code> kimenet alapján.</p>
+    <pre><code>$ ls -l
+-rw-r--r--  1 root root 3 Jun 29 15:35 a.log
+drwxr-xr-x  2 root root 2 Jun 30 18:06 dir
+
+Jogosultság elemzés a "dir" könyvtárra
+
+d  rwx  r-x  r-x
+┬  ─┬─  ─┬─  ─┬─  
+│   │    │    │  
+│   │    │    └─ 4. Mások｜5 (4+0+1)
+│   │    └────── 3. Csoport｜5 (4+0+1)
+│   └─────────── 2. Felhasználó｜7 (4+2+1)
+└─────────────── 1. Fájltípus | könyvtár</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="chmod generátor interaktív">
+    <h2>Chmod Generátor</h2>
+    <p>Gyorsan és vizuálisan generálhatsz jogosultságokat numerikus és szimbolikus formában.</p>
+
+    <table style="width:100%; text-align:center; margin-bottom:12px; color:var(--text);">
+      <thead>
+        <tr>
+          <th>Felhasználó</th><th>Csoport</th><th>Mások</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" data-role="u" data-perm="r"> R</td>
+          <td><input type="checkbox" data-role="g" data-perm="r"> R</td>
+          <td><input type="checkbox" data-role="o" data-perm="r"> R</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" data-role="u" data-perm="w"> W</td>
+          <td><input type="checkbox" data-role="g" data-perm="w"> W</td>
+          <td><input type="checkbox" data-role="o" data-perm="w"> W</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" data-role="u" data-perm="x"> X</td>
+          <td><input type="checkbox" data-role="g" data-perm="x"> X</td>
+          <td><input type="checkbox" data-role="o" data-perm="x"> X</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre><code id="chmod-output">chmod 000 file.txt</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="chmod jogosultság gyakori">
+    <h2>Gyakori jogosultságok</h2>
+    <p>Tipikus fájl‑ és könyvtárjogosultság beállítások.</p>
+    <pre><code>400  r--------   Csak a tulajdonos olvashatja
+500  r-x------   Kerülendő módosítás
+600  rw-------   Csak a felhasználó írhat/olvashat
+644  rw-r--r--   Felhasználó írhat/olvashat, mások olvashatják
+660  rw-rw----   Felhasználó és csoport írhat/olvashat
+700  rwx------   Teljes hozzáférés csak a felhasználónak
+755  rwxr-xr-x   Teljes hozzáférés a felhasználónak, mások futtathatják
+775  rwxrwxr-x   Megosztási mód csoport számára
+777  rwxrwxrwx   Mindenki mindent megtehet</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+<div class="card" data-tags="chmod jogosultság módok táblázat">
+  <h2>Jogosultsági módok</h2>
+  <p>Jogosultságok szimbolikus, oktális és decimális formában.</p>
+  <pre><code>Permission   Leírás                   Oktális   Decimális
+---          Nincs jogosultság        000       0 (0+0+0)
+--x          Végrehajtás              001       1 (0+0+1)
+-w-          Írás                     010       2 (0+2+0)
+-wx          Írás és végrehajtás      011       3 (0+2+1)
+r--          Olvasás                  100       4 (4+0+0)
+r-x          Olvasás és végrehajtás   101       5 (4+0+1)
+rw-          Olvasás és írás          110       6 (4+2+0)
+rwx          Teljes jogosultság       111       7 (4+2+1)</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="chmod objects u g o a">
+  <h2>Objektumok</h2>
+  <p>Kikre vonatkoznak a jogosultságok.</p>
+  <pre><code>Rövidítés   Jelentés
+u           Felhasználó
+g           Csoport
+o           Mások
+a           Mind (ugyanaz mint ugo)
+
+# Példa
+chmod a+x script.sh   # mindenki kap futtatási jogot</code></pre>
+  <button class="copy">Copy</button>
+</div>
+    <div class="card" data-tags="chmod permissions jogosultság értékek">
+  <h2>Jogosultságok</h2>
+  <p>Alap jogosultságok rövidítése és értéke.</p>
+  <pre><code>Rövidítés   Jogosultság     Érték
+r           Olvasás         4
+w           Írás            2
+x           Végrehajtás     1
+-           Nincs jog       0</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod file types fájltípusok">
+  <h2>Fájltípusok</h2>
+  <p>A fájl típusát jelző karakterek.</p>
+  <pre><code>Rövidítés   Fájltípus
+d           Könyvtár
+-           Normál fájl
+l           Szimbolikus link</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod operators operátorok">
+  <h2>Operátorok</h2>
+  <p>Jogosultságok módosítására használt jelek.</p>
+  <pre><code>+   Hozzáadás
+-   Elvétel
+=   Beállítás</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod példák 600">
+  <h2>Példa: chmod 600</h2>
+  <p>Csak a felhasználó olvashatja és írhatja.</p>
+  <pre><code>$ chmod 600 example.txt
+$ chmod u=rw,g=,o= example.txt
+$ chmod a+rwx,u-x,g-rwx,o-rwx example.txt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod példák 664">
+  <h2>Példa: chmod 664</h2>
+  <p>Felhasználó és csoport írhat/olvashat, mások csak olvashatják.</p>
+  <pre><code>$ chmod 664 example.txt
+$ chmod u=rw,g=rw,o=r example.txt
+$ chmod a+rwx,u-x,g-x,o-wx example.txt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="chmod operators műveletek">
+  <h2>Operátorok</h2>
+  <p>Jogosultságok módosítására használt jelek.</p>
+  <pre><code>+   Hozzáadás
+-   Elvétel
+=   Beállítás</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod példák 600">
+  <h2>Példa: chmod 600</h2>
+  <p>Csak a felhasználó olvashatja és írhatja.</p>
+  <pre><code>$ chmod 600 example.txt
+$ chmod u=rw,g=,o= example.txt
+$ chmod a+rwx,u-x,g-rwx,o-rwx example.txt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod példák 664">
+  <h2>Példa: chmod 664</h2>
+  <p>Felhasználó és csoport írhat/olvashat, mások csak olvashatják.</p>
+  <pre><code>$ chmod 664 example.txt
+$ chmod u=rw,g=rw,o=r example.txt
+$ chmod a+rwx,u-x,g-x,o-wx example.txt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod példák 777">
+  <h2>Példa: chmod 777</h2>
+  <p>Mindenki teljes hozzáférést kap.</p>
+  <pre><code>$ chmod 777 example.txt
+$ chmod u=rwx,g=rwx,o=rwx example.txt
+$ chmod a=rwx example.txt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod symbolic mód">
+  <h2>Szimbolikus mód</h2>
+  <p>Jogosultságok beállítása szimbolikus formában.</p>
+  <pre><code># Mindenkitől elvenni a futtatási jogot
+$ chmod a-x chmodExampleFile.txt
+
+# Mindenkinek olvasási jogot adni
+$ chmod a+r chmodExampleFile.txt
+
+# Csoportnak és másoknak olvasás/írás
+$ chmod go+rw chmodExampleFile.txt
+
+# Felhasználónak futtatási jog
+$ chmod u+x chmodExampleScript.sh
+
+# Mindenkinek teljes jog + setgid
+$ chmod =rwx,g+s chmodExampleScript.sh</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod remove jogosultság">
+  <h2>Jogosultságok eltávolítása</h2>
+  <p>Jogosultságok elvétele szimbolikus formában.</p>
+  <pre><code>$ chmod o-rw example.txt
+$ chmod g-rx example.txt
+$ chmod g-rx,o+rx example.txt
+$ chmod go= example.txt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod executable futtatható">
+  <h2>Futtatható fájlok</h2>
+  <p>Fájl futtatási jogának beállítása.</p>
+  <pre><code>$ chmod +x ~/example.py
+$ chmod u+x ~/example.py
+$ chmod a+x ~/example.py</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod példák 754">
+  <h2>Példa: chmod 754</h2>
+  <p>Felhasználó teljes jog, csoport olvas/futtat, mások olvasnak.</p>
+  <pre><code>$ chmod 754 foo.sh
+$ chmod u=rwx,g=rx,o=r foo.sh</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod practices ssh">
+  <h2>Gyakorlat: SSH jogosultságok</h2>
+  <p>Tipikus beállítások SSH kulcsokhoz és könyvtárhoz.</p>
+  <pre><code>$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/authorized_keys
+$ chmod 600 ~/.ssh/id_rsa
+$ chmod 600 ~/.ssh/id_rsa.pub
+$ chmod 400 /path/to/access_key.pem</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod practices web">
+  <h2>Gyakorlat: Web jogosultságok</h2>
+  <p>Tipikus beállítások webes fájlokhoz és könyvtárakhoz.</p>
+  <pre><code>$ chmod -R 644 /var/www/html/
+$ chmod 644 .htaccess
+$ chmod 644 robots.txt
+$ chmod 755 /var/www/uploads/
+$ find /var/www/html -type d -exec chmod 755 {} \;</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="chmod practices batch">
+  <h2>Gyakorlat: Tömeges módosítás</h2>
+  <p>Tömeges jogosultság beállítás fájlokra és könyvtárakra.</p>
+  <pre><code>$ chmod -R 644 /your_path
+$ find /path -type d -exec chmod 755 {} \;
+$ find /path -type f -exec chmod 644 {} \;</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+</section>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      // kereső
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      // copy gomb
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const checkboxes = document.querySelectorAll(".card input[type=checkbox]");
+  const output = document.getElementById("chmod-output");
+
+  function updateChmod() {
+    const roles = {u:0, g:0, o:0};
+    const symbols = {u:"", g:"", o:""};
+
+    checkboxes.forEach(cb => {
+      if(cb.checked){
+        const role = cb.dataset.role;
+        const perm = cb.dataset.perm;
+        if(perm==="r"){ roles[role]+=4; symbols[role]+="r"; }
+        else if(perm==="w"){ roles[role]+=2; symbols[role]+="w"; }
+        else if(perm==="x"){ roles[role]+=1; symbols[role]+="x"; }
+      } else {
+        const role = cb.dataset.role;
+        const perm = cb.dataset.perm;
+        symbols[role]+="-";
+      }
+    });
+
+    const numeric = `${roles.u}${roles.g}${roles.o}`;
+    const symbolic = `${symbols.u}${symbols.g}${symbols.o}`;
+    output.innerText = `chmod ${numeric} file.txt   # ${symbolic}`;
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener("change", updateChmod));
+  updateChmod();
+});
+</script>
+</body>
+</html>
