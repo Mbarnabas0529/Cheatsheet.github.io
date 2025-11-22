@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telepítőfileok – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. iso, exe, telepítés" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+     <div class="card" data-tags="telepítőfileok archcraft iso linux">
+  <h2>Archcraft telepítő letöltése</h2>
+  <p>Az Archcraft egy könnyű, Arch Linux alapú disztribúció, előre konfigurált asztali környezettel.</p>
+  <pre><code>https://sourceforge.net/projects/archcraft/files/latest/download</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok gentoo iso linux">
+  <h2>Gentoo telepítő letöltése</h2>
+  <p>A Gentoo egy rugalmas, forráskód alapú Linux disztribúció, amely teljesen testreszabható.</p>
+  <pre><code>https://www.gentoo.org/downloads/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok archlinux iso linux">
+  <h2>Arch Linux telepítő letöltése</h2>
+  <p>Az Arch Linux egy minimalista, gördülő kiadású disztribúció, amely teljesen testreszabható.</p>
+  <pre><code>https://archlinux.org/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok ubuntu iso linux desktop">
+  <h2>Ubuntu Desktop telepítő letöltése</h2>
+  <p>Az Ubuntu egy népszerű, felhasználóbarát Linux disztribúció, amely ideális asztali használatra.</p>
+  <pre><code>https://ubuntu.com/download/desktop</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok ubuntu server iso linux">
+  <h2>Ubuntu Server telepítő letöltése</h2>
+  <p>Az Ubuntu Server stabil és biztonságos környezetet kínál szerverekhez és felhőalapú megoldásokhoz.</p>
+  <pre><code>https://ubuntu.com/download/server</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok fedora iso linux">
+  <h2>Fedora telepítő letöltése</h2>
+  <p>A Fedora egy modern, innovatív Linux disztribúció, amely gyors frissítéseket és új technológiákat kínál.</p>
+  <pre><code>https://getfedora.org/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok debian iso linux">
+  <h2>Debian telepítő letöltése</h2>
+  <p>A Debian egy stabil és megbízható Linux disztribúció, amely számos más rendszer alapját képezi.</p>
+  <pre><code>https://www.debian.org/download</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok linuxmint iso linux">
+  <h2>Linux Mint telepítő letöltése</h2>
+  <p>A Linux Mint egy felhasználóbarát, Ubuntu alapú disztribúció, amely egyszerű és kényelmes asztali környezetet kínál.</p>
+  <pre><code>https://linuxmint.com/download.php</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok opensuse iso linux">
+  <h2>openSUSE telepítő letöltése</h2>
+  <p>Az openSUSE egy stabil és sokoldalú Linux disztribúció, amelyet fejlesztők és rendszergazdák is előszeretettel használnak.</p>
+  <pre><code>https://get.opensuse.org/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok manjaro iso linux">
+  <h2>Manjaro telepítő letöltése</h2>
+  <p>A Manjaro egy felhasználóbarát, Arch Linux alapú disztribúció, amely egyszerű telepítést és stabil működést kínál.</p>
+  <pre><code>https://manjaro.org/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok kali iso linux">
+  <h2>Kali Linux telepítő letöltése</h2>
+  <p>A Kali Linux egy biztonsági és penetrációs tesztelésre specializált disztribúció.</p>
+  <pre><code>https://www.kali.org/get-kali/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok zorin iso linux">
+  <h2>Zorin OS telepítő letöltése</h2>
+  <p>A Zorin OS egy felhasználóbarát Linux disztribúció, amely Windows-szerű élményt kínál kezdőknek.</p>
+  <pre><code>https://zorin.com/os/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok windows server iso microsoft">
+  <h2>Windows Server letöltése</h2>
+  <p>A Windows Server a Microsoft szerverplatformja, amely vállalati környezetekhez készült.</p>
+  <pre><code>https://www.microsoft.com/en-us/windows-server</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok windows iso microsoft">
+  <h2>Windows telepítő letöltése</h2>
+  <p>A Windows a Microsoft asztali operációs rendszere, amely széles körben használt otthoni és irodai környezetben.</p>
+  <pre><code>https://www.microsoft.com/software-download/windows11</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok popos iso linux">
+  <h2>Pop!_OS telepítő letöltése</h2>
+  <p>A Pop!_OS egy Ubuntu alapú disztribúció, amelyet a System76 fejlesztett, kifejezetten fejlesztőknek és kreatív felhasználóknak.</p>
+  <pre><code>https://pop.system76.com/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok nobara iso linux fedora">
+  <h2>Nobara telepítő letöltése</h2>
+  <p>A Nobara egy Fedora alapú disztribúció, amely játékosok és tartalomkészítők számára kínál optimalizált környezetet.</p>
+  <pre><code>https://nobaraproject.org/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok windows server 2022 iso microsoft">
+  <h2>Windows Server 2022 letöltése</h2>
+  <p>A Windows Server 2022 a Microsoft legújabb szerverplatformja, fejlett biztonsági és felhőintegrációs funkciókkal.</p>
+  <pre><code>https://www.microsoft.com/en-us/windows-server</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok windows server 2019 iso microsoft">
+  <h2>Windows Server 2019 letöltése</h2>
+  <p>A Windows Server 2019 stabil és megbízható környezetet kínál vállalati infrastruktúrákhoz.</p>
+  <pre><code>https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok windows server 2016 iso microsoft">
+  <h2>Windows Server 2016 letöltése</h2>
+  <p>A Windows Server 2016 a Microsoft korábbi szerverplatformja, amely virtualizációs és konténeres funkciókat vezetett be.</p>
+  <pre><code>https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok centos stream iso linux">
+  <h2>CentOS Stream telepítő letöltése</h2>
+  <p>A CentOS Stream egy gördülő kiadású, Red Hat alapú disztribúció, amely fejlesztőknek és tesztelőknek készült.</p>
+  <pre><code>https://www.centos.org/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok almalinux iso linux">
+  <h2>AlmaLinux telepítő letöltése</h2>
+  <p>Az AlmaLinux egy közösségi fejlesztésű, vállalati szintű Linux disztribúció, a CentOS utódjaként.</p>
+  <pre><code>https://almalinux.org/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok rocky linux iso linux">
+  <h2>Rocky Linux telepítő letöltése</h2>
+  <p>A Rocky Linux egy stabil, vállalati környezetre tervezett disztribúció, amely a CentOS helyére lépett.</p>
+  <pre><code>https://rockylinux.org/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok virtualbox virtualizáció iso exe">
+  <h2>VirtualBox letöltése</h2>
+  <p>A VirtualBox egy nyílt forráskódú virtualizációs szoftver, amellyel különböző operációs rendszereket futtathatsz egy gépen.</p>
+  <pre><code>https://www.virtualbox.org/wiki/Downloads</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok packet tracer hálózat cisco">
+  <h2>Cisco Packet Tracer letöltése</h2>
+  <p>A Packet Tracer egy hálózati szimulációs eszköz, amelyet oktatási célokra és gyakorlásra használnak.</p>
+  <pre><code>https://www.netacad.com/courses/packet-tracer</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok vmware workstation player virtualizáció">
+  <h2>VMware Workstation Player letöltése</h2>
+  <p>A VMware Workstation Player egy virtualizációs megoldás, amely lehetővé teszi több operációs rendszer futtatását egy gépen.</p>
+  <pre><code>https://www.vmware.com/products/workstation-player.html</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok wireshark hálózat elemzés">
+  <h2>Wireshark letöltése</h2>
+  <p>A Wireshark egy hálózati forgalomelemző eszköz, amely segít a protokollok vizsgálatában és hibakeresésben.</p>
+  <pre><code>https://www.wireshark.org/download.html</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok putty ssh telnet windows">
+  <h2>PuTTY letöltése</h2>
+  <p>A PuTTY egy ingyenes SSH és Telnet kliens Windowsra, amely lehetővé teszi távoli szerverekhez való kapcsolódást.</p>
+  <pre><code>https://www.putty.org/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok vscode fejlesztés editor microsoft">
+  <h2>Visual Studio Code letöltése</h2>
+  <p>A Visual Studio Code egy ingyenes, nyílt forráskódú fejlesztői környezet, amelyet a Microsoft készített. 
+     Könnyű, bővíthető és számos programozási nyelvet támogat.</p>
+  <pre><code>https://code.visualstudio.com/download</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="telepítőfileok pycharm ide fejlesztés jetbrains">
+  <h2>PyCharm letöltése</h2>
+  <p>A PyCharm egy professzionális Python fejlesztői környezet, amelyet a JetBrains készített.</p>
+  <pre><code>https://www.jetbrains.com/pycharm/download/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok eclipse ide fejlesztés java">
+  <h2>Eclipse IDE letöltése</h2>
+  <p>Az Eclipse egy nyílt forráskódú fejlesztői környezet, amely főként Java, de sok más nyelvet is támogat.</p>
+  <pre><code>https://www.eclipse.org/downloads/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telepítőfileok mysql adatbázis szerver oracle">
+  <h2>MySQL letöltése</h2>
+  <p>A MySQL egy széles körben használt, nyílt forráskódú relációs adatbázis-kezelő rendszer.</p>
+  <pre><code>https://dev.mysql.com/downloads/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

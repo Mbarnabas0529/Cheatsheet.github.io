@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.6 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      margin: 0;
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover { background: #ff5fa3; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés…" aria-label="Keresés" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek a kártyák -->
+     <div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const grid = document.querySelector(".grid");
+
+      // Szűrés kártyákon: data-tags és látható szöveg alapján
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        const cards = grid.querySelectorAll(".card");
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "" : "none";
+        });
+      });
+
+      // Copy gomb: csak a kódblokk tartalmát másolja; gomb felirata mindig "Copy"
+      grid.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".copy");
+        if (!btn) return;
+        const card = btn.closest(".card");
+        const code = card?.querySelector("code")?.innerText || "";
+        if (!code) return;
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "Másolva!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        } catch {
+          btn.textContent = "Hiba!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

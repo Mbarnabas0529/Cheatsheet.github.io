@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. netstat, ip, jogosultság" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+     <div class="card" data-tags="curl bevezetés protokoll http ftp smtp">
+  <h2>Curl – Bevezetés</h2>
+  <p>A <strong>curl</strong> egy eszköz adatátvitelre szerverek között, számos protokollt támogat:</p>
+  <pre><code>HTTP, HTTPS, FTP, IMAP, LDAP, POP3, SCP, SFTP, SMB, SMTP, stb...</code></pre>
+  <p>Forrás: <a href="https://github.com/curl/curl">GitHub</a> | <a href="https://curl.se">Hivatalos oldal</a></p>
+</div>
+<div class="card" data-tags="curl opciók output user verbose silent include head">
+  <h2>Curl – Alap opciók</h2>
+  <p>Hasznos opciók a curl parancshoz:</p>
+  <pre><code>-o &lt;file&gt;    # --output: fájlba írás  
+-u user:pass # --user: autentikáció  
+
+-v   # --verbose: részletes futás  
+-vv  # még részletesebb  
+-s   # --silent: nincs progress/error  
+-S   # --show-error: hibák megjelenítése silent módban  
+
+-i   # --include: HTTP fejlécek is  
+-I   # --head: csak fejlécek</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl request post redirect form">
+  <h2>Curl – Kérések</h2>
+  <p>HTTP kérések beállítása:</p>
+  <pre><code>-X POST   # --request: POST kérés  
+-L        # követi a redirecteket  
+-F        # --form: multipart/form-data</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl data post get file">
+  <h2>Curl – Adatküldés</h2>
+  <p>Adatok küldése POST vagy GET módszerrel:</p>
+  <pre><code>-d 'data'     # --data: POST adat  
+-d @file      # fájlból adatküldés  
+-G            # -d adat GET módszerrel</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl header user-agent cookie compressed">
+  <h2>Curl – Fejlécek</h2>
+  <p>HTTP fejlécek beállítása:</p>
+  <pre><code>-A &lt;str&gt;       # --user-agent  
+-b name=val    # --cookie érték  
+-b FILE        # --cookie fájlból  
+-H "X-Foo: y"  # --header  
+--compressed   # gzip/deflate használata</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl ssl cert insecure cacert capath">
+  <h2>Curl – SSL opciók</h2>
+  <p>SSL/TLS kapcsolatok beállítása:</p>
+  <pre><code>--cacert &lt;file&gt;   # CA tanúsítvány  
+--capath &lt;dir&gt;    # CA könyvtár  
+
+-E, --cert &lt;cert&gt; # kliens cert fájl  
+--cert-type       # der/pem/eng  
+-k, --insecure    # self-signed engedélyezése</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl get head request proxy timeout header">
+  <h2>Curl – GET/HEAD</h2>
+  <p>HTTP GET és HEAD kérések példái:</p>
+  <pre><code>curl -I https://quickref.me              # HEAD request  
+curl -v -I https://quickref.me           # részletes HEAD request  
+curl -X GET https://quickref.me          # explicit GET  
+curl --noproxy 127.0.0.1 http://stackoverflow.com # proxy nélkül  
+curl --connect-timeout 10 -I -k https://quickref.me # timeout beállítás  
+curl --verbose --header "Host: www.mytest.com:8182" quickref.me # extra header  
+curl -k -v https://www.google.com        # válasz fejlécekkel</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl upload file form multipart">
+  <h2>Curl – Több fájl feltöltése</h2>
+  <p>Több fájl feltöltése form-data használatával:</p>
+  <pre><code>curl -v --include \
+--form key1=value1 \
+--form upload=@localfilename URL</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl json elasticsearch python tool">
+  <h2>Curl – JSON válasz formázása</h2>
+  <p>JSON válasz szépen formázva Python eszközzel:</p>
+  <pre><code>curl -XGET http://${elasticsearch_ip}:9200/_cluster/nodes | python -m json.tool</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl post data json">
+  <h2>Curl – POST kérések</h2>
+  <p>Adatok küldése POST módszerrel:</p>
+  <pre><code>curl -d "name=username&password=123456" &lt;URL&gt;  
+curl &lt;URL&gt; -H "content-type: application/json" -d "{ \"woof\": \"bark\"}"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl script install rvm">
+  <h2>Curl – Script telepítés</h2>
+  <p>RVM telepítése scriptből:</p>
+  <pre><code>curl -sSL https://get.rvm.io | bash</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl advanced ip http2 ftp upload download">
+  <h2>Curl – Haladó használat</h2>
+  <p>Haladó példák:</p>
+  <pre><code>curl -L -s http://ipecho.net/plain  
+curl -u $username:$password http://repo.dennyzhang.com/README.txt  
+curl -v -F key1=value1 -F upload=@localfilename &lt;URL&gt;  
+curl -k -v --http2 https://www.google.com/  
+curl -T cryptopp552.zip -u test:test ftp://10.32.99.187/  
+curl -u test:test ftp://10.32.99.187/cryptopp552.zip -o cryptopp552.zip  
+curl -v -u admin:admin123 --upload-file package1.zip http://myserver:8081/dir/package1.zip</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl response time performance">
+  <h2>Curl – Weboldal válaszidő</h2>
+  <p>Weboldal válaszidő mérése:</p>
+  <pre><code>curl -s -w '\nLookup time:\t%{time_namelookup}\nConnect time:\t%{time_connect}\nAppCon time:\t%{time_appconnect}\nRedirect time:\t%{time_redirect}\nPreXfer time:\t%{time_pretransfer}\nStartXfer time:\t%{time_starttransfer}\n\nTotal time:\t%{time_total}\n' \
+-o /dev/null https://www.google.com</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl check resource http_code">
+  <h2>Curl – Erőforrás ellenőrzése</h2>
+  <p>Ellenőrzi, hogy egy távoli erőforrás elérhető-e:</p>
+  <pre><code>curl -o /dev/null --silent -Iw "%{http_code}" https://example.com/my.remote.tarball.gz</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl download file png grep">
+  <h2>Curl – Fájl letöltés</h2>
+  <p>PNG fájlok letöltése weboldalról:</p>
+  <pre><code>curl https://example.com | \
+grep --only-matching 'src="[^"]*.[png]"' | \
+cut -d \" -f2 | \
+while read i; do curl https://example.com/"${i}" -o "${i##*/}"; done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl download remote-name output continue">
+  <h2>Curl – Letöltés és fájl mentés</h2>
+  <p>Fájlok letöltése és mentése:</p>
+  <pre><code>curl --remote-name "https://example.com/linux-distro.iso"  
+curl --remote-name "http://example.com/index.html" --output foo.html  
+curl --remote-name --continue-at -"https://example.com/linux-distro.iso"  
+curl "https://www.{example,w3,iana}.org/index.html" --output "file_#1.html"  
+curl "https://{foo,bar}.com/file_[1-4].webp" --output "#1_#2.webp"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl authentication basic user password">
+  <h2>Curl – Alap autentikáció</h2>
+  <p>Felhasználónév/jelszó alapú autentikáció:</p>
+  <pre><code>curl --user username:password http://example.com/  
+curl -u username:password http://example.com/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl output file stdout">
+  <h2>Curl – Kimenet fájlba</h2>
+  <p>Kimenet fájlba írása stdout helyett:</p>
+  <pre><code>curl -o file http://url/file  
+curl --output file http://url/file</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl header information">
+  <h2>Curl – Fejlécek letöltése</h2>
+  <p>Csak a HTTP fejlécek megjelenítése:</p>
+  <pre><code>curl -I url</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="curl execute script remote">
+  <h2>Curl – Távoli script futtatása</h2>
+  <p>Távoli script letöltése és futtatása:</p>
+  <pre><code>curl -s http://url/myscript.sh</code></pre>
+  <button class="copy">Copy</button>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

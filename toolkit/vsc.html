@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. bash, curl, vsc" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+<div class="card" data-tags="vsc általános navigáció beállítások gyorsbillentyűk">
+  <h2>Visual Studio Code – Általános</h2>
+  <p>Gyors navigáció és beállítások megnyitása:</p>
+  <pre><code>Ctrl Shift P     # Parancspaletta megnyitása
+Ctrl P           # Gyors megnyitás, ugrás fájlra
+Ctrl Shift N     # Új ablak/instance
+Ctrl Shift W     # Ablak/instance bezárása
+Ctrl ,           # Felhasználói beállítások
+Ctrl K Ctrl S    # Billentyűparancsok megnyitása</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc szerkesztés alap sor műveletek mozgatás beszúrás behúzás">
+  <h2>VSC – Alap szerkesztés (1)</h2>
+  <p>Sorok vágása, másolása, mozgatása és beszúrása:</p>
+  <pre><code>Ctrl X             # Sor kivágása (üres kijelölésnél)
+Ctrl C             # Sor másolása (üres kijelölésnél)
+Alt Fel/Le         # Sor mozgatása fel/le
+Shift Alt Fel/Le   # Sor másolása fel/le
+Ctrl Shift K       # Sor törlése
+Ctrl Enter         # Új sor beszúrása alá
+Ctrl Shift Enter   # Új sor beszúrása fölé
+Ctrl Shift \       # Ugrás a párzárójelhez
+Ctrl ]/[           # Behúzás / behúzás visszavonása</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc szerkesztés alap görgetés hajtogatás komment sortörés">
+  <h2>VSC – Alap szerkesztés (2)</h2>
+  <p>Görgetés, kódhajtogatás és kommentek kezelése:</p>
+  <pre><code>Home/End           # Ugrás a sor elejére/végére
+Ctrl Home          # Ugrás a fájl elejére
+Ctrl End           # Ugrás a fájl végére
+Ctrl Fel/Le        # Görgetés soronként fel/le
+Alt PgUp/PgDown    # Görgetés oldalanként fel/le
+Ctrl Shift [       # Régió összecsukása
+Ctrl Shift ]       # Régió kinyitása
+Ctrl K Ctrl [      # Minden alrégió összecsukása
+Ctrl K Ctrl ]      # Minden alrégió kinyitása
+Ctrl K Ctrl 0      # Minden régió összecsukása
+Ctrl K Ctrl J      # Minden régió kinyitása
+Ctrl K Ctrl C      # Sor komment hozzáadása
+Ctrl K Ctrl U      # Sor komment eltávolítása
+Ctrl /             # Sor komment ki/be
+Shift Alt A        # Blokk komment ki/be
+Alt Z              # Sortörés (word wrap) ki/be</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc navigáció szimbólum sor fájl hibák fókusz">
+  <h2>VSC – Navigáció</h2>
+  <p>Gyors ugrás sorra, fájlra és szimbólumokra, hibák kezelése:</p>
+  <pre><code>Ctrl T             # Minden szimbólum megjelenítése
+Ctrl G             # Ugrás adott sorra...
+Ctrl P             # Ugrás fájlra...
+Ctrl Shift O       # Ugrás szimbólumra...
+Ctrl Shift M       # Hibák/figyelmeztetések panel
+F8                 # Következő hiba vagy figyelmeztetés
+Shift F8           # Előző hiba vagy figyelmeztetés
+Ctrl Shift Tab     # Editor csoport előzmények
+Alt Balra/Jobbra   # Vissza/Előre
+Ctrl M             # Tab fókusz mozgatás ki/be</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc keresés csere regex teljes szó kis-nagybetű">
+  <h2>VSC – Keresés és csere</h2>
+  <p>Találatok keresése, kiválasztása és cseréje:</p>
+  <pre><code>Ctrl F             # Keresés
+Ctrl H             # Csere
+F3                 # Következő találat
+Shift F3           # Előző találat
+Alt Enter          # Minden találat kijelölése
+Ctrl D             # Kijelölés hozzáadása a következő találathoz
+Ctrl K Ctrl D      # Utolsó kijelölés mozgatása a következő találathoz
+Alt C/R/W          # Kis/nagybetű / regex / teljes szó ki/be</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc több kurzor kijelölés oszlop bővítés szűkítés">
+  <h2>VSC – Több kurzor és kijelölés</h2>
+  <p>Több kurzor kezelése és kijelölések finomítása:</p>
+  <pre><code>Alt Kattintás              # Kurzor beszúrása
+Ctrl Alt Fel/Le             # Kurzor beszúrása fölé/alá
+Ctrl U                      # Utolsó kurzor művelet visszavonása
+Shift Alt I                 # Kurzor minden kijelölt sor végére
+Ctrl I                      # Aktuális sor kijelölése
+Ctrl Shift L                # Minden előfordulás kijelölése
+Ctrl F2                     # Szó összes előfordulásának kijelölése
+Shift Alt Jobbra            # Kijelölés bővítése
+Shift Alt Balra             # Kijelölés szűkítése
+Shift Alt (egér húzás)      # Oszlop (doboz) kijelölés
+Ctrl Shift Alt (nyilak)     # Oszlop kijelölés billentyűkkel
+Ctrl Shift Alt PgUp/PgDown  # Oszlop kijelölés oldalanként</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="vsc nyelvi funkciók javaslat definíció javítás formázás">
+  <h2>VSC – Nyelvi szerkesztés</h2>
+  <p>Fejlett nyelvi funkciók: javaslatok, definíciók, formázás és gyors javítások.</p>
+  <pre><code>Ctrl Space        # Javaslatok előhívása
+Ctrl Shift Space  # Paraméter-súgó
+Shift Alt F       # Dokumentum formázása
+Ctrl K Ctrl F     # Kijelölés formázása
+F12               # Ugrás a definícióhoz
+Alt F12           # Definíció előnézete (Peek)
+Ctrl K F12        # Definíció megnyitása oldalra
+Ctrl .            # Gyors javítás (Quick Fix)
+Shift F12         # Hivatkozások megjelenítése
+F2                # Szimbólum átnevezése
+Ctrl K Ctrl X     # Sorvégi whitespace törlése
+Ctrl K M          # Fájlnyelv módosítása</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc editor kezelés felosztás fókusz bezárás mozgatás">
+  <h2>VSC – Editor kezelése</h2>
+  <p>Editorok megnyitása, felosztása, csoportok fókusza és mozgatása.</p>
+  <pre><code>Ctrl F4                 # Editor bezárása
+Ctrl W                  # Editor bezárása
+Ctrl K F                # Mappa bezárása
+Ctrl \                  # Editor felosztása
+Ctrl 1/2/3              # Fókusz az 1./2./3. editor csoportra
+Ctrl K Ctrl Balra/Jobbra# Fókusz előző/következő csoportra
+Ctrl Shift PgUp/PgDown  # Editor mozgatása balra/jobbra
+Ctrl K Balra/Jobbra     # Aktív editor csoport mozgatása</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc fájlkezelés megnyitás mentés előnézet útvonal újranyitás">
+  <h2>VSC – Fájlkezelés</h2>
+  <p>Fájlok létrehozása, megnyitása, mentése és előnézeti mód kezelése.</p>
+  <pre><code>Ctrl N             # Új fájl
+Ctrl O             # Fájl megnyitása...
+Ctrl S             # Mentés
+Ctrl Shift S       # Mentés másként...
+Ctrl K S           # Összes mentése
+Ctrl F4            # Bezárás
+Ctrl K Ctrl W      # Összes bezárása
+Ctrl Shift T       # Bezárt editor újranyitása
+Ctrl K Enter       # Előnézeti mód megtartása
+Ctrl Tab           # Következő megnyitása
+Ctrl Shift Tab     # Előző megnyitása
+Ctrl K P           # Aktív fájl elérési út másolása
+Ctrl K R           # Aktív fájl megjelenítése Explorerben
+Ctrl K O           # Aktív fájl megnyitása új ablakban</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc megjelenítés teljes képernyő elrendezés nagyítás oldalsáv keresés">
+  <h2>VSC – Megjelenítés</h2>
+  <p>Nézetek és panelek gyors váltása, teljes képernyő és Zen mód.</p>
+  <pre><code>F11             # Teljes képernyő ki/be
+Shift Alt 0     # Editor elrendezés (vízszintes/függőleges)
+Ctrl =/-        # Nagyítás/kicsinyítés
+Ctrl B          # Oldalsáv ki/be
+Ctrl Shift E    # Explorer megnyitása / fókusz váltása
+Ctrl Shift F    # Keresés megnyitása
+Ctrl Shift G    # Verziókezelés (Source Control)
+Ctrl Shift D    # Debug nézet
+Ctrl Shift X    # Bővítmények
+Ctrl Shift H    # Csere fájlokban
+Ctrl Shift J    # Keresési részletek ki/be
+Ctrl Shift U    # Kimenet (Output) panel
+Ctrl Shift V    # Markdown előnézet
+Ctrl K V        # Markdown előnézet oldalra
+Ctrl K Z        # Zen mód (Esc Esc a kilépéshez)</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc debug hibakeresés töréspont lépések indítás hover">
+  <h2>VSC – Hibakeresés</h2>
+  <p>Töréspontok kezelése és léptetés a futás során.</p>
+  <pre><code>F9             # Töréspont ki/be
+F5             # Indítás/Folytatás
+Shift F5       # Leállítás
+F11            # Belépés (Step into)
+Shift F11      # Kilépés (Step out)
+F10            # Átlépés (Step over)
+Ctrl K Ctrl I  # Lebegő (hover) információ</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vsc terminál beépített új terminál másolás beillesztés görgetés">
+  <h2>VSC – Beépített terminál</h2>
+  <p>Terminál megnyitása, új példány létrehozása és görgetés.</p>
+  <pre><code>Ctrl `             # Beépített terminál megjelenítése
+Ctrl Shift `       # Új terminál létrehozása
+Ctrl C             # Kijelölés másolása
+Ctrl V             # Beillesztés az aktív terminálba
+Ctrl Fel/Le        # Görgetés fel/le
+Shift PgUp/PgDown  # Görgetés oldalanként fel/le
+Ctrl Home/End      # Görgetés a tetejére/aljára</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="mac vsc általános navigáció beállítások gyorsbillentyűk">
+  <h2>MacOS – Általános</h2>
+  <p>Gyors navigáció és beállítások megnyitása:</p>
+  <pre><code>⇧⌘P, F1    # Parancspaletta megnyitása
+⌘P          # Gyors megnyitás, ugrás fájlra
+⇧⌘N        # Új ablak/instance
+⌘W          # Ablak/instance bezárása
+⌘,          # Felhasználói beállítások
+⌘K ⌘S      # Billentyűparancsok</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc szerkesztés alap sor műveletek mozgatás beszúrás behúzás">
+  <h2>MacOS – Alap szerkesztés</h2>
+  <p>Sorok vágása, másolása, mozgatása és beszúrása:</p>
+  <pre><code>⌘X                    # Sor kivágása (üres kijelölésnél)
+⌘C                    # Sor másolása (üres kijelölésnél)
+⌥↓ / ⌥↑               # Sor mozgatása le/fel
+⇧⌥↓ / ⇧⌥↑             # Sor másolása le/fel
+⇧⌘K                  # Sor törlése
+⌘Enter / ⇧⌘Enter      # Új sor beszúrása alá/fölé
+⇧⌘\                  # Ugrás a párzárójelhez
+⌘] / ⌘[               # Behúzás / behúzás visszavonása
+Home / End            # Ugrás a sor elejére/végére
+⌘↑ / ⌘↓               # Ugrás a fájl elejére/végére
+⌃PgUp / ⌃PgDn         # Görgetés soronként fel/le
+⌘PgUp / ⌘PgDn         # Görgetés oldalanként fel/le
+⌥⌘[ / ⌥⌘]             # Régió összecsukása/kinyitása
+⌘K ⌘[ / ⌘K ⌘]         # Alrégiók összecsukása/kinyitása
+⌘K ⌘0 / ⌘K ⌘J         # Minden régió összecsukása/kinyitása
+⌘K ⌘C                 # Sor komment hozzáadása
+⌘K ⌘U                 # Sor komment eltávolítása
+⌘/                    # Sor komment ki/be
+⇧⌥A                   # Blokk komment ki/be
+⌥Z                    # Sortörés (word wrap) ki/be</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc több kurzor kijelölés oszlop bővítés szűkítés">
+  <h2>MacOS – Több kurzor és kijelölés</h2>
+  <p>Több kurzor kezelése és kijelölések finomítása:</p>
+  <pre><code>⌥ + kattintás            # Kurzor beszúrása
+⌥⌘↑                      # Kurzor beszúrása fölé
+⌥⌘↓                      # Kurzor beszúrása alá
+⌘U                        # Utolsó kurzor művelet visszavonása
+⇧⌥I                      # Kurzor minden kijelölt sor végére
+⌘L                        # Aktuális sor kijelölése
+⇧⌘L                      # Kijelölés minden előfordulása
+⌘F2                      # Szó összes előfordulása
+⌃⇧⌘→ / ⌃⇧⌘←             # Kijelölés bővítése / szűkítése
+⇧⌥ + egér húzás           # Oszlop (doboz) kijelölés
+⇧⌥⌘↑ / ↓                 # Oszlop kijelölés fel/le
+⇧⌥⌘← / →                 # Oszlop kijelölés balra/jobbra
+⇧⌥⌘PgUp                  # Oszlop kijelölés oldal fel
+⇧⌥⌘PgDn                  # Oszlop kijelölés oldal le</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc keresés csere regex teljes szó">
+  <h2>MacOS – Keresés és csere</h2>
+  <p>Találatok keresése, kiválasztása és cseréje:</p>
+  <pre><code>⌘F          # Keresés
+⌥⌘F         # Csere
+⌘G / ⇧⌘G    # Következő/Előző találat
+⌥Enter      # Minden találat kijelölése
+⌘D          # Kijelölés hozzáadása a következő találathoz
+⌘K ⌘D       # Utolsó kijelölés mozgatása a következő találathoz</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc nyelvi funkciók javaslat definíció javítás formázás">
+  <h2>MacOS – Nyelvi szerkesztés</h2>
+  <p>Javaslatok, definíciók, formázás és gyors javítások.</p>
+  <pre><code>⌃Space, ⌘I     # Javaslatok előhívása
+⇧⌘Space        # Paraméter-súgó
+⇧⌥F            # Dokumentum formázása
+⌘K ⌘F          # Kijelölés formázása
+F12             # Ugrás a definícióhoz
+⌥F12            # Definíció előnézete (Peek)
+⌘K F12          # Definíció megnyitása oldalra
+⌘.              # Gyors javítás (Quick Fix)
+⇧F12            # Hivatkozások megjelenítése
+F2              # Szimbólum átnevezése
+⌘K ⌘X          # Sorvégi whitespace törlése
+⌘K M            # Fájlnyelv módosítása</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc navigáció szimbólum sor fájl hibák fókusz">
+  <h2>MacOS – Navigáció</h2>
+  <p>Ugrás sorra, fájlra és szimbólumokra, hibák kezelése:</p>
+  <pre><code>⌘T             # Minden szimbólum megjelenítése
+⌃G             # Ugrás adott sorra...
+⌘P             # Ugrás fájlra...
+⇧⌘O           # Ugrás szimbólumra...
+⇧⌘M           # Hibák/figyelmeztetések panel
+F8 / ⇧F8       # Következő/Előző hiba vagy figyelmeztetés
+⌃⇧Tab          # Editor csoport előzmények
+⌃- / ⌃⇧-       # Vissza/Előre
+⌃⇧M           # Tab fókusz mozgatás ki/be</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc editor kezelés felosztás fókusz bezárás mozgatás">
+  <h2>MacOS – Editor kezelése</h2>
+  <p>Editorok megnyitása, felosztása, csoportok fókusza és mozgatása:</p>
+  <pre><code>⌘W                         # Editor bezárása
+⌘K F                      # Mappa bezárása
+⌘\                         # Editor felosztása
+⌘1 / ⌘2 / ⌘3              # Fókusz az 1./2./3. editor csoportra
+⌘K ⌘← / ⌘K ⌘→             # Fókusz előző/következő csoportra
+⌘K ⇧⌘← / ⌘K ⇧⌘→           # Editor mozgatása balra/jobbra
+⌘K ← / ⌘K →               # Aktív editor csoport mozgatása</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc fájlkezelés megnyitás mentés előnézet útvonal újranyitás">
+  <h2>MacOS – Fájlkezelés</h2>
+  <p>Fájlok létrehozása, megnyitása, mentése és előnézeti mód kezelése:</p>
+  <pre><code>⌘N            # Új fájl
+⌘O            # Fájl megnyitása...
+⌘S            # Mentés
+⇧⌘S          # Mentés másként...
+⌥⌘S          # Összes mentése
+⌘W            # Bezárás
+⌘K ⌘W        # Összes bezárása
+⇧⌘T          # Bezárt editor újranyitása
+⌘K           # Előnézeti mód megtartása (Keep preview)
+⌃Tab / ⌃⇧Tab # Következő / Előző megnyitása
+⌘K P         # Aktív fájl elérési út másolása
+⌘K R         # Aktív fájl megjelenítése Finderben
+⌘K O         # Aktív fájl megnyitása új ablakban/instance-ben</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc megjelenítés teljes képernyő elrendezés nagyítás oldalsáv keresés">
+  <h2>MacOS – Megjelenítés</h2>
+  <p>Nézetek és panelek gyors váltása, teljes képernyő és Zen mód:</p>
+  <pre><code>⌃⌘F         # Teljes képernyő ki/be
+⌥⌘0         # Editor elrendezés (vízszintes/függőleges)
+⌘= / ⇧⌘-     # Nagyítás / kicsinyítés
+⌘B           # Oldalsáv ki/be
+⇧⌘E         # Explorer megnyitása / fókusz váltása
+⇧⌘F         # Keresés megnyitása
+⌃⇧G         # Verziókezelés (Source Control)
+⇧⌘D         # Debug nézet
+⇧⌘X         # Bővítmények
+⇧⌘H         # Csere fájlokban
+⇧⌘J         # Keresési részletek ki/be
+⇧⌘U         # Kimenet (Output) panel
+⇧⌘V         # Markdown előnézet
+⌘K V        # Markdown előnézet oldalra
+⌘K Z        # Zen mód (Esc Esc a kilépéshez)</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc debug hibakeresés töréspont lépések indítás hover">
+  <h2>MacOS – Hibakeresés</h2>
+  <p>Töréspontok kezelése és léptetés a futás során:</p>
+  <pre><code>F9            # Töréspont ki/be
+F5            # Indítás/Folytatás
+F11 / ⇧F11    # Belépés / Kilépés (Step into/out)
+F10           # Átlépés (Step over)
+⇧F5          # Leállítás
+⌘K ⌘I        # Lebegő (hover) információ</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mac vsc terminál beépített új terminál másolás beillesztés görgetés">
+  <h2>MacOS – Beépített terminál</h2>
+  <p>Terminál megnyitása, új példány létrehozása és görgetés:</p>
+  <pre><code>⌃`              # Beépített terminál megjelenítése
+⌃⇧`             # Új terminál létrehozása
+⌘C              # Kijelölés másolása
+⌘↑ / ⌘↓         # Görgetés fel/le
+PgUp / PgDn     # Görgetés oldalanként fel/le
+⌘Home / End     # Görgetés a tetejére/aljára</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

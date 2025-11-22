@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.6 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      margin: 0;
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover { background: #ff5fa3; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés…" aria-label="Keresés" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek a kártyák -->
+     <div class="card" data-tags="arch pacman log">
+  <h2>Arch Linux – pacman napló</h2>
+  <pre><code>napló megtekintése:
+/var/log/pacman.log</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch pacman update">
+  <h2>Arch Linux – pacman frissítés</h2>
+  <pre><code># pacman -Syu</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch pacman list">
+  <h2>Arch Linux – pacman listázás</h2>
+  <pre><code>telepített csomagok
+# pacman -Q
+
+nem szükséges csomagok
+# pacman -Qdtq</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch pacman search">
+  <h2>Arch Linux – pacman keresés</h2>
+  <pre><code>telepített csomagok keresése
+# pacman -Qs <név>
+
+csomagok keresése
+# pacman -Ss <név></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch pacman install remove clean">
+  <h2>Arch Linux – pacman telepítés/eltávolítás</h2>
+  <pre><code>csomag telepítése
+# pacman -S <név>
+
+csomag eltávolítása függőségekkel
+# pacman -Rns <név>
+
+cache tisztítása
+# pacman -Sc</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch yaourt">
+  <h2>Arch Linux – yaourt</h2>
+  <pre><code>megegyezik a pacman parancsokkal</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch systemd unit list status">
+  <h2>Arch Linux – systemd alapok</h2>
+  <pre><code>unit fájlok:
+/usr/lib/systemd/system/
+/etc/systemd/system/
+
+futó unitok listázása
+$ systemctl
+
+állapot ellenőrzése
+$ systemctl status <unit></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch systemd service start stop enable disable reload">
+  <h2>Arch Linux – systemd szolgáltatások</h2>
+  <pre><code>szolgáltatás indítása/leállítása
+# systemctl (start|stop) <unit>
+
+szolgáltatás engedélyezése/letiltása induláskor
+# systemctl (enable|disable) <unit>
+
+systemd újratöltése
+# systemctl daemon-reload</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch aur kézi telepítés pacman curl tar makepkg">
+  <h2>Arch Linux – AUR kézi telepítés</h2>
+  <pre><code>tárolók frissítése
+# pacman -Sy
+
+csomag letöltése
+$ curl -O <url>
+
+csomag kicsomagolása
+$ tar xzvf <package.tar.gz>
+
+belépés a könyvtárba
+$ cd <package>
+
+fordítás és telepítés
+$ makepkg -si</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch java környezet">
+  <h2>Arch Linux – Java környezetek</h2>
+  <pre><code>állapot ellenőrzése
+$ archlinux-java status
+
+alapértelmezett verzió beállítása
+# archlinux-java set <verzió></code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="arch fájlrendszer disk df du mount umount lsblk mkfs">
+  <h2>Arch Linux – Fájlrendszer és lemezkezelés</h2>
+  <pre><code>Lemezhasználat ellenőrzése
+df -h
+
+Könyvtár méretének ellenőrzése
+du -sh <könyvtár>
+
+Lemez csatolása
+sudo mount /dev/<eszköz> /mnt
+
+Lemez leválasztása
+sudo umount /mnt
+
+Meghajtók és partíciók listázása
+lsblk
+
+Meghajtó formázása ext4-re
+sudo mkfs.ext4 /dev/<eszköz></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch user management add delete passwd su">
+  <h2>Arch Linux – Felhasználókezelés</h2>
+  <pre><code>Új felhasználó hozzáadása
+sudo useradd -m -G wheel -s /bin/bash <felhasználónév>
+
+Jelszó beállítása
+sudo passwd <felhasználónév>
+
+Átváltás másik felhasználóra
+su - <felhasználónév>
+
+Felhasználó törlése
+sudo userdel -r <felhasználónév></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch networking ip ping networkmanager">
+  <h2>Arch Linux – Hálózatkezelés</h2>
+  <pre><code>Aktív kapcsolatok megjelenítése
+ip a
+
+Interfész engedélyezése/letiltása
+sudo ip link set <interfész> up
+sudo ip link set <interfész> down
+
+Hálózati kapcsolat tesztelése
+ping <hosztnév vagy IP>
+
+NetworkManager újraindítása
+sudo systemctl restart NetworkManager</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch services systemctl start stop enable disable status">
+  <h2>Arch Linux – Szolgáltatások kezelése</h2>
+  <pre><code>Szolgáltatás állapotának ellenőrzése
+systemctl status <szolgáltatás>
+
+Indítás / Leállítás / Újraindítás
+sudo systemctl start <szolgáltatás>
+sudo systemctl stop <szolgáltatás>
+sudo systemctl restart <szolgáltatás>
+
+Engedélyezés induláskor
+sudo systemctl enable <szolgáltatás>
+
+Letiltás induláskor
+sudo systemctl disable <szolgáltatás></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch kernel boot grub pacman">
+  <h2>Arch Linux – Kernel és boot kezelés</h2>
+  <pre><code>Telepített kernelek listázása
+ls /boot/vmlinuz*
+
+GRUB konfiguráció frissítése
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+Új kernel telepítése
+sudo pacman -S linux-lts
+
+Régi kernel eltávolítása
+sudo pacman -R linux-<verzió></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch troubleshooting logs journalctl dmesg systemctl failed">
+  <h2>Arch Linux – Hibakeresés</h2>
+  <pre><code>Rendszerlogok megtekintése
+journalctl -xe
+
+Boot logok megtekintése
+dmesg | less
+
+Hibás systemd unitok listázása
+systemctl --failed</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="arch handy pacman neofetch reflector nano">
+  <h2>Arch Linux – Hasznos parancsok</h2>
+  <pre><code>Csomag cache tisztítása
+sudo pacman -Sc
+
+Arch Linux rendszerinformáció
+neofetch
+
+Mirrorlist generálása
+sudo reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+
+pacman konfiguráció szerkesztése
+sudo nano /etc/pacman.conf</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const grid = document.querySelector(".grid");
+
+      // Szűrés kártyákon: data-tags és látható szöveg alapján
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        const cards = grid.querySelectorAll(".card");
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "" : "none";
+        });
+      });
+
+      // Copy gomb: csak a kódblokk tartalmát másolja; gomb felirata mindig "Copy"
+      grid.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".copy");
+        if (!btn) return;
+        const card = btn.closest(".card");
+        const code = card?.querySelector("code")?.innerText || "";
+        if (!code) return;
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "Másolva!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        } catch {
+          btn.textContent = "Hiba!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SQL parancsok – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+  margin-top: 8px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.copy:hover {
+  background: #ff5fa3;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. SELECT, JOIN, WHERE" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <div class="card" data-tags="select lekérdezés">
+      <h2>SELECT</h2>
+      <p>Adatok lekérdezése táblából.</p>
+      <pre><code>SELECT name, age FROM users;</code></pre>
+    </div>
+
+    <div class="card" data-tags="where feltétel">
+      <h2>WHERE</h2>
+      <p>Feltétel megadása lekérdezéshez.</p>
+      <pre><code>SELECT * FROM users WHERE age > 18;</code></pre>
+    </div>
+
+    <div class="card" data-tags="insert beszúrás">
+      <h2>INSERT</h2>
+      <p>Új sor beszúrása táblába.</p>
+      <pre><code>INSERT INTO users (name, age) VALUES ('Anna', 25);</code></pre>
+    </div>
+
+    <div class="card" data-tags="update módosítás">
+      <h2>UPDATE</h2>
+      <p>Adatok módosítása táblában.</p>
+      <pre><code>UPDATE users SET age = 26 WHERE name = 'Anna';</code></pre>
+    </div>
+
+    <div class="card" data-tags="delete törlés">
+      <h2>DELETE</h2>
+      <p>Sorok törlése táblából.</p>
+      <pre><code>DELETE FROM users WHERE age < 18;</code></pre>
+    </div>
+
+    <div class="card" data-tags="create table létrehozás">
+      <h2>CREATE TABLE</h2>
+      <p>Új tábla létrehozása.</p>
+      <pre><code>CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT
+);</code></pre>
+    </div>
+
+    <div class="card" data-tags="alter table módosítás">
+      <h2>ALTER TABLE</h2>
+      <p>Tábla szerkezetének módosítása.</p>
+      <pre><code>ALTER TABLE users ADD email VARCHAR(100);</code></pre>
+    </div>
+
+    <div class="card" data-tags="drop table törlés">
+      <h2>DROP TABLE</h2>
+      <p>Tábla törlése.</p>
+      <pre><code>DROP TABLE users;</code></pre>
+    </div>
+
+    <div class="card" data-tags="join összekapcsolás">
+      <h2>JOIN</h2>
+      <p>Táblák összekapcsolása közös mező alapján.</p>
+      <pre><code>SELECT u.name, o.amount
+FROM users u
+JOIN orders o ON u.id = o.user_id;</code></pre>
+    </div>
+
+    <div class="card" data-tags="group by csoportosítás">
+      <h2>GROUP BY</h2>
+      <p>Eredmények csoportosítása.</p>
+      <pre><code>SELECT age, COUNT(*) 
+FROM users 
+GROUP BY age;</code></pre>
+    </div>
+
+    <div class="card" data-tags="order by rendezés">
+      <h2>ORDER BY</h2>
+      <p>Eredmények rendezése.</p>
+      <pre><code>SELECT * FROM users ORDER BY age DESC;</code></pre>
+    </div>
+
+    <div class="card" data-tags="limit korlátozás">
+      <h2>LIMIT</h2>
+      <p>Eredmények számának korlátozása.</p>
+      <pre><code>SELECT * FROM users LIMIT 5;</code></pre>
+    </div>
+
+    <div class="card" data-tags="primary key kulcs">
+      <h2>PRIMARY KEY</h2>
+      <p>Egyedi azonosító oszlop.</p>
+      <pre><code>CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
+);</code></pre>
+    </div>
+
+    <div class="card" data-tags="foreign key kapcsolat">
+      <h2>FOREIGN KEY</h2>
+      <p>Kapcsolat másik tábla kulcsával.</p>
+      <pre><code>CREATE TABLE orders (
+  id INT PRIMARY KEY,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);</code></pre>
+    </div>
+    <div class="card" data-tags="having csoportosítás feltétel">
+  <h2>HAVING</h2>
+  <p>Csoportosított eredmények szűrése feltétel alapján.</p>
+  <pre><code>SELECT age, COUNT(*) 
+FROM users 
+GROUP BY age 
+HAVING COUNT(*) > 2;</code></pre>
+</div>
+
+<div class="card" data-tags="union összekapcsolás">
+  <h2>UNION</h2>
+  <p>Két lekérdezés eredményének összekapcsolása.</p>
+  <pre><code>SELECT name FROM users
+UNION
+SELECT name FROM admins;</code></pre>
+</div>
+
+<div class="card" data-tags="union all duplikátumok">
+  <h2>UNION ALL</h2>
+  <p>Két lekérdezés összekapcsolása duplikátumok megtartásával.</p>
+  <pre><code>SELECT name FROM users
+UNION ALL
+SELECT name FROM admins;</code></pre>
+</div>
+
+<div class="card" data-tags="exists ellenőrzés">
+  <h2>EXISTS</h2>
+  <p>Feltétel teljesülése, ha a belső lekérdezés ad vissza sort.</p>
+  <pre><code>SELECT name FROM users u
+WHERE EXISTS (
+  SELECT 1 FROM orders o WHERE o.user_id = u.id
+);</code></pre>
+</div>
+
+<div class="card" data-tags="in lista ellenőrzés">
+  <h2>IN</h2>
+  <p>Érték ellenőrzése egy lista elemei között.</p>
+  <pre><code>SELECT * FROM users WHERE age IN (18, 25, 30);</code></pre>
+</div>
+
+<div class="card" data-tags="between tartomány">
+  <h2>BETWEEN</h2>
+  <p>Érték ellenőrzése tartományban.</p>
+  <pre><code>SELECT * FROM users WHERE age BETWEEN 18 AND 30;</code></pre>
+</div>
+
+<div class="card" data-tags="like minta keresés">
+  <h2>LIKE</h2>
+  <p>Mintaillesztés szövegben.</p>
+  <pre><code>SELECT * FROM users WHERE name LIKE 'A%';</code></pre>
+</div>
+
+<div class="card" data-tags="case feltételes érték">
+  <h2>CASE</h2>
+  <p>Feltételes értékadás lekérdezésben.</p>
+  <pre><code>SELECT name,
+CASE 
+  WHEN age < 18 THEN 'Fiatal'
+  ELSE 'Felnőtt'
+END AS kategória
+FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="index gyorsítás">
+  <h2>INDEX</h2>
+  <p>Gyorsabb kereséshez index létrehozása.</p>
+  <pre><code>CREATE INDEX idx_users_age ON users(age);</code></pre>
+</div>
+
+<div class="card" data-tags="view nézet">
+  <h2>VIEW</h2>
+  <p>Lekérdezésből nézet létrehozása.</p>
+  <pre><code>CREATE VIEW adult_users AS
+SELECT * FROM users WHERE age >= 18;</code></pre>
+</div>
+
+<div class="card" data-tags="truncate törlés">
+  <h2>TRUNCATE</h2>
+  <p>Tábla gyors ürítése.</p>
+  <pre><code>TRUNCATE TABLE users;</code></pre>
+</div>
+
+<div class="card" data-tags="transaction tranzakció">
+  <h2>TRANSACTION</h2>
+  <p>Több művelet egy tranzakcióban.</p>
+  <pre><code>BEGIN TRANSACTION;
+UPDATE accounts SET balance = balance - 100 WHERE id=1;
+UPDATE accounts SET balance = balance + 100 WHERE id=2;
+COMMIT;</code></pre>
+</div>
+
+<div class="card" data-tags="rollback visszavonás">
+  <h2>ROLLBACK</h2>
+  <p>Tranzakció visszavonása hiba esetén.</p>
+  <pre><code>ROLLBACK;</code></pre>
+</div>
+
+<div class="card" data-tags="grant jogosultság">
+  <h2>GRANT</h2>
+  <p>Jogosultság adása felhasználónak.</p>
+  <pre><code>GRANT SELECT ON users TO reader;</code></pre>
+</div>
+
+<div class="card" data-tags="revoke jogosultság">
+  <h2>REVOKE</h2>
+  <p>Jogosultság visszavonása.</p>
+  <pre><code>REVOKE SELECT ON users FROM reader;</code></pre>
+</div>
+<div class="card" data-tags="with cte köztes lekérdezés">
+  <h2>WITH (CTE)</h2>
+  <p>Köztes lekérdezés (Common Table Expression) definiálása.</p>
+  <pre><code>WITH young_users AS (
+  SELECT * FROM users WHERE age < 30
+)
+SELECT * FROM young_users;</code></pre>
+</div>
+
+<div class="card" data-tags="row_number sorszám">
+  <h2>ROW_NUMBER()</h2>
+  <p>Sorszám generálása eredményhalmazban.</p>
+  <pre><code>SELECT name,
+ROW_NUMBER() OVER (ORDER BY age) AS sor
+FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="rank rangsor">
+  <h2>RANK()</h2>
+  <p>Rangsor generálása azonos értékeknél azonos pozícióval.</p>
+  <pre><code>SELECT name, age,
+RANK() OVER (ORDER BY age DESC) AS rang
+FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="dense_rank rangsor">
+  <h2>DENSE_RANK()</h2>
+  <p>Rangsor generálása kihagyások nélkül.</p>
+  <pre><code>SELECT name, age,
+DENSE_RANK() OVER (ORDER BY age DESC) AS rang
+FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="window funkciók átlag">
+  <h2>AVG() OVER()</h2>
+  <p>Ablakfüggvény: átlag számítása csoporton belül.</p>
+  <pre><code>SELECT name, age,
+AVG(age) OVER (PARTITION BY city) AS átlag_kor
+FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="coalesce null kezelés">
+  <h2>COALESCE()</h2>
+  <p>Első nem NULL érték visszaadása.</p>
+  <pre><code>SELECT name, COALESCE(email, 'nincs') FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="nullif null összehasonlítás">
+  <h2>NULLIF()</h2>
+  <p>Két érték összehasonlítása, ha azonos, NULL-t ad vissza.</p>
+  <pre><code>SELECT NULLIF(age, 0) FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="string agg összefűzés">
+  <h2>STRING_AGG()</h2>
+  <p>Szövegek összefűzése csoporton belül.</p>
+  <pre><code>SELECT city,
+STRING_AGG(name, ', ') AS nevek
+FROM users GROUP BY city;</code></pre>
+</div>
+
+<div class="card" data-tags="concat összefűzés">
+  <h2>CONCAT()</h2>
+  <p>Szövegek összefűzése.</p>
+  <pre><code>SELECT CONCAT(first_name, ' ', last_name) AS teljes_név FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="substr substring részszöveg">
+  <h2>SUBSTRING()</h2>
+  <p>Részszöveg kivágása.</p>
+  <pre><code>SELECT SUBSTRING(name, 1, 3) FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="length hossz">
+  <h2>LENGTH()</h2>
+  <p>Szöveg hosszának lekérdezése.</p>
+  <pre><code>SELECT LENGTH(name) FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="upper lower kisbetű nagybetű">
+  <h2>UPPER() / LOWER()</h2>
+  <p>Szöveg kis- vagy nagybetűssé alakítása.</p>
+  <pre><code>SELECT UPPER(name), LOWER(name) FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="round kerekítés">
+  <h2>ROUND()</h2>
+  <p>Szám kerekítése.</p>
+  <pre><code>SELECT ROUND(price, 2) FROM products;</code></pre>
+</div>
+
+<div class="card" data-tags="cast típus konverzió">
+  <h2>CAST()</h2>
+  <p>Típus konvertálása.</p>
+  <pre><code>SELECT CAST(age AS VARCHAR) FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="convert típus konverzió">
+  <h2>CONVERT()</h2>
+  <p>Típus konvertálása (SQL Server).</p>
+  <pre><code>SELECT CONVERT(VARCHAR, GETDATE(), 23);</code></pre>
+</div>
+
+<div class="card" data-tags="distinct egyedi">
+  <h2>DISTINCT</h2>
+  <p>Csak egyedi értékek visszaadása.</p>
+  <pre><code>SELECT DISTINCT city FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="limit offset lapozás">
+  <h2>LIMIT / OFFSET</h2>
+  <p>Eredmények korlátozása és lapozása.</p>
+  <pre><code>SELECT * FROM users LIMIT 10 OFFSET 20;</code></pre>
+</div>
+
+<div class="card" data-tags="explain terv">
+  <h2>EXPLAIN</h2>
+  <p>Lekérdezés végrehajtási tervének megtekintése.</p>
+  <pre><code>EXPLAIN SELECT * FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="analyze optimalizálás">
+  <h2>ANALYZE</h2>
+  <p>Statisztikák frissítése optimalizáláshoz.</p>
+  <pre><code>ANALYZE users;</code></pre>
+</div>
+<div class="card" data-tags="show tables táblák listázása">
+  <h2>SHOW TABLES</h2>
+  <p>Adatbázisban lévő táblák listázása.</p>
+  <pre><code>SHOW TABLES;</code></pre>
+</div>
+
+<div class="card" data-tags="describe tábla szerkezet">
+  <h2>DESCRIBE</h2>
+  <p>Tábla oszlopainak és típusainak megtekintése.</p>
+  <pre><code>DESCRIBE users;</code></pre>
+</div>
+
+<div class="card" data-tags="show databases adatbázisok">
+  <h2>SHOW DATABASES</h2>
+  <p>Elérhető adatbázisok listázása.</p>
+  <pre><code>SHOW DATABASES;</code></pre>
+</div>
+
+<div class="card" data-tags="use adatbázis váltás">
+  <h2>USE</h2>
+  <p>Aktív adatbázis kiválasztása.</p>
+  <pre><code>USE my_database;</code></pre>
+</div>
+
+<div class="card" data-tags="backup mentés">
+  <h2>BACKUP DATABASE</h2>
+  <p>Adatbázis mentése.</p>
+  <pre><code>BACKUP DATABASE mydb TO DISK = 'C:\\backup\\mydb.bak';</code></pre>
+</div>
+
+<div class="card" data-tags="restore visszaállítás">
+  <h2>RESTORE DATABASE</h2>
+  <p>Adatbázis visszaállítása mentésből.</p>
+  <pre><code>RESTORE DATABASE mydb FROM DISK = 'C:\\backup\\mydb.bak';</code></pre>
+</div>
+
+<div class="card" data-tags="create user felhasználó">
+  <h2>CREATE USER</h2>
+  <p>Új felhasználó létrehozása.</p>
+  <pre><code>CREATE USER 'barnabas'@'localhost' IDENTIFIED BY 'jelszo';</code></pre>
+</div>
+
+<div class="card" data-tags="drop user törlés">
+  <h2>DROP USER</h2>
+  <p>Felhasználó törlése.</p>
+  <pre><code>DROP USER 'barnabas'@'localhost';</code></pre>
+</div>
+
+<div class="card" data-tags="grant jogosultság">
+  <h2>GRANT</h2>
+  <p>Jogosultság adása felhasználónak.</p>
+  <pre><code>GRANT SELECT, INSERT ON mydb.* TO 'barnabas'@'localhost';</code></pre>
+</div>
+
+<div class="card" data-tags="revoke jogosultság">
+  <h2>REVOKE</h2>
+  <p>Jogosultság visszavonása felhasználótól.</p>
+  <pre><code>REVOKE INSERT ON mydb.* FROM 'barnabas'@'localhost';</code></pre>
+</div>
+
+<div class="card" data-tags="set változó">
+  <h2>SET</h2>
+  <p>Adatbázis változó beállítása.</p>
+  <pre><code>SET autocommit = 0;</code></pre>
+</div>
+
+<div class="card" data-tags="show processlist folyamatok">
+  <h2>SHOW PROCESSLIST</h2>
+  <p>Aktív adatbázis kapcsolatok és folyamatok listázása.</p>
+  <pre><code>SHOW PROCESSLIST;</code></pre>
+</div>
+
+<div class="card" data-tags="explain analyze terv">
+  <h2>EXPLAIN ANALYZE</h2>
+  <p>Lekérdezés végrehajtási tervének részletes elemzése.</p>
+  <pre><code>EXPLAIN ANALYZE SELECT * FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="flush cache tisztítás">
+  <h2>FLUSH</h2>
+  <p>Cache vagy logok ürítése.</p>
+  <pre><code>FLUSH PRIVILEGES;</code></pre>
+</div>
+
+<div class="card" data-tags="commit tranzakció">
+  <h2>COMMIT</h2>
+  <p>Tranzakció véglegesítése.</p>
+  <pre><code>COMMIT;</code></pre>
+</div>
+
+<div class="card" data-tags="rollback tranzakció visszavonás">
+  <h2>ROLLBACK</h2>
+  <p>Tranzakció visszavonása.</p>
+  <pre><code>ROLLBACK;</code></pre>
+</div>
+<div class="card" data-tags="current date dátum">
+  <h2>CURRENT_DATE</h2>
+  <p>Aktuális dátum lekérdezése.</p>
+  <pre><code>SELECT CURRENT_DATE;</code></pre>
+</div>
+
+<div class="card" data-tags="now időbélyeg">
+  <h2>NOW()</h2>
+  <p>Aktuális dátum és idő lekérdezése.</p>
+  <pre><code>SELECT NOW();</code></pre>
+</div>
+
+<div class="card" data-tags="isnull null ellenőrzés">
+  <h2>ISNULL()</h2>
+  <p>NULL érték ellenőrzése (SQL Server).</p>
+  <pre><code>SELECT ISNULL(email, 'nincs') FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="nvl null kezelés">
+  <h2>NVL()</h2>
+  <p>NULL érték helyettesítése (Oracle).</p>
+  <pre><code>SELECT NVL(email, 'nincs') FROM users;</code></pre>
+</div>
+
+<div class="card" data-tags="greatest legnagyobb">
+  <h2>GREATEST()</h2>
+  <p>Legnagyobb érték kiválasztása több közül.</p>
+  <pre><code>SELECT GREATEST(10, 20, 5); -- 20</code></pre>
+</div>
+
+<div class="card" data-tags="least legkisebb">
+  <h2>LEAST()</h2>
+  <p>Legkisebb érték kiválasztása több közül.</p>
+  <pre><code>SELECT LEAST(10, 20, 5); -- 5</code></pre>
+</div>
+
+<div class="card" data-tags="round kerekítés">
+  <h2>ROUND()</h2>
+  <p>Szám kerekítése adott tizedesjegyre.</p>
+  <pre><code>SELECT ROUND(123.456, 2); -- 123.46</code></pre>
+</div>
+
+<div class="card" data-tags="ceil felfelé kerekítés">
+  <h2>CEIL()</h2>
+  <p>Szám felfelé kerekítése.</p>
+  <pre><code>SELECT CEIL(4.2); -- 5</code></pre>
+</div>
+
+<div class="card" data-tags="floor lefelé kerekítés">
+  <h2>FLOOR()</h2>
+  <p>Szám lefelé kerekítése.</p>
+  <pre><code>SELECT FLOOR(4.8); -- 4</code></pre>
+</div>
+
+<div class="card" data-tags="abs abszolút érték">
+  <h2>ABS()</h2>
+  <p>Szám abszolút értéke.</p>
+  <pre><code>SELECT ABS(-15); -- 15</code></pre>
+</div>
+
+<div class="card" data-tags="mod maradék">
+  <h2>MOD()</h2>
+  <p>Osztás maradékának kiszámítása.</p>
+  <pre><code>SELECT MOD(10, 3); -- 1</code></pre>
+</div>
+
+<div class="card" data-tags="power hatvány">
+  <h2>POWER()</h2>
+  <p>Szám hatványozása.</p>
+  <pre><code>SELECT POWER(2, 3); -- 8</code></pre>
+</div>
+
+<div class="card" data-tags="sqrt gyök">
+  <h2>SQRT()</h2>
+  <p>Négyzetgyök számítása.</p>
+  <pre><code>SELECT SQRT(16); -- 4</code></pre>
+</div>
+
+<div class="card" data-tags="random véletlen">
+  <h2>RANDOM()</h2>
+  <p>Véletlen szám generálása (PostgreSQL).</p>
+  <pre><code>SELECT RANDOM();</code></pre>
+</div>
+
+<div class="card" data-tags="rand véletlen">
+  <h2>RAND()</h2>
+  <p>Véletlen szám generálása (MySQL).</p>
+  <pre><code>SELECT RAND();</code></pre>
+</div>
+
+<div class="card" data-tags="extract dátum részek">
+  <h2>EXTRACT()</h2>
+  <p>Dátum részeinek kinyerése.</p>
+  <pre><code>SELECT EXTRACT(YEAR FROM NOW());</code></pre>
+</div>
+
+<div class="card" data-tags="date add dátum művelet">
+  <h2>DATE_ADD()</h2>
+  <p>Dátumhoz idő hozzáadása (MySQL).</p>
+  <pre><code>SELECT DATE_ADD(NOW(), INTERVAL 7 DAY);</code></pre>
+</div>
+
+<div class="card" data-tags="date diff dátum különbség">
+  <h2>DATEDIFF()</h2>
+  <p>Két dátum közötti különbség napokban.</p>
+  <pre><code>SELECT DATEDIFF('2025-12-31', '2025-01-01');</code></pre>
+</div>
+
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+    });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const input = document.querySelector("input[type=search]");
+    const cards = document.querySelectorAll(".card");
+
+    // kereső
+    input.addEventListener("input", () => {
+      const q = input.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || "").toLowerCase();
+        const text = card.innerText.toLowerCase();
+        const match = !q || tags.includes(q) || text.includes(q);
+        card.style.display = match ? "block" : "none";
+      });
+    });
+
+    // copy gomb
+    document.querySelectorAll(".copy").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const code = btn.parentElement.querySelector("code").innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.innerText = "Copied!";
+          setTimeout(() => btn.innerText = "Copy", 1500);
+        });
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector("input[type=search]");
+  const cards = document.querySelectorAll(".card");
+
+  // kereső
+  input.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || "").toLowerCase();
+      const text = card.innerText.toLowerCase();
+      const match = !q || tags.includes(q) || text.includes(q);
+      card.style.display = match ? "block" : "none";
+    });
+  });
+
+  // copy gomb automatikusan minden kártyához
+  cards.forEach(card => {
+    const btn = document.createElement("button");
+    btn.className = "copy";
+    btn.textContent = "Copy";
+    card.appendChild(btn);
+
+    btn.addEventListener("click", () => {
+      const code = card.querySelector("code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy", 1500);
+      });
+    });
+  });
+});
+</script>
+
+
+</body>
+</html>

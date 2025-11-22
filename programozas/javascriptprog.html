@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript parancsok – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+  margin-top: 8px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.copy:hover {
+  background: #ff5fa3;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. let, function, array" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Alapok -->
+    <div class="card" data-tags="let változó">
+      <h2>let</h2>
+      <p>Blokkszintű változó deklarálása.</p>
+      <pre><code>let x = 10;</code></pre>
+    </div>
+
+    <div class="card" data-tags="const konstans">
+      <h2>const</h2>
+      <p>Állandó értékű változó.</p>
+      <pre><code>const PI = 3.14159;</code></pre>
+    </div>
+
+    <div class="card" data-tags="var változó régi">
+      <h2>var</h2>
+      <p>Függvényszintű változó (régi szintaxis).</p>
+      <pre><code>var legacy = "ok";</code></pre>
+    </div>
+
+    <div class="card" data-tags="typeof típus">
+      <h2>typeof</h2>
+      <p>Érték típusának lekérdezése.</p>
+      <pre><code>typeof 42; // "number"</code></pre>
+    </div>
+
+    <div class="card" data-tags="function függvény">
+      <h2>function</h2>
+      <p>Hagyományos függvény deklarálás.</p>
+      <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+    </div>
+
+    <div class="card" data-tags="arrow function nyílfüggvény">
+      <h2>Arrow function</h2>
+      <p>Rövidített függvényszintaxis.</p>
+      <pre><code>const add = (a, b) => a + b;</code></pre>
+    </div>
+
+    <div class="card" data-tags="default param alapértelmezett">
+      <h2>Alapértelmezett paraméter</h2>
+      <p>Paraméter alapértékkel.</p>
+      <pre><code>function power(x, p = 2) { return x ** p; }</code></pre>
+    </div>
+
+    <div class="card" data-tags="rest paraméter ...args">
+      <h2>Rest paraméter</h2>
+      <p>Több paraméter összegyűjtése tömbbe.</p>
+      <pre><code>function sum(...nums) {
+  return nums.reduce((a,b) => a+b, 0);
+}</code></pre>
+    </div>
+
+    <div class="card" data-tags="destructuring bontás">
+      <h2>Destructuring</h2>
+      <p>Objektum/tömb elemek szétszedése.</p>
+      <pre><code>const [a,b] = [1,2];
+const {name, age} = {name:"Anna", age:25};</code></pre>
+    </div>
+
+    <div class="card" data-tags="template string backtick">
+      <h2>Template string</h2>
+      <p>Interpoláció backtick szintaxissal.</p>
+      <pre><code>const msg = `ID: ${id}, Status: ${ok ? "OK" : "ERR"}`;</code></pre>
+    </div>
+
+    <!-- Vezérlés -->
+    <div class="card" data-tags="if else feltétel">
+      <h2>if / else</h2>
+      <p>Feltételes elágazás.</p>
+      <pre><code>if (x > 0) console.log("Pozitív"); else console.log("Nem");</code></pre>
+    </div>
+
+    <div class="card" data-tags="switch választás">
+      <h2>switch</h2>
+      <p>Többágú feltétel.</p>
+      <pre><code>switch(role){
+  case "admin": doAdmin(); break;
+  case "user": doUser(); break;
+  default: help();
+}</code></pre>
+    </div>
+
+    <div class="card" data-tags="for ciklus">
+      <h2>for</h2>
+      <p>Számláló ciklus.</p>
+      <pre><code>for (let i=0; i<3; i++) console.log(i);</code></pre>
+    </div>
+
+    <div class="card" data-tags="for...of iteráció">
+      <h2>for...of</h2>
+      <p>Iterálható értékek bejárása.</p>
+      <pre><code>for (const ch of "hi") console.log(ch);</code></pre>
+    </div>
+
+    <div class="card" data-tags="for...in objektum kulcsok">
+      <h2>for...in</h2>
+      <p>Objektum kulcsok bejárása.</p>
+      <pre><code>for (const k in obj) console.log(k, obj[k]);</code></pre>
+    </div>
+
+    <div class="card" data-tags="while ciklus">
+      <h2>while</h2>
+      <p>Amíg a feltétel igaz.</p>
+      <pre><code>while (n < 5) { n++; }</code></pre>
+    </div>
+
+    <div class="card" data-tags="do while ciklus">
+      <h2>do...while</h2>
+      <p>Legalább egyszer fut.</p>
+      <pre><code>do { attempt++; } while (attempt < 3);</code></pre>
+    </div>
+
+    <!-- Tömbök -->
+    <div class="card" data-tags="array tömb">
+      <h2>Array</h2>
+      <p>Alap tömb példa.</p>
+      <pre><code>const arr = [1,2,3];</code></pre>
+    </div>
+
+    <div class="card" data-tags="map tömb metódus">
+      <h2>Array.map()</h2>
+      <p>Elemenként átalakítás.</p>
+      <pre><code>[1,2,3].map(x => x*2); // [2,4,6]</code></pre>
+    </div>
+
+    <div class="card" data-tags="filter tömb metódus">
+      <h2>Array.filter()</h2>
+      <p>Szűrés feltétel alapján.</p>
+      <pre><code>[1,2,3,4].filter(x => x%2===0); // [2,4]</code></pre>
+    </div>
+
+    <div class="card" data-tags="reduce összegzés">
+      <h2>Array.reduce()</h2>
+      <p>Halmozás/aggregálás.</p>
+      <pre><code>[1,2,3].reduce((a,b)=>a+b,0); // 6</code></pre>
+    </div>
+
+    <div class="card" data-tags="find keresés">
+      <h2>Array.find()</h2>
+      <p>Első illeszkedő elem.</p>
+      <pre><code>[5,7,8].find(x => x>6); // 7</code></pre>
+    </div>
+
+    <div class="card" data-tags="includes tartalmaz">
+      <h2>Array.includes()</h2>
+      <p>Tartalmaz-e értéket.</p>
+      <pre><code>["a","b"].includes("b"); // true</code></pre>
+    </div>
+
+    <div class="card" data-tags="slice darabolás">
+      <h2>Array.slice()</h2>
+      <p>Rész tömb kivágása.</p>
+      <pre><code>[1,2,3,4].slice(1,3); // [2,3]</code></pre>
+    </div>
+
+    <div class="card" data-tags="splice módosítás">
+      <h2>Array.splice()</h2>
+      <p>Helyben módosítás.</p>
+      <pre><code>const a=[1,2,3]; a.splice(1,1,"x"); // [1,"x",3]</code></pre>
+    </div>
+
+    <!-- Objektumok és OOP -->
+    <div class="card" data-tags="object objektum">
+      <h2>Object</h2>
+      <p>Objektum alap.</p>
+      <pre><code>const person = { name: "Anna", age: 25 };</code></pre>
+    </div>
+
+    <div class="card" data-tags="class osztály konstruktor">
+      <h2>class</h2>
+      <p>Osztály deklarálás.</p>
+      <pre><code>class Animal {
+  constructor(name) { this.name = name; }
+}</code></pre>
+    </div>
+
+    <div class="card" data-tags="extends öröklés super">
+      <h2>extends / super</h2>
+      <p>Öröklés és szülő hívás.</p>
+      <pre><code>class Dog extends Animal {
+  constructor(n){ super(n); }
+}</code></pre>
+    </div>
+
+    <div class="card" data-tags="this kontextus">
+      <h2>this</h2>
+      <p>Aktuális kontextus.</p>
+      <pre><code>const obj = {x:1, get(){return this.x;} };</code></pre>
+    </div>
+
+    <!-- Hibakezelés -->
+    <div class="card" data-tags="try catch hiba">
+      <h2>try / catch</h2>
+      <p>Hibák kezelése.</p>
+      <pre><code>try { throw new Error("Hiba!"); }
+catch(e){ console.error(e.message); }</code></pre>
+    </div>
+
+    <div class="card" data-tags="finally lezárás">
+      <h2>finally</h2>
+      <p>Mindig lefutó záró rész.</p>
+      <pre><code>try { doWork(); } finally { cleanup(); }</code></pre>
+    </div>
+
+    <!-- Aszinkron és ígéretek -->
+    <div class="card" data-tags="promise ígéret then catch">
+      <h2>Promise</h2>
+      <p>Aszinkron műveletek kezelése.</p>
+      <pre><code>new Promise((res)=>res(42))
+  .then(v=>console.log(v))
+  .catch(console.error);</code></pre>
+    </div>
+
+    <div class="card" data-tags="async await aszinkron">
+      <h2>async / await</h2>
+      <p>Ígéret szinkron stílusban.</p>
+      <pre><code>async function load(){
+  const res = await fetch("/data.json");
+  return res.json();
+}</code></pre>
+    </div>
+
+    <div class="card" data-tags="fetch api http">
+      <h2>fetch()</h2>
+      <p>HTTP kérés és válasz feldolgozás.</p>
+      <pre><code>fetch("https://api.example.com")
+  .then(r=>r.json())
+  .then(d=>console.log(d));</code></pre>
+    </div>
+
+    <div class="card" data-tags="timeout setTimeout késleltetés">
+      <h2>setTimeout()</h2>
+      <p>Késleltetés futtatás előtt.</p>
+      <pre><code>setTimeout(()=>console.log("wait"), 1000);</code></pre>
+    </div>
+
+    <div class="card" data-tags="interval setInterval időzítés">
+      <h2>setInterval()</h2>
+      <p>Ismételt futtatás időközönként.</p>
+      <pre><code>const id = setInterval(tick, 1000);</code></pre>
+    </div>
+
+    <div class="card" data-tags="clearTimeout clearInterval leállítás">
+      <h2>clearTimeout / clearInterval</h2>
+      <p>Időzítő leállítása.</p>
+      <pre><code>clearInterval(id);</code></pre>
+    </div>
+
+    <!-- DOM -->
+    <div class="card" data-tags="querySelector dom kiválasztás">
+      <h2>document.querySelector</h2>
+      <p>Első illeszkedő elem kiválasztása.</p>
+      <pre><code>const el = document.querySelector(".card");</code></pre>
+    </div>
+
+    <div class="card" data-tags="querySelectorAll dom nodelist">
+      <h2>document.querySelectorAll</h2>
+      <p>Több elem kiválasztása.</p>
+      <pre><code>document.querySelectorAll(".card").forEach(console.log);</code></pre>
+    </div>
+
+    <div class="card" data-tags="createElement dom létrehozás">
+      <h2>document.createElement</h2>
+      <p>Új DOM elem létrehozása.</p>
+      <pre><code>const div = document.createElement("div");</code></pre>
+    </div>
+
+    <div class="card" data-tags="appendChild insert dom">
+      <h2>append / prepend</h2>
+      <p>Elemek hozzáadása a DOM-hoz.</p>
+      <pre><code>el.append(child); el.prepend(child2);</code></pre>
+    </div>
+
+    <div class="card" data-tags="classList osztályok">
+      <h2>element.classList</h2>
+      <p>CSS osztályok kezelése.</p>
+      <pre><code>el.classList.add("active");
+el.classList.toggle("hidden");</code></pre>
+    </div>
+
+    <div class="card" data-tags="dataset data attribútum">
+      <h2>element.dataset</h2>
+      <p>data-* attribútumok kezelése.</p>
+      <pre><code>el.dataset.tags = "js dom";</code></pre>
+    </div>
+
+    <div class="card" data-tags="style inline css">
+      <h2>element.style</h2>
+      <p>Inline stílus beállítása.</p>
+      <pre><code>el.style.color = "magenta";</code></pre>
+    </div>
+
+    <div class="card" data-tags="events addEventListener">
+      <h2>addEventListener</h2>
+      <p>Eseménykezelő hozzáadása.</p>
+      <pre><code>button.addEventListener("click", () => doSomething());</code></pre>
+    </div>
+
+    <div class="card" data-tags="event objektum target preventDefault">
+      <h2>Esemény objektum</h2>
+      <p>Esemény adatai és vezérlése.</p>
+      <pre><code>form.addEventListener("submit", e => {
+  e.preventDefault();
+});</code></pre>
+    </div>
+
+    <!-- Tárolás -->
+    <div class="card" data-tags="localStorage tárhely">
+      <h2>localStorage</h2>
+      <p>Tartós kulcs-érték tárolás.</p>
+      <pre><code>localStorage.setItem("theme", "dark");
+localStorage.getItem("theme");</code></pre>
+    </div>
+
+    <div class="card" data-tags="sessionStorage munkamenet">
+      <h2>sessionStorage</h2>
+      <p>Ideiglenes tárolás a munkamenetben.</p>
+      <pre><code>sessionStorage.setItem("token", "abc");</code></pre>
+    </div>
+
+    <!-- JSON / dátum / számok -->
+    <div class="card" data-tags="JSON parse stringify">
+      <h2>JSON.parse / JSON.stringify</h2>
+      <p>JSON átalakítás.</p>
+      <pre><code>const obj = JSON.parse('{"a":1}');
+const str = JSON.stringify(obj);</code></pre>
+    </div>
+
+    <div class="card" data-tags="Date dátum idő">
+      <h2>Date</h2>
+      <p>Dátum és idő kezelés.</p>
+      <pre><code>const now = new Date(); now.getFullYear();</code></pre>
+    </div>
+
+    <div class="card" data-tags="Math számok round floor random">
+      <h2>Math</h2>
+      <p>Matematikai függvények.</p>
+      <pre><code>Math.round(1.6); Math.floor(1.6); Math.random();</code></pre>
+    </div>
+
+    <!-- Haladó nyelvi elemek -->
+    <div class="card" data-tags="Set egyedi értékek">
+      <h2>Set</h2>
+      <p>Egyedi értékek gyűjteménye.</p>
+      <pre><code>const s = new Set([1,1,2]); // {1,2}</code></pre>
+    </div>
+
+    <div class="card" data-tags="Map kulcs érték">
+      <h2>Map</h2>
+      <p>Kulcs-érték párok megőrzött sorrendben.</p>
+      <pre><code>const m = new Map([["a",1],["b",2]]);</code></pre>
+    </div>
+
+    <div class="card" data-tags="Symbol egyedi azonosító">
+      <h2>Symbol</h2>
+      <p>Egyedi nem ütköző kulcs.</p>
+      <pre><code>const KEY = Symbol("id");</code></pre>
+    </div>
+
+    <div class="card" data-tags="iterator iterálható">
+      <h2>Iterator</h2>
+      <p>Saját iterátor készítése.</p>
+      <pre><code>const it = {
+  i:0,
+  next(){ return this.i<3 ? {value:this.i++, done:false} : {done:true}; }
+};</code></pre>
+    </div>
+
+    <!-- Modulok -->
+    <div class="card" data-tags="import export modul">
+      <h2>import / export</h2>
+      <p>Modulok használata.</p>
+      <pre><code>// export.js
+export const PI = 3.14;
+// main.js
+import { PI } from "./export.js";</code></pre>
+    </div>
+
+    <!-- Regex -->
+    <div class="card" data-tags="RegExp minta illesztés">
+      <h2>RegExp</h2>
+      <p>Reguláris kifejezések.</p>
+      <pre><code>/\d{3}-\d{2}/.test("123-45"); // true</code></pre>
+    </div>
+
+    <!-- Util -->
+    <div class="card" data-tags="debounce optimalizálás">
+      <h2>Debounce (minta)</h2>
+      <p>Gyakori hívások ritkítása.</p>
+      <pre><code>const debounce = (fn, wait) => {
+  let t; return (...a) => { clearTimeout(t); t = setTimeout(()=>fn(...a), wait); };
+};</code></pre>
+    </div>
+
+    <div class="card" data-tags="throttle optimalizálás">
+      <h2>Throttle (minta)</h2>
+      <p>Hívások ütemezése fix intervallumra.</p>
+      <pre><code>const throttle = (fn, wait) => {
+  let last=0; return (...a) => {
+    const now=Date.now(); if (now-last>=wait){ last=now; fn(...a); }
+  };
+};</code></pre>
+    </div>
+
+    <!-- Böngésző API-k -->
+    <div class="card" data-tags="navigator böngésző info">
+      <h2>navigator</h2>
+      <p>Böngésző információk.</p>
+      <pre><code>navigator.userAgent;</code></pre>
+    </div>
+
+    <div class="card" data-tags="location url">
+      <h2>location</h2>
+      <p>Aktuális URL kezelése.</p>
+      <pre><code>location.href; // lekérés
+// location.assign("/new");</code></pre>
+    </div>
+
+    <div class="card" data-tags="history navigáció">
+      <h2>history</h2>
+      <p>Előre/hátra navigáció.</p>
+      <pre><code>history.back(); history.forward();</code></pre>
+    </div>
+
+    <div class="card" data-tags="clipboard vágólap">
+      <h2>Clipboard</h2>
+      <p>Másolás a vágólapra (engedéllyel).</p>
+      <pre><code>navigator.clipboard.writeText("másolt szöveg");</code></pre>
+    </div>
+
+    <div class="card" data-tags="performance időzés mérés">
+      <h2>performance</h2>
+      <p>Teljesítménymérés.</p>
+      <pre><code>const t0 = performance.now();
+// ... munka ...
+const t1 = performance.now();</code></pre>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+    });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector("input[type=search]");
+  const cards = document.querySelectorAll(".card");
+
+  // kereső
+  input.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || "").toLowerCase();
+      const text = card.innerText.toLowerCase();
+      const match = !q || tags.includes(q) || text.includes(q);
+      card.style.display = match ? "block" : "none";
+    });
+  });
+
+  // copy gomb automatikusan minden kártyához
+  cards.forEach(card => {
+    const btn = document.createElement("button");
+    btn.className = "copy";
+    btn.textContent = "Copy";
+    card.appendChild(btn);
+
+    btn.addEventListener("click", () => {
+      const code = card.querySelector("code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy", 1500);
+      });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

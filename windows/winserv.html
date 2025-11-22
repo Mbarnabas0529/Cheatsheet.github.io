@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Windows Server – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. windows, server, jogosultság" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+     <div class="card" data-tags="windows server statikus ip hálózat beállítás">
+  <h2>Statikus IP beállítása Windows Serveren</h2>
+  <p>Nyisd meg a <strong>Server Manager</strong> ablakot, majd kattints bal oldalon a <em>Local Server</em> menüpontra. 
+     A középső panelen keresd meg az <strong>Ethernet</strong> sort, ahol jelenleg „IP address assigned by DHCP” szerepel. 
+     Kattints rá, ekkor megnyílik a <em>Network Connections</em> ablak.</p>
+  <p>Jobb gombbal kattints az <strong>Ethernet</strong> adapterre → <em>Properties</em> → válaszd ki az <strong>Internet Protocol Version 4 (TCP/IPv4)</strong> sort → <em>Properties</em>.</p>
+  <p>Itt állítsd be a statikus IP címet, alhálózati maszkot, alapértelmezett átjárót és DNS szervereket. 
+     Végül kattints az <strong>OK</strong> gombra, majd zárd be az ablakokat.</p>
+  <pre><code>Server Manager → Local Server → Ethernet → TCP/IPv4 → Properties → IP beállítás</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="windows server időzóna dátum idő beállítás">
+  <h2>Időzóna beállítása – Server Manager</h2>
+  <p>A <strong>Server Manager</strong> ablakban, a <em>Local Server</em> nézetben kattints az <strong>Time zone</strong> sorra, 
+     ahol például „UTC-08:00 Pacific Time” szerepel. Ez megnyitja a <em>Date and Time</em> ablakot.</p>
+  <p>Kattints a <strong>Change time zone…</strong> gombra, majd válaszd ki a helyi időzónát (pl. „UTC+01:00 Budapest”). 
+     Végül erősítsd meg az <strong>OK</strong> gombbal.</p>
+  <pre><code>Server Manager → Local Server → Time zone → Change → UTC+01:00 Budapest</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="windows server távoli asztal remote desktop nla tűzfal">
+  <h2>Távoli asztal engedélyezése – Server Manager</h2>
+  <p>A <strong>Server Manager</strong> ablakban, a <em>Local Server</em> nézetben kattints a <strong>Remote Desktop</strong> sorra. 
+     Válaszd az „<em>Allow remote connections to this computer</em>” opciót, és pipáld ki az NLA-t: 
+     „<em>Allow connections only from computers running Remote Desktop with Network Level Authentication</em>”.</p>
+  <p>A tűzfal automatikusan engedélyezi a Távoli Asztal portját minden hálózati kártyán. 
+     Ha valamelyiken nem szeretnéd, utólag törölheted a szabályt.</p>
+  <pre><code>Server Manager → Local Server → Remote Desktop → Enable → NLA → Firewall szabály</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="windows server gépnév név átnevezés rendszer újraindítás">
+  <h2>Gépnév beállítása – Server Manager</h2>
+  <p>A <strong>Server Manager</strong> ablakban, a <em>Local Server</em> nézetben kattints a <strong>Computer name</strong> sorra. 
+     Ez megnyitja a <em>System Properties</em> ablakot, ahol kattints a <strong>Change…</strong> gombra.</p>
+  <p>Írd be az új gépnevet, majd kattints az <strong>OK</strong> gombra. A módosítás érvényesítéséhez a rendszer újraindítása szükséges.</p>
+  <pre><code>Server Manager → Local Server → Computer name → Change → új név → újraindítás</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="wip folyamatban készül fejlesztés">
+  <h2>🚧 W.I.P.</h2>
+  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
+  <pre><code>Work In Progress – 🚧</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

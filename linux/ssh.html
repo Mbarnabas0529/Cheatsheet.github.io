@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SSH – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. ssh-keygen, config, port" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide jönnek majd a kártyák -->
+     <section class="grid">
+  <div class="card" data-tags="ssh kapcsolat alap port">
+    <h2>Kapcsolódás szerverhez (alapértelmezett port 22)</h2>
+    <p>Alapértelmezett kapcsolódás a 22-es porton.</p>
+    <pre><code>ssh root@192.168.1.5</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="ssh kapcsolat port">
+    <h2>Kapcsolódás megadott porton</h2>
+    <p>Kapcsolódás egyedi porton.</p>
+    <pre><code>ssh root@192.168.1.5 -p 6222</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="ssh pem fájl">
+    <h2>Kapcsolódás PEM fájllal (0400 jogosultság)</h2>
+    <p>Kapcsolódás PEM fájl használatával, megfelelő jogosultságokkal.</p>
+    <pre><code>ssh -i /path/file.pem root@192.168.1.5</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+  <div class="card" data-tags="ssh távoli parancs">
+    <h2>Távoli parancs futtatása</h2>
+    <p>Parancs végrehajtása a távoli szerveren.</p>
+    <pre><code>ssh root@192.168.1.5 'ls -l'</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="ssh helyi script">
+    <h2>Helyi script futtatása távolról</h2>
+    <p>Helyi script lefuttatása a távoli szerveren.</p>
+    <pre><code>ssh root@192.168.1.5 bash < script.sh</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="ssh tömörítés letöltés">
+    <h2>Tömörítés és letöltés szerverről</h2>
+    <p>Könyvtár tömörítése és letöltése a helyi gépre.</p>
+    <pre><code>ssh root@192.168.1.5 "tar cvzf - ~/source" > output.tgz</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="scp másolás távoli helyi">
+    <h2>Másolás távolról helyi gépre</h2>
+    <p>Fájl másolása szerverről a helyi gépre.</p>
+    <pre><code>scp user@server:/dir/file.ext dest/</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="scp másolás szerverek között">
+    <h2>Másolás két szerver között</h2>
+    <p>Fájl másolása egyik szerverről a másikra.</p>
+    <pre><code>scp user@server:/file user@server:/dir</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="scp másolás helyi távoli">
+    <h2>Másolás helyiről távoli szerverre</h2>
+    <p>Fájl másolása a helyi gépről a szerverre.</p>
+    <pre><code>scp dest/file.ext user@server:/dir</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="scp könyvtár másolás">
+    <h2>Teljes könyvtár másolása</h2>
+    <p>Könyvtár rekurzív másolása szerverről.</p>
+    <pre><code>scp -r user@server:/dir dest/</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="scp összes fájl másolás">
+    <h2>Összes fájl másolása könyvtárból</h2>
+    <p>Könyvtár összes fájljának másolása szerverről.</p>
+    <pre><code>scp user@server:/dir/* dest/</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="scp másolás aktuális könyvtárba">
+    <h2>Másolás a jelenlegi könyvtárba</h2>
+    <p>Könyvtár fájljainak másolása a jelenlegi mappába.</p>
+    <pre><code>scp user@server:/dir/* .</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+  <div class="card" data-tags="ssh config fájlok kulcsok">
+  <h2>Konfigurációs fájlok helye</h2>
+  <p>SSH beállítások és kulcsok elérési útjai.</p>
+  <pre><code>/etc/ssh/ssh_config      # Rendszerszintű konfiguráció
+~/.ssh/config            # Felhasználói konfiguráció
+~/.ssh/id_{type}         # Privát kulcs
+~/.ssh/id_{type}.pub     # Publikus kulcs
+~/.ssh/known_hosts       # Bejelentkezett gépek
+~/.ssh/authorized_keys   # Engedélyezett kulcsok</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="scp opciók kapcsolók">
+  <h2>SCP kapcsolók</h2>
+  <p>Hasznos opciók fájlok másolásához SCP-vel.</p>
+  <pre><code>scp -r         # Könyvtárak rekurzív másolása
+scp -C         # Adatok tömörítése
+scp -v         # Részletes információk kiírása
+scp -P 8080    # Egyedi port használata
+scp -B         # Batch mód (jelszó nélkül)
+scp -p         # Időbélyegek és jogosultságok megőrzése</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh config alias">
+  <h2>Konfigurációs példa aliashoz</h2>
+  <p>Alias beállítása a <code>~/.ssh/config</code> fájlban, majd indítás egyszerű névvel.</p>
+  <pre><code>Host server1
+  HostName 192.168.1.5
+  User root
+  Port 22
+  IdentityFile ~/.ssh/server1.key
+
+ssh server1</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh proxyjump több ugrás">
+  <h2>ProxyJump</h2>
+  <p>Kapcsolódás köztes szerveren keresztül, akár több ugrással.</p>
+  <pre><code>ssh -J proxy_host1 remote_host2
+
+ssh -J user@proxy_host1 user@remote_host2
+
+# Több ugrás
+ssh -J user@proxy_host1:port1,user@proxy_host2:port2 user@remote_host3</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh copy kulcs">
+  <h2>ssh-copy-id</h2>
+  <p>Publikus kulcs másolása a távoli szerverre, hogy jelszó nélkül lehessen belépni.</p>
+  <pre><code>ssh-copy-id user@server
+
+# Másolás alias névvel
+ssh-copy-id server1
+
+# Konkrét kulcs másolása
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@server</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh keygen rsa">
+  <h2>ssh-keygen</h2>
+  <p>RSA kulcs generálása 4096 bit hosszúsággal és e-mail megjegyzéssel.</p>
+  <pre><code>ssh-keygen -t rsa -b 4096 -C "your@mail.com"
+
+# -t   Kulcs típusa
+# -b   Kulcs hossza bitekben
+# -C   Megjegyzés (pl. e-mail)</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh keygen generálás">
+  <h2>Kulcs generálás és módosítás</h2>
+  <p>SSH kulcsok létrehozása és szerkesztése különböző opciókkal.</p>
+  <pre><code># Kulcs generálása interaktívan
+ssh-keygen
+
+# Fájlnév megadása
+ssh-keygen -f ~/.ssh/filename
+
+# Publikus kulcs előállítása privátból
+ssh-keygen -y -f private.key > public.pub
+
+# Megjegyzés módosítása
+ssh-keygen -c -f ~/.ssh/id_rsa
+
+# Privát kulcs jelszavának módosítása
+ssh-keygen -p -f ~/.ssh/id_rsa</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh key típusok">
+  <h2>Kulcstípusok</h2>
+  <p>Az SSH által támogatott kulcstípusok.</p>
+  <pre><code>rsa       # Klasszikus, széles körben használt
+ed25519   # Modern, gyors és biztonságos
+dsa       # Elavult, nem ajánlott
+ecdsa     # Elliptikus görbéken alapuló</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh key formátum">
+  <h2>Kulcsformátumok</h2>
+  <p>Az SSH kulcsok tárolási formátumai.</p>
+  <pre><code>PEM     # Klasszikus, széles körben használt formátum
+PKCS8   # Modern, szabványosított formátum</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="ssh known_hosts keresés törlés">
+  <h2>known_hosts kezelése</h2>
+  <p>Keresés és törlés a <code>~/.ssh/known_hosts</code> fájlból.</p>
+  <pre><code># Keresés a known_hosts fájlban
+ssh-keygen -F &lt;ip/hostname&gt;
+
+# Törlés a known_hosts fájlból
+ssh-keygen -R &lt;ip/hostname&gt;</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  
+</section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      // kereső
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      // copy gomb (később a kártyákhoz)
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

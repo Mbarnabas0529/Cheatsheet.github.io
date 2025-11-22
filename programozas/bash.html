@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. bash, curl, netstat" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+     <div class="card" data-tags="bash hello world script">
+  <h2>Bash – Hello World</h2>
+  <p>Egyszerű script, amely kiírja a „Hello world!” üzenetet:</p>
+  <pre><code>#!/bin/bash
+
+VAR="world"
+echo "Hello $VAR!"   # => Hello world!
+
+# futtatás:
+bash hello.sh</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash változó variable string">
+  <h2>Bash – Változók</h2>
+  <p>Változók létrehozása és kiírása:</p>
+  <pre><code>NAME="John"
+
+echo ${NAME}     # => John
+echo $NAME       # => John
+echo "$NAME"     # => John
+echo '$NAME'     # => $NAME (szöveg)
+echo "${NAME}!"  # => John!
+
+NAME = "John"    # => Hiba (szóköz miatt)</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash comment inline multiline">
+  <h2>Bash – Kommentek</h2>
+  <p>Egysoros és többsoros kommentek:</p>
+  <pre><code># Ez egy egysoros komment
+
+: '
+Ez egy
+többsoros komment
+bash-ben
+'</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash argument special parameter">
+  <h2>Bash – Argumentumok</h2>
+  <p>Speciális paraméterek és argumentumok:</p>
+  <pre><code>$0   # script neve
+$1   # első argumentum
+${10} # 10. argumentum
+$#   # argumentumok száma
+$$   # shell PID
+$*   # összes argumentum
+$@   # összes argumentum külön
+$_   # előző parancs utolsó argumentuma</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash function függvény">
+  <h2>Bash – Függvények</h2>
+  <p>Egyszerű függvény létrehozása és meghívása:</p>
+  <pre><code>get_name() {
+    echo "John"
+}
+
+echo "You are $(get_name)"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash if else condition">
+  <h2>Bash – Feltételek</h2>
+  <p>Egyszerű feltételes szerkezet:</p>
+  <pre><code>if [[ -z "$string" ]]; then
+    echo "String is empty"
+elif [[ -n "$string" ]]; then
+    echo "String is not empty"
+fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash brace expansion">
+  <h2>Bash – Brace expansion</h2>
+  <p>Szövegek és számok generálása:</p>
+  <pre><code>echo {A,B}       # => A B
+echo {A,B}.js    # => A.js B.js
+echo {1..5}      # => 1 2 3 4 5</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash command substitution pwd">
+  <h2>Bash – Parancs behelyettesítés</h2>
+  <p>Parancs futtatása és eredményének behelyettesítése:</p>
+  <pre><code>echo "I'm in $(pwd)"
+# vagy
+echo "I'm in `pwd`"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion syntax prefix suffix replace">
+  <h2>Bash – Parameter Expansion szintaxis</h2>
+  <p>Alapvető műveletek változókkal:</p>
+  <pre><code>${FOO%suffix}    # suffix eltávolítása
+${FOO#prefix}    # prefix eltávolítása
+${FOO%%suffix}   # hosszú suffix eltávolítása
+${FOO##prefix}   # hosszú prefix eltávolítása
+${FOO/from/to}   # első találat cseréje
+${FOO//from/to}  # összes találat cseréje
+${FOO/%from/to}  # suffix cseréje
+${FOO/#from/to}  # prefix cseréje</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion substring">
+  <h2>Bash – Részsztringek</h2>
+  <p>Változó részleteinek kiemelése:</p>
+  <pre><code>${FOO:0:3}      # substring (pozíció, hossz)
+${FOO:(-3):3}   # substring jobbról</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion length">
+  <h2>Bash – Hossz</h2>
+  <p>Változó hosszának lekérése:</p>
+  <pre><code>${#FOO}   # $FOO hossza</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion default value">
+  <h2>Bash – Alapértelmezett értékek</h2>
+  <p>Értékek kezelése unset változóknál:</p>
+  <pre><code>${FOO:-val}   # $FOO vagy val, ha unset
+${FOO:=val}   # beállítja $FOO-t val-ra, ha unset
+${FOO:+val}   # val, ha $FOO be van állítva
+${FOO:?msg}   # hibaüzenet, ha unset</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion substitution path file">
+  <h2>Bash – Példák substitution</h2>
+  <p>Gyakorlati példák:</p>
+  <pre><code>echo ${food:-Cake}   # $food vagy "Cake"
+
+STR="/path/to/foo.cpp"
+echo ${STR%.cpp}     # /path/to/foo
+echo ${STR%.cpp}.o   # /path/to/foo.o
+echo ${STR%/*}       # /path/to
+echo ${STR##*.}      # cpp (kiterjesztés)
+echo ${STR##*/}      # foo.cpp (fájlnév)
+echo ${STR/foo/bar}  # /path/to/bar.cpp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion slicing substring">
+  <h2>Bash – Slicing</h2>
+  <p>Sztringek szeletelése:</p>
+  <pre><code>name="John"
+echo ${name:0:2}       # Jo
+echo ${name::2}        # Jo
+echo ${name::-1}       # Joh
+echo ${name:(-1)}      # n
+echo ${name:(-2)}      # hn
+echo ${name:(-2):2}    # hn
+
+length=2
+echo ${name:0:length}  # Jo</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion basepath dirpath path">
+  <h2>Bash – Basepath & Dirpath</h2>
+  <p>Fájlnév és könyvtár kiemelése:</p>
+  <pre><code>SRC="/path/to/foo.cpp"
+
+BASEPATH=${SRC##*/}   
+echo $BASEPATH   # foo.cpp
+
+DIRPATH=${SRC%$BASEPATH}
+echo $DIRPATH    # /path/to/</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash parameter expansion transform case upper lower">
+  <h2>Bash – Transzformáció</h2>
+  <p>Betűk átalakítása kis- és nagybetűvé:</p>
+  <pre><code>STR="HELLO WORLD!"
+echo ${STR,}    # hELLO WORLD!
+echo ${STR,,}   # hello world!
+
+STR="hello world!"
+echo ${STR^}    # Hello world!
+echo ${STR^^}   # HELLO WORLD!
+
+ARR=(hello World)
+echo "${ARR[@],}" # hello world
+echo "${ARR[@]^}" # Hello World</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash array define declare merge">
+  <h2>Bash – Tömbök definiálása</h2>
+  <p>Tömbök létrehozása és összevonása:</p>
+  <pre><code>Fruits=('Apple' 'Banana' 'Orange')
+
+Fruits[0]="Apple"
+Fruits[1]="Banana"
+Fruits[2]="Orange"
+
+ARRAY1=(foo{1..2})   # foo1 foo2
+ARRAY2=({A..D})      # A B C D
+ARRAY3=(${ARRAY1[@]} ${ARRAY2[@]}) # Merge
+
+declare -a Numbers=(1 2 3)
+Numbers+=(4 5)       # Append => 1 2 3 4 5</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash array indexing length range keys">
+  <h2>Bash – Indexelés</h2>
+  <p>Tömb elemek elérése és hossza:</p>
+  <pre><code>${Fruits[0]}     # első elem
+${Fruits[-1]}    # utolsó elem
+${Fruits[*]}     # összes elem
+${Fruits[@]}     # összes elem
+${#Fruits[@]}    # elemszám
+${#Fruits}       # első elem hossza
+${#Fruits[3]}    # n. elem hossza
+${Fruits[@]:3:2} # tartomány
+${!Fruits[@]}    # indexek</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash array iteration loop index">
+  <h2>Bash – Iteráció</h2>
+  <p>Tömb bejárása értékekkel és indexekkel:</p>
+  <pre><code>Fruits=('Apple' 'Banana' 'Orange')
+
+for e in "${Fruits[@]}"; do
+    echo $e
+done
+
+for i in "${!Fruits[@]}"; do
+  printf "%s\t%s\n" "$i" "${Fruits[$i]}"
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash array operations push remove concat duplicate file">
+  <h2>Bash – Műveletek</h2>
+  <p>Tömbök módosítása és kombinálása:</p>
+  <pre><code>Fruits=("${Fruits[@]}" "Watermelon")   # Push
+Fruits+=('Watermelon')                 # Push
+Fruits=( ${Fruits[@]/Ap*/} )           # Regex remove
+unset Fruits[2]                        # Elem törlése
+Fruits=("${Fruits[@]}")                # Duplikálás
+Fruits=("${Fruits[@]}" "${Veggies[@]}")# Konkatenáció
+lines=(`cat "logfile"`)                # Fájl beolvasás</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash array arguments function local">
+  <h2>Bash – Tömbök argumentumként</h2>
+  <p>Tömb átadása függvénynek:</p>
+  <pre><code>function extract()
+{
+    local -n myarray=$1
+    local idx=$2
+    echo "${myarray[$idx]}"
+}
+
+Fruits=('Apple' 'Banana' 'Orange')
+extract Fruits 2   # => Orange</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash dictionary associative array define">
+  <h2>Bash – Szótárak definiálása</h2>
+  <p>Asszociatív tömb létrehozása és feltöltése:</p>
+  <pre><code>declare -A sounds
+
+sounds[dog]="bark"
+sounds[cow]="moo"
+sounds[bird]="tweet"
+sounds[wolf]="howl"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash dictionary values keys length unset">
+  <h2>Bash – Szótárak használata</h2>
+  <p>Értékek, kulcsok és elemszám kezelése:</p>
+  <pre><code>echo ${sounds[dog]}   # Dog's sound
+echo ${sounds[@]}     # Összes érték
+echo ${!sounds[@]}    # Összes kulcs
+echo ${#sounds[@]}    # Elemek száma
+unset sounds[dog]     # Elem törlése</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash dictionary iteration loop keys values">
+  <h2>Bash – Szótárak iterációja</h2>
+  <p>Bejárás értékekkel és kulcsokkal:</p>
+  <pre><code>for val in "${sounds[@]}"; do
+    echo $val
+done
+
+for key in "${!sounds[@]}"; do
+    echo $key
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash condition integer comparison">
+  <h2>Bash – Egész szám feltételek</h2>
+  <p>Számok összehasonlítása:</p>
+  <pre><code>[[ NUM -eq NUM ]]   # egyenlő
+[[ NUM -ne NUM ]]   # nem egyenlő
+[[ NUM -lt NUM ]]   # kisebb
+[[ NUM -le NUM ]]   # kisebb vagy egyenlő
+[[ NUM -gt NUM ]]   # nagyobb
+[[ NUM -ge NUM ]]   # nagyobb vagy egyenlő
+
+(( NUM < NUM ))     # kisebb
+(( NUM <= NUM ))    # kisebb vagy egyenlő
+(( NUM > NUM ))     # nagyobb
+(( NUM >= NUM ))    # nagyobb vagy egyenlő</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash condition string comparison regexp">
+  <h2>Bash – Sztring feltételek</h2>
+  <p>Szövegek összehasonlítása:</p>
+  <pre><code>[[ -z STR ]]   # üres
+[[ -n STR ]]   # nem üres
+[[ STR == STR ]] # egyenlő
+[[ STR != STR ]] # nem egyenlő
+[[ STR < STR ]]  # kisebb ASCII
+[[ STR > STR ]]  # nagyobb ASCII
+[[ STR =~ STR ]] # regexp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash condition example if else regex file">
+  <h2>Bash – Feltételes példák</h2>
+  <p>Gyakorlati példák:</p>
+  <pre><code>if [[ -z "$string" ]]; then
+    echo "String is empty"
+elif [[ -n "$string" ]]; then
+    echo "String is not empty"
+fi
+
+if [[ "$A" == "$B" ]]; then
+    ...
+fi
+
+if [[ '1. abc' =~ ([a-z]+) ]]; then
+    echo ${BASH_REMATCH[1]}
+fi
+
+if (( $a < $b )); then
+   echo "$a is smaller than $b"
+fi
+
+if [[ -e "file.txt" ]]; then
+    echo "file exists"
+fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash condition file exists readable writable executable">
+  <h2>Bash – Fájl feltételek</h2>
+  <p>Fájlok és könyvtárak ellenőrzése:</p>
+  <pre><code>[[ -e FILE ]]   # létezik
+[[ -d FILE ]]   # könyvtár
+[[ -f FILE ]]   # fájl
+[[ -h FILE ]]   # symlink
+[[ -s FILE ]]   # méret > 0
+[[ -r FILE ]]   # olvasható
+[[ -w FILE ]]   # írható
+[[ -x FILE ]]   # futtatható
+[[ f1 -nt f2 ]] # f1 újabb
+[[ f1 -ot f2 ]] # f2 régebbi
+[[ f1 -ef f2 ]] # azonos fájl</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash condition logical and or not">
+  <h2>Bash – Logikai műveletek</h2>
+  <p>Logikai kombinációk:</p>
+  <pre><code>[[ ! EXPR ]]   # NOT
+[[ X && Y ]]   # AND
+[[ X || Y ]]   # OR
+
+if [ "$1" = 'y' -a $2 -gt 0 ]; then
+    echo "yes"
+fi
+
+if [ "$1" = 'n' -o $2 -lt 0 ]; then
+    echo "no"
+fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop for basic">
+  <h2>Bash – Alap for ciklus</h2>
+  <p>Egyszerű for ciklus fájlok bejárására:</p>
+  <pre><code>for i in /etc/rc.*; do
+    echo $i
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop for c-like">
+  <h2>Bash – C-szerű for ciklus</h2>
+  <p>Számlálóval vezérelt for ciklus:</p>
+  <pre><code>for ((i = 0 ; i < 100 ; i++)); do
+    echo $i
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop range sequence">
+  <h2>Bash – Tartományok</h2>
+  <p>Számok bejárása tartományban:</p>
+  <pre><code>for i in {1..5}; do
+    echo "Welcome $i"
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop range step">
+  <h2>Bash – Lépésköz</h2>
+  <p>Tartomány bejárása adott lépésközzel:</p>
+  <pre><code>for i in {5..50..5}; do
+    echo "Welcome $i"
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop while increment">
+  <h2>Bash – Auto increment</h2>
+  <p>While ciklus számláló növelésével:</p>
+  <pre><code>i=1
+while [[ $i -lt 4 ]]; do
+    echo "Number: $i"
+    ((i++))
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop while decrement">
+  <h2>Bash – Auto decrement</h2>
+  <p>While ciklus számláló csökkentésével:</p>
+  <pre><code>i=3
+while [[ $i -gt 0 ]]; do
+    echo "Number: $i"
+    ((i--))
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop continue skip">
+  <h2>Bash – Continue</h2>
+  <p>Elemek kihagyása ciklusban:</p>
+  <pre><code>for number in $(seq 1 3); do
+    if [[ $number == 2 ]]; then
+        continue
+    fi
+    echo "$number"
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop break exit">
+  <h2>Bash – Break</h2>
+  <p>Ciklus megszakítása:</p>
+  <pre><code>for number in $(seq 1 3); do
+    if [[ $number == 2 ]]; then
+        break
+    fi
+    echo "$number"   # csak 1-et ír ki
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop until">
+  <h2>Bash – Until ciklus</h2>
+  <p>Ciklus futtatása amíg a feltétel hamis:</p>
+  <pre><code>count=0
+until [ $count -gt 10 ]; do
+    echo "$count"
+    ((count++))
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop forever infinite">
+  <h2>Bash – Végtelen ciklus</h2>
+  <p>Végtelen while ciklus:</p>
+  <pre><code>while true; do
+    # kód
+done
+
+# rövidített forma
+while :; do
+    # kód
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash loop read file lines">
+  <h2>Bash – Sorok olvasása</h2>
+  <p>Fájl sorainak bejárása:</p>
+  <pre><code>cat file.txt | while read line; do
+    echo $line
+done</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash function define syntax">
+  <h2>Bash – Függvény definiálása</h2>
+  <p>Függvény létrehozása kétféle szintaxissal:</p>
+  <pre><code>myfunc() {
+    echo "hello $1"
+}
+
+# alternatív szintaxis
+function myfunc() {
+    echo "hello $1"
+}
+
+myfunc "John"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash function return value">
+  <h2>Bash – Érték visszaadása</h2>
+  <p>Függvényből érték visszaadása:</p>
+  <pre><code>myfunc() {
+    local myresult='some value'
+    echo $myresult
+}
+
+result="$(myfunc)"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash function error return">
+  <h2>Bash – Hibakezelés</h2>
+  <p>Függvény hibát jelez return kóddal:</p>
+  <pre><code>myfunc() {
+    return 1
+}
+
+if myfunc; then
+    echo "success"
+else
+    echo "failure"
+fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash options noclobber errexit pipefail nounset">
+  <h2>Bash – Alap opciók</h2>
+  <p>Hasznos shell opciók hibakezeléshez:</p>
+  <pre><code>set -o noclobber   # fájlok felülírásának tiltása
+set -o errexit     # kilépés hiba esetén
+set -o pipefail    # pipe hibák feltárása
+set -o nounset     # unset változók hibát okoznak</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash options glob nullglob failglob nocaseglob dotglob globstar">
+  <h2>Bash – Glob opciók</h2>
+  <p>Glob minták viselkedésének beállítása:</p>
+  <pre><code>shopt -s nullglob    # nem illeszkedő glob törlődik
+shopt -s failglob    # nem illeszkedő glob hiba
+shopt -s nocaseglob  # kis/nagybetű érzéketlen
+shopt -s dotglob     # wildcard illeszti a dotfile-okat
+shopt -s globstar    # ** rekurzív illesztés</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash history commands sudo histverify">
+  <h2>Bash – History parancsok</h2>
+  <p>Parancstörténet kezelése:</p>
+  <pre><code>history          # előzmények listázása
+sudo !!          # előző parancs sudo-val
+shopt -s histverify # expandált parancs nem fut azonnal</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash history expansion last nth command">
+  <h2>Bash – History expansions</h2>
+  <p>Előző parancs argumentumainak kibővítése:</p>
+  <pre><code>!$      # utolsó argumentum
+!*      # összes argumentum
+!-n     # n-edik legutóbbi parancs
+!n      # n-edik parancs
+!<cmd>  # legutóbbi adott parancs</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash history operations replace basename directory">
+  <h2>Bash – History műveletek</h2>
+  <p>Előző parancs újrafuttatása és módosítása:</p>
+  <pre><code>!!                 # utolsó parancs újra
+!!:s/FROM/TO/      # első előfordulás cseréje
+!!:gs/FROM/TO/     # összes előfordulás cseréje
+!$:t               # utolsó argumentum basename
+!$:h               # utolsó argumentum könyvtár</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash history slices nth range">
+  <h2>Bash – History slices</h2>
+  <p>Argumentumok szeletelése előző parancsból:</p>
+  <pre><code>!!:n      # n-edik token
+!^        # első argumentum
+!$        # utolsó token
+!!:n-m    # tartomány
+!!:n-$    # n-ediktől az utolsóig</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash numeric calculation random">
+  <h2>Bash – Numerikus számítások</h2>
+  <p>Egyszerű aritmetikai műveletek:</p>
+  <pre><code>$((a + 200))       # hozzáad 200-at $a-hoz
+$(($RANDOM%200))   # véletlen szám 0..199</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash subshell directory">
+  <h2>Bash – Subshells</h2>
+  <p>Parancs futtatása külön subshellben:</p>
+  <pre><code>(cd somedir; echo "I'm now in $PWD")
+pwd   # továbbra is az eredeti könyvtárban</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash command inspect type">
+  <h2>Bash – Parancsok vizsgálata</h2>
+  <p>Parancs típusának ellenőrzése:</p>
+  <pre><code>command -V cd
+# => "cd is a function/alias/whatever"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash redirection stdout stderr stdin">
+  <h2>Bash – Átirányítások</h2>
+  <p>Standard output és error kezelése:</p>
+  <pre><code>python hello.py > output.txt    # stdout fájlba
+python hello.py >> output.txt   # stdout fájlba, hozzáfűzés
+python hello.py 2> error.log    # stderr fájlba
+python hello.py 2>&1            # stderr stdout-ra
+python hello.py 2>/dev/null     # stderr null-ra
+python hello.py &>/dev/null     # stdout+stderr null-ra
+python hello.py < foo.txt       # stdin fájlból</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash source relative directory script">
+  <h2>Bash – Source relative & Directory</h2>
+  <p>Script könyvtárának meghatározása:</p>
+  <pre><code>source "${0%/*}/../share/foo.sh"
+
+DIR="${0%/*}"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash case switch">
+  <h2>Bash – Case / Switch</h2>
+  <p>Elágazás case szerkezettel:</p>
+  <pre><code>case "$1" in
+    start | up)
+        vagrant up
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|ssh}"
+        ;;
+esac</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash trap error handling">
+  <h2>Bash – Hibakezelés trap-pel</h2>
+  <p>Hibák elkapása trap segítségével:</p>
+  <pre><code>trap 'echo Error at about $LINENO' ERR
+
+traperr() {
+    echo "ERROR: ${BASH_SOURCE[1]} at about ${BASH_LINENO[0]}"
+}
+set -o errtrace
+trap traperr ERR</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash printf format string integer float">
+  <h2>Bash – printf</h2>
+  <p>Formázott kiírás:</p>
+  <pre><code>printf "Hello %s, I'm %s" Sven Olga
+# => Hello Sven, I'm Olga
+
+printf "1 + 1 = %d" 2
+# => 1 + 1 = 2
+
+printf "Print a float: %f" 2
+# => Print a float: 2.000000</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash options get parse arguments">
+  <h2>Bash – Opciók feldolgozása</h2>
+  <p>Parancssori opciók kezelése:</p>
+  <pre><code>while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
+    -V | --version )
+        echo $version; exit ;;
+    -s | --string )
+        shift; string=$1 ;;
+    -f | --flag )
+        flag=1 ;;
+esac; shift; done
+if [[ "$1" == '--' ]]; then shift; fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash check command result ping">
+  <h2>Bash – Parancs eredményének ellenőrzése</h2>
+  <p>Parancs sikerességének vizsgálata:</p>
+  <pre><code>if ping -c 1 google.com; then
+    echo "It appears you have a working internet connection"
+fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash special variables exit pid script">
+  <h2>Bash – Speciális változók</h2>
+  <p>Hasznos shell változók:</p>
+  <pre><code>$?   # utolsó task exit státusza
+$!   # utolsó háttérfolyamat PID-je
+$$   # shell PID
+$0   # script fájlneve</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash grep check history">
+  <h2>Bash – Grep check</h2>
+  <p>Előzmények vizsgálata grep-pel:</p>
+  <pre><code>if grep -q 'foo' ~/.bash_history; then
+    echo "You appear to have typed 'foo' in the past"
+fi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash escape characters backslash">
+  <h2>Bash – Backslash escapes</h2>
+  <p>Különleges karakterek escape-elése:</p>
+  <pre><code>! " # & ' ( ) , ; < > [ | \ ] ^ { } ` $ * ?</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash heredoc multiline input">
+  <h2>Bash – Heredoc</h2>
+  <p>Többsoros szöveg beolvasása heredoc-kal:</p>
+  <pre><code>cat <<END
+hello world
+END</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash directory previous cd">
+  <h2>Bash – Előző könyvtár</h2>
+  <p>Könyvtárváltás vissza az előzőre:</p>
+  <pre><code>pwd   # /home/user/foo
+cd bar/
+pwd   # /home/user/foo/bar
+cd -
+pwd   # /home/user/foo</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="bash input read character">
+  <h2>Bash – Input olvasása</h2>
+  <p>Felhasználói input beolvasása:</p>
+  <pre><code>echo -n "
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

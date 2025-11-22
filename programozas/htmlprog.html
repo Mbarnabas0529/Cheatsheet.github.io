@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+    .section {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .section h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    code {
+      background: #10131a;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: monospace;
+      color: #ffaad4;
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML parancsok – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+    position: relative;
+    flex: 1;
+    display: flex;
+    background: #0c0e13;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 12px;
+    overflow: hidden;
+  }
+    .search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+  }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+    }
+    .copy {
+  margin-top: 8px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.copy:hover {
+  background: #ff5fa3;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. href, img, form" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <div class="card" data-tags="head">
+      <h2>&lt;head&gt;</h2>
+      <p>Metaadatokat tartalmaz: cím, karakterkódolás, stílus, script.</p>
+      <pre><code>&lt;head&gt;
+  &lt;title&gt;Oldal címe&lt;/title&gt;
+  &lt;meta charset="utf-8"&gt;
+&lt;/head&gt;</code></pre>
+    </div>
+
+    <div class="card" data-tags="body">
+      <h2>&lt;body&gt;</h2>
+      <p>A látható tartalom konténere: szöveg, képek, gombok, stb.</p>
+      <pre><code>&lt;body&gt;
+  &lt;h1&gt;Üdv!&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+    </div>
+
+    <div class="card" data-tags="footer">
+      <h2>&lt;footer&gt;</h2>
+      <p>Az oldal alján lévő információk: szerző, linkek, jogi nyilatkozat.</p>
+      <pre><code>&lt;footer&gt;
+  &copy; 2025 Barnabás
+&lt;/footer&gt;</code></pre>
+    </div>
+
+    <div class="card" data-tags="a href link">
+      <h2>&lt;a href&gt;</h2>
+      <p>Hivatkozás más oldalra vagy fájlra.</p>
+      <pre><code>&lt;a href="oldal.html"&gt;Ugrás&lt;/a&gt;</code></pre>
+    </div>
+
+    <div class="card" data-tags="img">
+      <h2>&lt;img&gt;</h2>
+      <p>Kép beágyazása az oldalba.</p>
+      <pre><code>&lt;img src="kep.jpg" alt="Leírás"&gt;</code></pre>
+    </div>
+
+    <div class="card" data-tags="form input button">
+      <h2>&lt;form&gt;, &lt;input&gt;, &lt;button&gt;</h2>
+      <p>Űrlap mezők és gombok.</p>
+      <pre><code>&lt;form&gt;
+  &lt;input type="text" placeholder="Név"&gt;
+  &lt;button&gt;Küldés&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+
+    <div class="card" data-tags="nav navigation">
+  <h2>&lt;nav&gt;</h2>
+  <p>Fő vagy mellék navigációs linkek csoportja.</p>
+  <pre><code>&lt;nav&gt;
+  &lt;a href="#home"&gt;Kezdőlap&lt;/a&gt;
+  &lt;a href="#kapcsolat"&gt;Kapcsolat&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+    <div class="card" data-tags="section">
+  <h2>&lt;section&gt;</h2>
+  <p>Tematikus tartalomcsoport, például egy fejezet vagy blokk.</p>
+  <pre><code>&lt;section&gt;
+  &lt;h2&gt;Rólunk&lt;/h2&gt;
+  &lt;p&gt;Bemutatkozás szövege...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+</div>
+    <div class="card" data-tags="article">
+  <h2>&lt;article&gt;</h2>
+  <p>Önálló egység: blogposzt, hír, kommentár.</p>
+  <pre><code>&lt;article&gt;
+  &lt;h2&gt;Hírek&lt;/h2&gt;
+  &lt;p&gt;Ma megjelent egy új verzió...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+</div>
+    <div class="card" data-tags="meta charset description keywords">
+  <h2>&lt;meta&gt;</h2>
+  <p>Oldal leírása, karakterkódolás, kulcsszavak.</p>
+  <pre><code>&lt;meta charset="utf-8"&gt;
+&lt;meta name="description" content="Gyors HTML segédlet"&gt;
+&lt;meta name="keywords" content="html, segédlet, referencia"&gt;</code></pre>
+</div>
+    <div class="card" data-tags="title head">
+  <h2>&lt;title&gt;</h2>
+  <p>A böngésző címsorában megjelenő szöveg.</p>
+  <pre><code>&lt;title&gt;HTML Gyors Segédlet&lt;/title&gt;</code></pre>
+</div>
+    <div class="card" data-tags="label textarea form">
+  <h2>&lt;label&gt; + &lt;textarea&gt;</h2>
+  <p>Szövegmező több sorhoz, címkével.</p>
+  <pre><code>&lt;label for="uzenet"&gt;Üzenet:&lt;/label&gt;
+&lt;textarea id="uzenet" rows="4"&gt;&lt;/textarea&gt;</code></pre>
+</div>
+    <div class="card" data-tags="div container blokk">
+  <h2>&lt;div&gt;</h2>
+  <p>Semleges konténer, amelybe más elemeket csoportosíthatsz.</p>
+  <pre><code>&lt;div class="doboz"&gt;
+  &lt;p&gt;Szöveg egy dobozban&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+    <div class="card" data-tags="span inline">
+  <h2>&lt;span&gt;</h2>
+  <p>Szövegen belüli kiemelés vagy stílusozás céljára.</p>
+  <pre><code>&lt;p&gt;Ez egy &lt;span style="color:magenta"&gt;kiemelt&lt;/span&gt; szó.&lt;/p&gt;</code></pre>
+</div>
+    <div class="card" data-tags="ul li lista">
+  <h2>&lt;ul&gt; + &lt;li&gt;</h2>
+  <p>Rendezetlen lista pontozott elemekkel.</p>
+  <pre><code>&lt;ul&gt;
+  &lt;li&gt;Első elem&lt;/li&gt;
+  &lt;li&gt;Második elem&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+    <div class="card" data-tags="ol li lista">
+  <h2>&lt;ol&gt; + &lt;li&gt;</h2>
+  <p>Rendezett lista számozott elemekkel.</p>
+  <pre><code>&lt;ol&gt;
+  &lt;li&gt;Első lépés&lt;/li&gt;
+  &lt;li&gt;Második lépés&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
+    <div class="card" data-tags="strong em kiemelés">
+  <h2>&lt;strong&gt; + &lt;em&gt;</h2>
+  <p>Fontos vagy hangsúlyos szöveg kiemelése.</p>
+  <pre><code>&lt;p&gt;Ez &lt;strong&gt;fontos&lt;/strong&gt; és &lt;em&gt;hangsúlyos&lt;/em&gt; szöveg.&lt;/p&gt;</code></pre>
+</div>
+    <div class="card" data-tags="br sortörés">
+  <h2>&lt;br&gt;</h2>
+  <p>Sortörés a szövegben, új sor kezdése.</p>
+  <pre><code>&lt;p&gt;Első sor&lt;br&gt;Második sor&lt;/p&gt;</code></pre>
+</div>
+    <div class="card" data-tags="input checkbox radio date range form">
+  <h2>&lt;input&gt; típusok</h2>
+  <p>Különböző beviteli mezők űrlaphoz.</p>
+  <pre><code>&lt;input type="checkbox"&gt; Elfogadom<br>
+&lt;input type="radio" name="valasztas"&gt; Igen<br>
+&lt;input type="date"&gt;<br>
+&lt;input type="range" min="0" max="100"&gt;</code></pre>
+</div>
+    <div class="card" data-tags="table tr td th thead tbody">
+  <h2>&lt;table&gt;</h2>
+  <p>Adatok rendezett megjelenítése sorokban és oszlopokban.</p>
+  <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Név&lt;/th&gt;&lt;th&gt;Kor&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Anna&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Béla&lt;/td&gt;&lt;td&gt;35&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+    <div class="card" data-tags="script javascript">
+  <h2>&lt;script&gt;</h2>
+  <p>JavaScript kód beágyazása az oldalba.</p>
+  <pre><code>&lt;script&gt;
+  alert("Helló HTML!");
+&lt;/script&gt;</code></pre>
+</div>
+    <div class="card" data-tags="style css">
+  <h2>&lt;style&gt;</h2>
+  <p>Belső CSS szabályok az oldalhoz.</p>
+  <pre><code>&lt;style&gt;
+  body {
+    background: #0f1115;
+    color: white;
+  }
+&lt;/style&gt;</code></pre>
+</div>
+    <div class="card" data-tags="link css external">
+  <h2>&lt;link&gt;</h2>
+  <p>Külső fájl (pl. CSS) hivatkozása a <code>&lt;head&gt;</code> részben.</p>
+  <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+</div>
+    <div class="card" data-tags="details summary toggle">
+  <h2>&lt;details&gt; + &lt;summary&gt;</h2>
+  <p>Interaktív összecsukható tartalom.</p>
+  <pre><code>&lt;details&gt;
+  &lt;summary&gt;További információ&lt;/summary&gt;
+  &lt;p&gt;Ez a rész csak kattintás után látszik.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+</div>
+    <div class="card" data-tags="dialog modal">
+  <h2>&lt;dialog&gt;</h2>
+  <p>Beépített modális párbeszédablak.</p>
+  <pre><code>&lt;dialog open&gt;
+  &lt;p&gt;Ez egy felugró ablak.&lt;/p&gt;
+&lt;/dialog&gt;</code></pre>
+</div>
+<div class="card" data-tags="button kattintás interakció">
+  <h2>&lt;button&gt;</h2>
+  <p>Interaktív gomb, amely eseményt indíthat el.</p>
+  <pre><code>&lt;button onclick="alert('Kattintottál!')"&gt;
+  Kattints ide
+&lt;/button&gt;</code></pre>
+</div>
+<div class="card" data-tags="input password jelszó form">
+  <h2>&lt;input type="password"&gt;</h2>
+  <p>Jelszó beviteli mező, amely elrejti a karaktereket.</p>
+  <pre><code>&lt;form&gt;
+  &lt;label for="pw"&gt;Jelszó:&lt;/label&gt;
+  &lt;input type="password" id="pw" name="pw"&gt;
+&lt;/form&gt;</code></pre>
+</div>
+<div class="card" data-tags="input file feltöltés form">
+  <h2>&lt;input type="file"&gt;</h2>
+  <p>Fájl kiválasztása és feltöltése az űrlapon keresztül.</p>
+  <pre><code>&lt;form&gt;
+  &lt;label for="fajl"&gt;Válassz fájlt:&lt;/label&gt;
+  &lt;input type="file" id="fajl" name="fajl"&gt;
+&lt;/form&gt;</code></pre>
+</div>
+<div class="card" data-tags="h1 h2 h3 h4 h5 h6 heading">
+  <h2>&lt;h1&gt;–&lt;h6&gt;</h2>
+  <p>Címsorok különböző szinteken.</p>
+  <pre><code>&lt;h1&gt;Főcím&lt;/h1&gt;
+&lt;h2&gt;Alcím&lt;/h2&gt;</code></pre>
+</div>
+<div class="card" data-tags="p paragraph">
+  <h2>&lt;p&gt;</h2>
+  <p>Szöveges bekezdés létrehozása.</p>
+  <pre><code>&lt;p&gt;Ez egy bekezdés.&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="p paragraph">
+  <h2>&lt;p&gt;</h2>
+  <p>Szöveges bekezdés létrehozása.</p>
+  <pre><code>&lt;p&gt;Ez egy bekezdés.&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="blockquote idézet quote">
+  <h2>&lt;blockquote&gt;</h2>
+  <p>Hosszabb idézet kiemelése.</p>
+  <pre><code>&lt;blockquote&gt;Ez egy idézet.&lt;/blockquote&gt;</code></pre>
+</div>
+<div class="card" data-tags="cite source">
+  <h2>&lt;cite&gt;</h2>
+  <p>Idézet vagy mű forrásának megjelölése.</p>
+  <pre><code>&lt;p&gt;Forrás: &lt;cite&gt;HTML dokumentáció&lt;/cite&gt;&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="code snippet">
+  <h2>&lt;code&gt;</h2>
+  <p>Kódrészlet megjelenítése monospace betűvel.</p>
+  <pre><code>&lt;p&gt;Használd a &lt;code&gt;&lt;div&gt;&lt;/code&gt; taget.&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="pre preformatted">
+  <h2>&lt;pre&gt;</h2>
+  <p>Előformázott szöveg, megtartja a szóközöket és sortöréseket.</p>
+  <pre><code>&lt;pre&gt;
+  sor1
+  sor2
+&lt;/pre&gt;</code></pre>
+</div>
+<div class="card" data-tags="small text">
+  <h2>&lt;small&gt;</h2>
+  <p>Kisebb méretű szöveg.</p>
+  <pre><code>&lt;p&gt;Ez &lt;small&gt;kisebb&lt;/small&gt; szöveg.&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="mark highlight">
+  <h2>&lt;mark&gt;</h2>
+  <p>Szöveg kiemelése háttérszínnel.</p>
+  <pre><code>&lt;p&gt;Ez egy &lt;mark&gt;kiemelt&lt;/mark&gt; szó.&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="abbr abbreviation">
+  <h2>&lt;abbr&gt;</h2>
+  <p>Rövidítés magyarázattal.</p>
+  <pre><code>&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;&lt;/p&gt;</code></pre>
+</div>
+<div class="card" data-tags="address contact">
+  <h2>&lt;address&gt;</h2>
+  <p>Kapcsolati információk megjelenítése.</p>
+  <pre><code>&lt;address&gt;
+  Írj nekünk: info@example.com
+&lt;/address&gt;</code></pre>
+</div>
+<div class="card" data-tags="sup sub index">
+  <h2>&lt;sup&gt; + &lt;sub&gt;</h2>
+  <p>Felső és alsó indexek.</p>
+  <pre><code>H&lt;sub&gt;2&lt;/sub&gt;O, x&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+</div>
+<div class="card" data-tags="progress bar">
+  <h2>&lt;progress&gt;</h2>
+  <p>Folyamat előrehaladásának jelzése.</p>
+  <pre><code>&lt;progress value="70" max="100"&gt;&lt;/progress&gt;</code></pre>
+</div>
+<div class="card" data-tags="meter gauge">
+  <h2>&lt;meter&gt;</h2>
+  <p>Mérőszám, például hőmérséklet vagy arány.</p>
+  <pre><code>&lt;meter value="0.6"&gt;60%&lt;/meter&gt;</code></pre>
+</div>
+<div class="card" data-tags="output calculation">
+  <h2>&lt;output&gt;</h2>
+  <p>Űrlap számított eredménye.</p>
+  <pre><code>&lt;form oninput="res.value=a.value*b.value"&gt;
+  &lt;input type="number" id="a"&gt; ×
+  &lt;input type="number" id="b"&gt; =
+  &lt;output name="res"&gt;&lt;/output&gt;
+&lt;/form&gt;</code></pre>
+</div>
+<div class="card" data-tags="canvas drawing graphics">
+  <h2>&lt;canvas&gt;</h2>
+  <p>Grafikus rajzfelület JavaScripthez.</p>
+  <pre><code>&lt;canvas id="rajz" width="200" height="100"&gt;&lt;/canvas&gt;</code></pre>
+</div>
+<div class="card" data-tags="svg vector graphics">
+  <h2>&lt;svg&gt;</h2>
+  <p>Beágyazott vektoros grafika.</p>
+  <pre><code>&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" fill="magenta" /&gt;
+&lt;/svg&gt;</code></pre>
+</div>
+<div class="card" data-tags="iframe embed external">
+  <h2>&lt;iframe&gt;</h2>
+  <p>Külső weboldal beágyazása.</p>
+  <pre><code>&lt;iframe src="https://example.com" width="300" height="200"&gt;&lt;/iframe&gt;</code></pre>
+</div>
+<div class="card" data-tags="video media mp4">
+  <h2>&lt;video&gt;</h2>
+  <p>Videófájl beágyazása az oldalba, vezérlőkkel.</p>
+  <pre><code>&lt;video controls width="320"&gt;
+  &lt;source src="film.mp4" type="video/mp4"&gt;
+  A böngésződ nem támogatja a videó lejátszást.
+&lt;/video&gt;</code></pre>
+</div>
+<div class="card" data-tags="table caption táblázat cím">
+  <h2>&lt;caption&gt;</h2>
+  <p>A táblázat címének megadása, amely a táblázat tetején jelenik meg.</p>
+  <pre><code>&lt;table&gt;
+  &lt;caption&gt;Felhasználói adatok&lt;/caption&gt;
+  &lt;tr&gt;&lt;th&gt;Név&lt;/th&gt;&lt;th&gt;Kor&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Anna&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase();
+        cards.forEach(card => {
+          const tags = card.dataset.tags || "";
+          const text = card.innerText.toLowerCase();
+          const match = tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+    });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector("input[type=search]");
+  const cards = document.querySelectorAll(".card");
+
+  // kereső
+  input.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || "").toLowerCase();
+      const text = card.innerText.toLowerCase();
+      const match = !q || tags.includes(q) || text.includes(q);
+      card.style.display = match ? "block" : "none";
+    });
+  });
+
+  // copy gomb automatikusan minden kártyához
+  cards.forEach(card => {
+    const btn = document.createElement("button");
+    btn.className = "copy";
+    btn.textContent = "Copy";
+    card.appendChild(btn);
+
+    btn.addEventListener("click", () => {
+      const code = card.querySelector("code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy", 1500);
+      });
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+
+</html>

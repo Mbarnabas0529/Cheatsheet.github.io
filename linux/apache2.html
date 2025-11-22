@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apache2 – Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. apache2, config, modul" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide jönnek majd az Apache2 kártyák -->
+     <div class="card" data-tags="apache docker run teszt">
+  <h2>Apache futtatása Dockerben</h2>
+  <p>Teszteléshez egyszerűen futtatható Apache konténerben.</p>
+  <pre><code>$ docker run -dit --name my-apache-app -p 8090:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache apachectl systemctl httpd parancsok">
+  <h2>Apache vezérlés</h2>
+  <p>Apache indítása, leállítása és újraindítása különböző parancsokkal.</p>
+  <pre><code>$ sudo apachectl status
+$ sudo apachectl start
+$ sudo apachectl stop
+$ sudo apachectl graceful-stop
+$ sudo apachectl restart
+$ sudo apachectl graceful
+$ sudo apachectl reload
+
+# systemd megfelelői
+$ sudo systemctl status apache2
+$ sudo systemctl stop apache2
+$ sudo systemctl restart apache2
+
+# httpd -k parancsok
+$ sudo httpd -k restart
+$ sudo httpd -k stop
+$ sudo httpd -k graceful</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache konfiguráció hely">
+  <h2>Konfiguráció helye</h2>
+  <p>Apache konfigurációs fájlok helye Debian alapú rendszereken.</p>
+  <pre><code>$ /usr/local/apache2/conf/httpd.conf
+$ /etc/apache2/apache2.conf
+
+# Ellenőrzés
+$ apachectl -V
+$ apachectl -t</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache log napló errorlog customlog">
+  <h2>Naplófájlok</h2>
+  <p>Apache hibalog és hozzáférési naplók beállítása.</p>
+  <pre><code>ErrorLog ${APACHE_LOG_DIR}/error.log
+LogLevel warn
+
+# Példa virtuális hosthoz
+ErrorLog ${APACHE_LOG_DIR}/test-error.log
+LogLevel info
+CustomLog ${APACHE_LOG_DIR}/test-access.log combined
+
+# Debian alapú rendszeren
+/var/log/apache2</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache directive documentroot htaccess">
+  <h2>Direktívák</h2>
+  <p>Apache direktívák, például a DocumentRoot és a .htaccess használata.</p>
+  <pre><code>DocumentRoot "/usr/local/apache2/docs/dummy-host2.example.com"
+
+# .htaccess fájl
+# Azonnali hatás, nem igényel újraindítást
+# Biztonsági és teljesítmény okokból nem ajánlott</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache virtualhost több domain">
+  <h2>Virtuális hosztolás</h2>
+  <p>Több domain kiszolgálása egy szerverről.</p>
+  <pre><code>$ apachectl -t -D DUMP_VHOSTS</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache modulok a2enmod a2dismod">
+  <h2>Apache modulok</h2>
+  <p>Statikus és dinamikus modulok kezelése.</p>
+  <pre><code># Modulok listázása
+$ apachectl -t -D DUMP_MODULES
+
+# Debian alapú rendszeren
+$ a2enmod modul_neve
+$ a2dismod modul_neve
+
+# Elérhető modulok
+/etc/apache2/mods-available
+/etc/apache2/mods-enabled
+
+# Feltételes direktíva
+<IfModule mod_xyz.c>
+  # konfiguráció
+</IfModule></code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="apache virtualhost setup domain">
+  <h2>Virtuális domain beállítása</h2>
+  <p>Több domain kiszolgálása Apache alatt.</p>
+  <pre><code>NameVirtualHost *
+
+DocumentRoot /web/example.com/www
+ServerName www.example.com
+ServerAlias example.com
+CustomLog /web/example.com/logs/access.log combined
+ErrorLog /web/example.com/logs/error.log</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache include conf fájl">
+  <h2>Másik konfigurációs fájl betöltése</h2>
+  <p>Külön conf fájlok bevonása.</p>
+  <pre><code>Include /etc/apache/virtual-hosts/*.conf</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache version info hide">
+  <h2>Apache verzió elrejtése</h2>
+  <p>Biztonsági okokból a verzióinformáció kikapcsolása.</p>
+  <pre><code>ServerSignature Off
+ServerTokens Prod</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache error 404 custom">
+  <h2>Egyedi 404 hibaüzenet</h2>
+  <p>Saját hibaoldal beállítása.</p>
+  <pre><code>ErrorDocument 404 /404.html</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache mod_alias virtual directory">
+  <h2>Virtuális könyvtár létrehozása</h2>
+  <p>mod_alias használata könyvtár aliashoz.</p>
+  <pre><code>Alias /common /web/common</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache mod_alias redirect permanent">
+  <h2>Állandó átirányítás</h2>
+  <p>mod_alias segítségével.</p>
+  <pre><code>Redirect permanent /old http://example.com/new</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache cgi-bin scriptalias">
+  <h2>CGI-bin létrehozása</h2>
+  <p>CGI szkriptek futtatása.</p>
+  <pre><code>ScriptAlias /cgi-bin/ /web/cgi-bin/
+AddHandler cgi-script .cgi</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache directory index">
+  <h2>Könyvtár index fájl</h2>
+  <p>Alapértelmezett index fájlok beállítása.</p>
+  <pre><code>DirectoryIndex index.cfm index.cfm</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache directory browsing">
+  <h2>Könyvtár böngészés</h2>
+  <p>Könyvtárlistázás engedélyezése vagy tiltása.</p>
+  <pre><code># Kikapcsolás
+Options -Indexes
+
+# Bekapcsolás
+Options +Indexes</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache htpasswd basic auth user">
+  <h2>Új felhasználó létrehozása Basic Auth-hoz</h2>
+  <p>Parancssorból htpasswd használatával.</p>
+  <pre><code>htpasswd -c /etc/apacheusers</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache basic authentication">
+  <h2>Apache Basic Authentication</h2>
+  <p>Egyszerű jelszavas védelem beállítása.</p>
+  <pre><code>AuthName "Authentication Required"
+AuthType Basic
+AuthUserFile /etc/apacheusers
+Require valid-user</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache access ip subnet">
+  <h2>Hozzáférés IP alapján</h2>
+  <p>Csak adott IP vagy subnet engedélyezése.</p>
+  <pre><code># Csak egy IP
+Order Deny,Allow
+Deny from all
+Allow from 127.0.0.1
+
+# Csak subnet
+Order Deny,Allow
+Deny from all
+Allow from 176.16.0.0/16</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache mod_rewrite rules">
+  <h2>mod_rewrite szabályok</h2>
+  <p>Átirányítások és URL átírások.</p>
+  <pre><code># Rewrite engine bekapcsolása
+RewriteEngine On
+
+# Példa: /news/123 → /news.cfm?id=123
+RewriteRule ^/news/([0-9]+)$ /news.cfm?id=$1 [PT,L]
+
+# www → non-www
+RewriteCond %{HTTP_HOST} ^www.example.com$ [NC]
+RewriteRule ^(.*)$ http://example.com$1 [R=301,L]</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="apache config test restart">
+  <h2>Konfiguráció tesztelése és érvényesítése</h2>
+  <p>Az Apache beállítások ellenőrzése és újraindítása.</p>
+  <pre><code># Konfiguráció tesztelése
+$ sudo apache2ctl configtest
+
+# Ha az eredmény: Syntax OK → mehet élesben
+
+# Újraindítás a beállítások érvényesítéséhez
+$ sudo systemctl restart apache2</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="apache firewall ufw http https">
+  <h2>Tűzfal beállítása Apache2‑höz</h2>
+  <p>HTTP és HTTPS forgalom engedélyezése ufw segítségével.</p>
+  <pre><code># Csak HTTP (80-as port)
+$ sudo ufw allow "Apache"
+
+# Csak HTTPS (443-as port)
+$ sudo ufw allow "Apache Secure"
+
+# HTTP és HTTPS együtt
+$ sudo ufw allow "Apache Full"</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="apache https ssl modul virtualhost">
+  <h2>Apache2 HTTPS modul</h2>
+  <p>SSL modul engedélyezése és HTTPS virtuális hoszt beállítása.</p>
+  <pre><code># SSL modul engedélyezése
+$ sudo a2enmod ssl
+
+# Virtuális hoszt konfiguráció
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    # Ugyanaz mint a *:80 részben
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    # SSL beállítások
+    SSLEngine on
+    SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+    SSLCertificateKeyFile   /etc/ssl/private/ssl-cert-snakeoil.key
+</VirtualHost></code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      // kereső
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      // copy gomb
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

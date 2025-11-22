@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 6px 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover {
+      background: #ff5fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés… pl. netstat, ip, jogosultság" />
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Ide kerülnek majd a kártyák -->
+     <div class="card" data-tags="netstat linux port figyelés tcp udp unix">
+  <h2>Netstat – Listening portok</h2>
+  <p>Az alábbi parancsokkal megjeleníthetők a különböző típusú figyelő portok:</p>
+  <pre><code>netstat -ltunp    # Minden figyelő port  
+netstat -ltn      # Figyelő TCP portok  
+netstat -lun      # Figyelő UDP portok  
+netstat -lx       # Figyelő Unix portok</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="netstat linux kapcsolat tcp udp">
+  <h2>Netstat – Aktív kapcsolatok</h2>
+  <p>Az alábbi parancsokkal megjeleníthetők az aktív hálózati kapcsolatok:</p>
+  <pre><code>netstat -a     # Minden kapcsolat  
+netstat -at    # TCP kapcsolatok  
+netstat -au    # UDP kapcsolatok</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="netstat linux statisztika tcp udp">
+  <h2>Netstat – Statisztikák</h2>
+  <p>Az alábbi parancsokkal megjeleníthetők a protokoll statisztikák:</p>
+  <pre><code>netstat -s     # Összes statisztika  
+netstat -st    # TCP statisztika  
+netstat -su    # UDP statisztika</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="netstat linux interfész hálózat info">
+  <h2>Netstat – Hálózati interfészek</h2>
+  <p>Az alábbi parancsokkal megjeleníthetők az interfészek és azok állapota:</p>
+  <pre><code>netstat -i     # Interfészek listája  
+netstat -ie    # Részletes interfész információ</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="netstat linux routing tábla útvonal">
+  <h2>Netstat – Routing tábla</h2>
+  <p>Az alábbi parancsokkal megjeleníthető az útválasztási tábla:</p>
+  <pre><code>netstat -r     # Routing tábla  
+netstat -rn    # Routing tábla, névfeloldás nélkül</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="netstat linux port 80 grep kapcsolat">
+  <h2>Netstat – Port 80 kapcsolatok</h2>
+  <p>Megjeleníti az összes kapcsolatot, amely a 80-as portot használja:</p>
+  <pre><code>netstat -anp | grep :80</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="netstat linux help súgó parancs">
+  <h2>Netstat – Súgó</h2>
+  <p>Megjeleníti a netstat parancs súgóját és opcióit:</p>
+  <pre><code>netstat -h</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const cards = document.querySelectorAll(".card");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "block" : "none";
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const code = btn.parentElement.querySelector("code").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
