@@ -49,20 +49,34 @@
       top:0;
       z-index:10;
     }
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-    }
-    .logo .mark{
-      width:28px;height:28px;border-radius:8px;
-      background:linear-gradient(135deg, var(--accent), #7a2fff);
-      box-shadow:0 6px 16px var(--accent-weak);
-    }
-    .logo .name{
-      font-weight:700;letter-spacing:0.2px;
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo .mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #7a2fff);
+  box-shadow: 0 6px 16px var(--accent-weak);
+}
+
+.logo .name {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #a31999; /* jelenlegi szín */
+  display: inline-block;        /* fontos a transformhoz */
+  transition: transform 0.2s ease;
+}
+
+/* Hover effekt: minimális nagyítás */
+.logo .name:hover {
+  transform: scale(1.05); /* kb. 5%-os növekedés */
+}
+
     .search{
       flex:1;
       display:flex;
@@ -248,7 +262,241 @@ a {
   text-decoration: none;
 }
 
-  
+  /* proba a szines borderre */
+  /* Alap kártya */
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Linux → fehér animált border */
+.card[data-category="linux"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  background-size: 200% 100%;
+  animation: borderMoveLinux 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+@keyframes borderMoveLinux {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* Programozás → zöld animált border */
+.card[data-category="programozas"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+  background-size: 200% 100%;
+  animation: borderMoveProg 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+@keyframes borderMoveProg {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* Toolkit → lila animált border */
+.card[data-category="toolkit"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  background-size: 200% 100%;
+  animation: borderMoveToolkit 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+@keyframes borderMoveToolkit {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* Windows → kék animált border */
+.card[data-category="windows"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  background-size: 200% 100%;
+  animation: borderMoveWindows 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+@keyframes borderMoveWindows {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+/* Alap gomb */
+.btn {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Animált border minden .btn gombon */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a855f7, 
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: borderMoveBtn 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: -1;
+}
+
+/* animáció */
+@keyframes borderMoveBtn {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+/* Kereső mező alap */
+.search {
+  position: relative;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0c0e13;
+  padding: 8px 14px;
+  box-shadow: inset 0 0 0 1px #0c0e13;
+}
+
+/* Input mező */
+.search input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Animált border a keresőn */
+.search::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a855f7, 
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: borderMoveSearch 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none; /* <<< fontos, hogy ne blokkolja az inputot */
+}
+
+/* animáció */
+@keyframes borderMoveSearch {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+/* Hoverkor minimális nagyítás */
+.card:hover {
+  transform: scale(1.02); /* kb. 2%-os növekedés */
+}
+/* Alap kategória link */
+.category-link {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Animált border minden kategória linkhez */
+.category-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #3b82f6, /* alap kék fény */
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: borderMoveCat 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none; /* fontos, hogy ne blokkolja a kattintást */
+  z-index: -1;
+}
+
+/* animáció */
+@keyframes borderMoveCat {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* Színek kategóriánként */
+.category-link[data-filter="programozas"]::before {
+  background: linear-gradient(90deg, transparent, #22c55e, transparent); /* zöld */
+}
+
+.category-link[data-filter="linux"]::before {
+  background: linear-gradient(90deg, transparent, white, transparent); /* piros */
+}
+
+.category-link[data-filter="windows"]::before {
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent); /* kék */
+}
+
+.category-link[data-filter="toolkit"]::before {
+  background: linear-gradient(90deg, transparent, #a855f7, transparent); /* lila */
+}
+
+.category-link[data-filter="all"]::before {
+  background: linear-gradient(90deg, transparent, #f59e0b, transparent); /* sárga az "Összes"-hez */
+}
+
   </style>
 </head>
 <body>
@@ -268,7 +516,7 @@ a {
       </div>
 
       <div class="actions">
-        <button class="btn">Elágazó</button>
+        <a href="https://mbarnabas0529.github.io/eloszto.github.io/" class="btn">Elágazó</button>
         <a href="https://discord.gg/b6CXMWUm9d" class="btn">Discord</a>
         <a href="https://www.patreon.com/ZenoHUN" class="btn">Támogatás</a>
       </div>
