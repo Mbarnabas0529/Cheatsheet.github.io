@@ -1,894 +1,516 @@
 <!doctype html>
 <html lang="hu">
 <head>
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (hamburger működéshez) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cheatsheet - Main</title>
+  <title>Elosztó - Main</title>
+  <!-- Ikonok (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
+    /* Alap tipográfia és háttér – erős Frutiger Aero + Vista/XP hangulat */
     :root{
-      --bg: #0f1115;         /* page background */
-      --panel: #151821;      /* surfaces (header, sidebar, cards) */
-      --text: #e6e6e9;
-      --muted: #9aa0a6;
-      --border: #222632;
-      --accent: #ff2e88;     /* magenta accent (change for other schemes) */
-      --accent-weak: #ff2e8833;
-      --radius: 12px;
-      --shadow: 0 8px 24px rgba(0,0,0,0.35);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Fira Sans", "Helvetica Neue", Arial, sans-serif;
+      --glass-light: rgba(255,255,255,0.45);
+      --glass-dark: rgba(0,0,0,0.25);
+      --border-glow: rgba(255,255,255,0.55);
+      --text: #ffffff;
+      --muted: #e6f5ff;
+      --accent1: #00c6ff;
+      --accent2: #1a75ff;
+      --accent3: #00ffcc;
+      --accent4: #f59e0b;
     }
 
-    /* Layout */
-    .app{
-      display:grid;
-      grid-template-columns: 280px 1fr;
-      grid-template-rows: 64px 1fr;
-      grid-template-areas:
-        "header header"
-        "sidebar main";
-      min-height:100vh;
+    *{ box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      /* Erős, retro, fényes háttér: kaleidoszkóp-szerű radiális + lineáris overlay */
+      background:
+        radial-gradient(1000px 600px at 10% 0%, var(--accent1), transparent 60%),
+        radial-gradient(800px 500px at 90% 10%, var(--accent3), transparent 55%),
+        radial-gradient(900px 600px at 30% 90%, var(--accent2), transparent 60%),
+        radial-gradient(700px 600px at 80% 85%, var(--accent4), transparent 60%),
+        linear-gradient(135deg, #0546b4 0%, #0a95ff 35%, #00d6ff 65%, #00ffc3 100%);
+      overflow-x: hidden;
     }
 
-    /* Header */
-    header{
-      grid-area:header;
-      display:flex;
-      align-items:center;
-      gap:16px;
-      padding:12px 16px;
-      background:var(--panel);
-      border-bottom:1px solid var(--border);
-      position:sticky;
-      top:0;
-      z-index:10;
-    }
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.logo .mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent), #7a2fff);
-  box-shadow: 0 6px 16px var(--accent-weak);
-}
-
-.logo .name {
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  color: #a31999; /* jelenlegi szín */
-  display: inline-block;        /* fontos a transformhoz */
-  transition: transform 0.2s ease;
-}
-
-/* Hover effekt: minimális nagyítás */
-.logo .name:hover {
-  transform: scale(1.05); /* kb. 5%-os növekedés */
-}
-
-    .search{
-      flex:1;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      background:#0c0e13;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:8px 14px;
-      box-shadow: inset 0 0 0 1px #0c0e13;
-    }
-    .search input{
-      flex:1;
-      border:0;
-      outline:none;
-      background:transparent;
-      color:var(--text);
-      font-size:14px;
-    }
-    .actions{
-      display:flex;
-      gap:10px;
-    }
-    .btn{
-      background:#0c0e13;
-      border:1px solid var(--border);
-      color:var(--text);
-      padding:8px 12px;
-      border-radius:10px;
-      cursor:pointer;
-    }
-    .btn:hover{border-color:#2b3140}
-
-    /* Sidebar */
-    aside{
-      grid-area:sidebar;
-      padding:16px;
-      background:var(--panel);
-      border-right:1px solid var(--border);
-    }
-    .section-title{
-      font-size:12px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin:8px 0 6px;
-    }
-    .nav{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    .nav a{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; color:var(--text);
-      padding:10px 12px; border-radius:10px;
-    }
-    .nav a:hover{background:#10131a}
-    .nav a.active{
-      background:linear-gradient(180deg, #121520, #0f1219);
-      border:1px solid var(--border);
-      box-shadow:inset 0 0 0 1px #0c0f16, 0 6px 16px rgba(0,0,0,0.25);
-    }
-    .badge{
-      margin-left:auto;
-      color:var(--muted);
-      font-size:12px;
-      background:#0c0e13;
-      border:1px solid var(--border);
-      padding:2px 8px;
-      border-radius:999px;
+    /* Fényes átfedés csík – 2000-es évek dizájn */
+    .gloss-overlay {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 40%, rgba(0,0,0,0.12) 60%, rgba(255,255,255,0.06));
+      mix-blend-mode: screen;
+      z-index: 1;
     }
 
-    /* Main content */
-    main{
-      grid-area:main;
-      padding:24px;
-    }
-    .title-row{
-      display:flex; align-items:center; justify-content:space-between;
-      margin-bottom:16px;
-    }
-    .title-row h1{
-      font-size:22px; margin:0;
-    }
-    .filters{
-      display:flex; gap:10px;
-    }
-    .filter{
-      background:#0c0e13;
-      border:1px solid var(--border);
-      color:var(--muted);
-      padding:6px 10px;
-      border-radius:999px;
-      cursor:pointer;
-    }
-    .filter.active{
-      color:var(--text);
-      border-color:var(--accent);
-      box-shadow:0 0 0 2px var(--accent-weak);
+    /* Tartalom elrendezés */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
     }
 
-    /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:16px;
-    }
-    @media (max-width: 1200px){
-      .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .app{ grid-template-columns: 240px 1fr; }
-    }
-    @media (max-width: 800px){
-      .grid{ grid-template-columns: 1fr; }
-      .app{
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "header"
-          "main";
-      }
-      aside{ display:none; }
+    /* Fejléc – üveges, fényes, Vista-s */
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(16px) saturate(120%);
+      background: linear-gradient(180deg, var(--glass-light), var(--glass-dark));
+      border-bottom: 2px solid var(--border-glow);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.45);
     }
 
-    .card{
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:16px;
-      box-shadow:var(--shadow);
-      display:flex; flex-direction:column; gap:8px;
-      transition:border-color .15s ease, transform .05s ease;
-    }
-    .card:hover{ border-color:#2b3140; transform: translateY(-1px); }
-
-    .card .top{
-      display:flex; align-items:center; gap:10px;
-    }
-    .pill{
-      font-size:12px; color:#fff;
-      background:linear-gradient(135deg, var(--accent), #7a2fff);
-      border-radius:999px; padding:4px 10px;
-      box-shadow:0 2px 10px var(--accent-weak);
-    }
-    .card h3{ margin:0; font-size:16px; }
-    .card p{ margin:0; color:var(--muted); }
-    .links{
-      margin-top:8px;
-      display:flex; gap:8px; flex-wrap:wrap;
-    }
-    .tag{
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--border);
-      border-radius:999px; padding:4px 8px;
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    /* Footer */
-    footer{
-      margin-top:24px;
-      color:var(--muted);
-      border-top:1px solid var(--border);
-      padding-top:16px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand .orb {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #78e7ff 35%, #2ea2ff 55%, #0069ff 85%);
+      box-shadow: inset 0 6px 12px rgba(255,255,255,0.6), 0 8px 20px rgba(0,0,0,0.5);
+    }
+    .brand .name {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
     }
 
-    /* Accent quick toggle demo */
-    .accent-picker{
-      display:flex; gap:8px; align-items:center;
-      color:var(--muted);
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 12px;
     }
-    .swatch{
-      width:18px; height:18px; border-radius:999px; cursor:pointer;
-      border:1px solid var(--border);
+    nav a {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--text);
+      padding: 10px 18px; border-radius: 999px;
+      background: linear-gradient(180deg, #6af7e2, #1aa6ff);
+      box-shadow: inset 0 2px 8px rgba(255,255,255,0.85), 0 6px 16px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.6);
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .swatch.magenta{ background:#ff2e88; }
-    .swatch.blue{ background:#3b82f6; }
-    .swatch.green{ background:#10b981; }
-  
+    nav a:hover {
+      transform: scale(1.08);
+      box-shadow: inset 0 2px 10px rgba(255,255,255,1), 0 10px 24px rgba(0,0,0,0.65);
+    }
+
+    /* Kereső – glossy pill, retro */
+    .search {
+      margin-left: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
+      background: linear-gradient(180deg, #eaffff, #bfe9ff);
+      color: #0a2540;
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: inset 0 2px 8px rgba(255,255,255,0.9), 0 6px 16px rgba(0,0,0,0.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .search input {
+      border: 0; outline: none; background: transparent;
+      color: #0a2540; font-size: 14px; width: 210px;
+    }
+    .search::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+      background-size: 200% 100%;
+      animation: glossRun 12s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes glossRun {
+      from { background-position: 200% 0 }
+      to   { background-position: -200% 0 }
+    }
+
+    /* Fő tartalom */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+    .hero .panel {
+      position: relative;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--glass-light), var(--glass-dark));
+      backdrop-filter: blur(18px) saturate(120%);
+      border: 2px solid var(--border-glow);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+    }
+    .panel h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+    .panel p { margin: 0; color: var(--muted) }
+
+    /* Fénycsík a panelen */
+    .panel::after {
+      content: "";
+      position: absolute; left: -10%; top: 0; height: 100%; width: 30%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0));
+      transform: skewX(-15deg);
+      filter: blur(6px);
+      animation: lightSweep 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes lightSweep {
+      0% { left: -20% } 50% { left: 70% } 100% { left: -20% }
+    }
+
+    /* „Wallpapers” rács – üveges kártyák, erős gloss, retro színek */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
     .card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--glass-light), var(--glass-dark));
+      border: 2px solid var(--border-glow);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.55);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(0,0,0,0.7) }
+
+    /* Kártya teteje: faux wallpaper */
+    .card .preview {
+      height: 140px;
+      background:
+        radial-gradient(300px 120px at 20% 30%, #7dffe3, transparent 60%),
+        radial-gradient(220px 120px at 80% 20%, #7dbbff, transparent 55%),
+        radial-gradient(260px 150px at 60% 75%, #ffe38a, transparent 60%),
+        linear-gradient(135deg, #0a95ff, #00c6ff, #00ffcc);
+      filter: saturate(120%) contrast(105%);
+    }
+    .card .content {
+      padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px;
+    }
+    .card .title {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 600;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+    .badge {
+      padding: 6px 10px; border-radius: 999px;
+      background: linear-gradient(180deg, #6af7e2, #1aa6ff);
+      color: #07233a; font-weight: 600; font-size: 12px;
+      box-shadow: inset 0 2px 8px rgba(255,255,255,0.85), 0 4px 10px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    /* Smiley/ikonok extra retro */
+    .title .emoji {
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
+    }
+
+    /* Lábléc */
+    footer {
+      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, var(--glass-dark), rgba(0,0,0,0.35));
+      border-top: 2px solid var(--border-glow);
+      box-shadow: 0 -10px 32px rgba(0,0,0,0.5);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      text-align: center;
+      color: var(--muted);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+
+    /* Apró szikrák – retro csillogás */
+    .sparkle {
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 10px #fff, 0 0 18px #9df3ff;
+      animation: sparkle 2.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes sparkle {
+      0% { transform: scale(0.5); opacity: 0.25 }
+      50% { transform: scale(1.6); opacity: 1 }
+      100% { transform: scale(0.5); opacity: 0.25 }
+    }
+
+    /* Reszponzív finomhangolás */
+    @media (max-width: 840px){
+      .hero { grid-template-columns: 1fr }
+      .search input { width: 140px }
+    }
+    .grid a.card {
+  display: block;
   text-decoration: none;
   color: inherit;
-  display: block;
-}
-a {
-  text-decoration: none;
 }
 
-  /* proba a szines borderre */
-  /* Alap kártya */
-.card {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
+.grid a.card:visited {
+  color: inherit;   /* ne legyen lila */
 }
 
-/* Linux → fehér animált border */
-.card[data-category="linux"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  padding: 2px;
-  background: linear-gradient(90deg, transparent, white, transparent);
-  background-size: 200% 100%;
-  animation: borderMoveLinux 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+.grid a.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.7);
 }
-@keyframes borderMoveLinux {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+.player {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(0,0,0,0.25));
+  backdrop-filter: blur(14px) saturate(120%);
+  border: 2px solid rgba(255,255,255,0.55);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  display: inline-block;
 }
 
-/* Programozás → zöld animált border */
-.card[data-category="programozas"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  padding: 2px;
-  background: linear-gradient(90deg, transparent, #22c55e, transparent);
-  background-size: 200% 100%;
-  animation: borderMoveProg 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+/* maga az audio elem */
+.player audio {
+  width: 260px; /* állítható */
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+  border-radius: 12px;
 }
-@keyframes borderMoveProg {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+header {
+  position: sticky; /* vagy fixed, ha mindig látszódjon */
+  top: 0;
+  z-index: 1000;          /* biztosan a tartalom fölött legyen */
+  backdrop-filter: blur(16px) saturate(120%);
+  background: linear-gradient(180deg, var(--glass-light), var(--glass-dark));
 }
-
-/* Toolkit → lila animált border */
-.card[data-category="toolkit"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  padding: 2px;
-  background: linear-gradient(90deg, transparent, #a855f7, transparent);
-  background-size: 200% 100%;
-  animation: borderMoveToolkit 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-}
-@keyframes borderMoveToolkit {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+.header-inner { position: relative; z-index: 1001; }
+/* Hamburger menüben nagyobb tér a linkek között */
+.navbar-nav .nav-item {
+  margin-bottom: 12px;   /* minden menüpont között 12px tér */
 }
 
-/* Windows → kék animált border */
-.card[data-category="windows"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  padding: 2px;
-  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-  background-size: 200% 100%;
-  animation: borderMoveWindows 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+.navbar-nav .nav-link {
+  padding-top: 10px;
+  padding-bottom: 10px;  /* függőleges padding növelése */
 }
-@keyframes borderMoveWindows {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+@media (max-width: 768px) {
+  .navbar-nav .nav-item {
+    margin-bottom: 16px;
+  }
 }
-/* Alap gomb */
-.btn {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 0;
+/* Csak mobilon legyen extra tér a hamburger menü tetején */
+@media (max-width: 768px) {
+  #mainNav {
+    margin-top: 20px;   /* menü lejjebb tolása */
+  }
 }
 
-/* Animált border minden .btn gombon */
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  padding: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #a855f7, 
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: borderMoveBtn 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  z-index: -1;
+/* Navbar linkek teljesen fehér betűszínnel */
+.navbar .nav-link {
+  color: #ffffff !important;   /* teljes fehér */
 }
 
-/* animáció */
-@keyframes borderMoveBtn {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
-}
-/* Kereső mező alap */
-.search {
-  position: relative;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #0c0e13;
-  padding: 8px 14px;
-  box-shadow: inset 0 0 0 1px #0c0e13;
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: #ffffff !important;   /* hover/focus állapotban is fehér */
 }
 
-/* Input mező */
-.search input {
-  flex: 1;
-  border: 0;
-  outline: none;
-  background: transparent;
-  color: var(--text);
-  font-size: 14px;
-}
-
-/* Animált border a keresőn */
-.search::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  padding: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #a855f7, 
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: borderMoveSearch 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none; /* <<< fontos, hogy ne blokkolja az inputot */
-}
-
-/* animáció */
-@keyframes borderMoveSearch {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
-}
-.card {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform 0.2s ease;
-}
-
-/* Hoverkor minimális nagyítás */
-.card:hover {
-  transform: scale(1.02); /* kb. 2%-os növekedés */
-}
-/* Alap kategória link */
-.category-link {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 0;
-}
-
-/* Animált border minden kategória linkhez */
-.category-link::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  padding: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #3b82f6, /* alap kék fény */
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: borderMoveCat 10s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none; /* fontos, hogy ne blokkolja a kattintást */
-  z-index: -1;
-}
-
-/* animáció */
-@keyframes borderMoveCat {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
-}
-
-/* Színek kategóriánként */
-.category-link[data-filter="programozas"]::before {
-  background: linear-gradient(90deg, transparent, #22c55e, transparent); /* zöld */
-}
-
-.category-link[data-filter="linux"]::before {
-  background: linear-gradient(90deg, transparent, white, transparent); /* piros */
-}
-
-.category-link[data-filter="windows"]::before {
-  background: linear-gradient(90deg, transparent, #3b82f6, transparent); /* kék */
-}
-
-.category-link[data-filter="toolkit"]::before {
-  background: linear-gradient(90deg, transparent, #a855f7, transparent); /* lila */
-}
-
-.category-link[data-filter="all"]::before {
-  background: linear-gradient(90deg, transparent, #f59e0b, transparent); /* sárga az "Összes"-hez */
-}
+/*mobil */
 
   </style>
+  
 </head>
 <body>
-  <div class="app">
+  <!-- Fényes overlay a teljes oldalra -->
+  <div class="gloss-overlay"></div>
+
+  <div class="wrap">
     <header>
-      <a href="#" class="logo">
-        <span class="mark"></span>
-        <span class="name">Cheatsheets</span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        <span class="orb"></span>
+        <span class="name"><i class="fa-solid fa-star"></i> Elosztó</span>
       </a>
 
-      <div class="search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M21 21l-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"
-            stroke="#59627a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <input type="search" placeholder="Keresés cheatsheetek között…" />
-      </div>
+      <!-- Kereső mindig látszik -->
+      <form class="d-flex me-2 search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input class="form-control ms-2" type="search" placeholder="Keresés a tartalmaim között...">
+      </form>
 
-      <div class="actions">
-        <a href="https://mbarnabas0529.github.io/eloszto.github.io/" class="btn">Elágazó</button>
-        <a href="https://discord.gg/b6CXMWUm9d" class="btn">Discord</a>
-        <a href="https://www.patreon.com/ZenoHUN" class="btn">Támogatás</a>
-      </div>
-    </header>
+      <!-- Hamburger gomb -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <aside>
-  <div class="section">
-    <div class="section-title">Kategóriák</div>
-    <nav class="nav">
-      <a href="#" class="active category-link" data-filter="all">Összes <span class="badge">19</span></a>
-      <a href="#" class="category-link" data-filter="programozas">Programozás <span class="badge">8</span></a>
-      <a href="#" class="category-link" data-filter="linux">Linux <span class="badge">8</span></a>
-      <a href="#" class="category-link" data-filter="windows">Windows Server <span class="badge">1</span></a>
-      <a href="#" class="category-link" data-filter="toolkit">programcsomag <span class="badge">2</span></a>
-    </nav>
-  </div>
-</aside>
+      <!-- Menü -->
+      <div class="collapse navbar-collapse" id="mainNav">
+  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link" href="#"><i class="fa-solid fa-house"></i> Kezdőlap</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="kapcsolat.html"><i class="fa-solid fa-envelope"></i> Kapcsolat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://discord.gg/b6CXMWUm9d" target="_blank">
+        <i class="fa-brands fa-discord"></i> Discord
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.patreon.com/ZenoHUN" target="_blank">
+        <i class="fa-solid fa-heart"></i> Támogatás
+      </a>
+    </li>
+  </ul>
+</div>
+  </nav>
+</header>
 
 
     <main>
-      <div class="title-row">
-        <h1>Cheatsheetek</h1>
-      </div>
+      <section class="hero">
+        <div class="panel">
+          <h1>Üdvözöllek a weboldalamon!</h1>
+          <p>Ez a weboldal azért készült, hogy egy elosztóként szolgáljon a további projektjeim között.</p>
+          <!-- pár szikra -->
+          <span class="sparkle" style="top: 12px; left: 18px"></span>
+          <span class="sparkle" style="bottom: 12px; right: 22px; animation-delay:.6s"></span>
+        </div>
+        <div class="panel">
+          <h1><i class="fa-regular fa-face-smile emoji"></i> Y2K</h1>
+          <p>Ikonok, smiley-k és glossy gombok: nosztalgia a 2000-es évek legjobbjaiból.</p>
+        </div>
+      </section>
 
       <section class="grid">
-        <!-- Example cards -->
-        <a href="programozas/htmlprog.html" class="card" data-category="programozas">
-  <div class="top">
-    <span class="pill">HTML</span>
-    <h3>HTML gyors referencia</h3>
+        <!-- Faux „wallpaper” kártyák – ikon + cím + badge -->
+        <a class="card" 
+   href="https://mbarnabas0529.github.io/Cheatsheet.github.io/index.html" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <div class="preview">
+    <img src="kepek/cheatsheets.png" alt="" style="width:100%; height:100%; object-fit:cover;">
   </div>
-  <p>Alap tag-ek, szerkezet, űrlapok, média és hozzáférhetőség.</p>
-  <div class="links">
-    <span class="tag">alapok</span><span class="tag">űrlapok</span><span class="tag">ARIA</span>
+  <div class="content">
+    <div class="title">
+      <i class="fa-solid fa-water"></i>
+      Cheatsheets
+    </div>
+    <span class="badge">Segédlet</span>
   </div>
+  <span class="sparkle" style="top: 10px; left: 20px"></span>
 </a>
 
-
-        <a href="programozas/cssprog.html" class="card" data-category="programozas">
-          <div class="top">
-            <span class="pill">CSS</span>
-            <h3>CSS layout & tipográfia</h3>
-          </div>
-          <p>Flexbox, Grid, változók, tipográfia és dark mode minták.</p>
-          <div class="links">
-            <span class="tag">grid</span><span class="tag">flex</span><span class="tag">vars</span>
-          </div>
-        </a>
-
-        <a href="programozas/javascriptprog.html" class="card" data-category="programozas">
-          <div class="top">
-            <span class="pill">JS</span>
-            <h3>Modern JavaScript</h3>
-          </div>
-          <p>ES6+, fetch, modulok, async/await és kis utilok.</p>
-          <div class="links">
-            <span class="tag">es6</span><span class="tag">async</span><span class="tag">dom</span>
-          </div>
-        </a>
-
-        <a href="linux/ssh.html" class="card" data-category="linux">
-          <div class="top">
-            <span class="pill">SSH</span>
-            <h3>SSH</h3>
-          </div>
-          <p>Kulcsgenerálás, szerver elérés, port‑forward és többgépes workflow beállítások.</p>
-          <div class="links">
-            <span class="tag">config</span><span class="tag">kapcsolat</span><span class="tag">port</span><span class="tag">kulcs</span><span class="tag">távoli</span>
-          </div>
-        </a>
-
-        
-        <a href="programozas/sqlprog.html" class="card" data-category="programozas">
-          <div class="top">
-            <span class="pill">DB</span>
-            <h3>SQL/NoSQL</h3>
-          </div>
-          <p>SELECT, JOIN, indexek, transakciók és Redis alapok.</p>
-          <div class="links">
-            <span class="tag">postgres</span><span class="tag">mysql</span><span class="tag">redis</span>
-          </div>
-        </a>
-
-        <a href="linux/chmod.html" class="card" data-category="linux">
-          <div class="top">
-            <span class="pill">Chmod</span>
-            <h3>Chmod</h3>
-          </div>
-          <p>Fájlok és könyvtárak jogosultságainak beállítása számkódokkal vagy szimbolikus formában.</p>
-          <div class="links">
-            <span class="tag">engedély</span><span class="tag">számkód</span><span class="tag">fájl</span><span class="tag">jogosultság</span>
-          </div>
-        </a>
-        <a href="linux/apache2.html" class="card" data-category="linux">
-          <div class="top">
-            <span class="pill">Apache2</span>
-            <h3>Apache2</h3>
-          </div>
-          <p>Apache2 webszerver parancsok, konfigurációk, modulok és naplózás gyors referenciája.</p>
-          <div class="links">
-            <span class="tag">webszerver</span><span class="tag">konfiguráció</span><span class="tag">modul</span><span class="tag">virtualhost</span>
-          </div>
-        </a>
-        <a href="linux/dnsmasq.html" class="card" data-category="linux">
-          <div class="top">
-            <span class="pill">dnsmasq</span>
-            <h3>dnsmasq</h3>
-          </div>
-          <p>Könnyűsúlyú DNS és DHCP szerver, helyi hálózatok gyors beállításához.</p>
-          <div class="links">
-            <span class="tag">dns</span><span class="tag">dhcp</span><span class="tag">hálózat</span><span class="tag">konfiguráció</span>
-          </div>
-        </a>
-        <a href="linux/samba.html" class="card" data-category="linux">
-          <div class="top">
-            <span class="pill">Samba</span>
-            <h3>Samba</h3>
-          </div>
-          <p>Windows és Linux közötti fájlmegosztás, felhasználók és csoportok kezelése, jogosultságok beállítása.</p>
-          <div class="links">
-            <span class="tag">megosztás</span><span class="tag">felhasználó</span><span class="tag">jogosultság</span><span class="tag">csoport</span>
-          </div>
-        </a>
-        <a href="telepitofileok/telepitofileok.html" class="card" data-category="toolkit">
-  <div class="top">
-    <span class="pill">iso/exe</span>
-    <h3>Telepítőfileok</h3>
+        <a class="card" 
+   href="https://mbarnabas0529.github.io/CBHS.github.io" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <div class="preview">
+    <img src="kepek/cbhs.png" alt="" style="width:100%; height:100%; object-fit:cover;">
   </div>
-  <p>Iso és exe telepítőfájlok.</p>
-  <div class="links">
-    <span class="tag">telepítés</span>
-    <span class="tag">iso</span>
-    <span class="tag">exe</span>
-    <span class="tag">windows</span>
-    <span class="tag">linux</span>
-    <span class="tag">programok</span>
+  <div class="content">
+    <div class="title">
+      <i class="fa-solid fa-water"></i>
+      Comic Book Haven Society
+    </div>
+    <span class="badge">CBHS</span>
   </div>
-</a>
-<a href="windows/winserv.html" class="card" data-category="windows">
-  <div class="top">
-    <span class="pill">WinServ</span>
-    <h3>Windows Server</h3>
-  </div>
-  <p>A Windows Server egy vállalati környezetre tervezett operációs rendszer, amely támogatja a fájlmegosztást, 
-     felhasználók és csoportok kezelését, valamint jogosultságok beállítását.</p>
-  <div class="links">
-    <span class="tag">windows</span>
-    <span class="tag">megosztás</span>
-    <span class="tag">csoport</span>
-    <span class="tag">jogosultság</span>
-  </div>
-</a>
-<a href="linux/netstat.html" class="card" data-category="linux">
-  <div class="top">
-    <span class="pill">Netstat</span>
-    <h3>Netstat</h3>
-  </div>
-  <p>A <strong>netstat</strong> parancs hálózati kapcsolatokat, portokat, routing táblákat és interfész statisztikákat jelenít meg. 
-     Hasznos a szerverek forgalmának és nyitott portjainak vizsgálatához.</p>
-  <div class="links">
-    <span class="tag">hálózat</span>
-    <span class="tag">port</span>
-    <span class="tag">kapcsolat</span>
-    <span class="tag">tcp</span>
-    <span class="tag">udp</span>
-    <span class="tag">monitorozás</span>
-    <span class="tag">linux</span>
-  </div>
-</a>
-<a href="linux/curl.html" class="card" data-category="linux">
-  <div class="top">
-    <span class="pill">curl</span>
-    <h3>curl</h3>
-  </div>
-  <p>A <strong>curl</strong> parancs adatátvitelre szolgál szerverek között, és számos protokollt támogat 
-     (HTTP, HTTPS, FTP, SMTP, stb.). Hasznos webes API‑k tesztelésére, fájlok letöltésére és hálózati hibakeresésre.</p>
-  <div class="links">
-    <span class="tag">http</span>
-    <span class="tag">https</span>
-    <span class="tag">ftp</span>
-    <span class="tag">smtp</span>
-    <span class="tag">api</span>
-    <span class="tag">adatátvitel</span>
-    <span class="tag">linux</span>
-    <span class="tag">curl</span>
-  </div>
-</a>
-<a href="programozas/bash.html" class="card" data-category="programozas">
-  <div class="top">
-    <span class="pill">bash</span>
-    <h3>bash</h3>
-  </div>
-  <p>A <strong>bash</strong> a Linux és Unix rendszerek alapértelmezett parancsértelmezője (shell), 
-     amely lehetővé teszi parancsok futtatását, szkriptek írását és a rendszer automatizálását. 
-     Széles körben használják adminisztrációra, fejlesztésre és folyamatok vezérlésére.</p>
-  <div class="links">
-    <span class="tag">bash</span>
-    <span class="tag">shell</span>
-    <span class="tag">script</span>
-    <span class="tag">automatizálás</span>
-    <span class="tag">parancs</span>
-    <span class="tag">programozás</span>
-  </div>
-</a>
-<a href="toolkit/vsc.html" class="card" data-category="toolkit">
-  <div class="top">
-    <span class="pill">VSC</span>
-    <h3>Visual Studio Code</h3>
-  </div>
-  <p>A <strong>Visual Studio Code</strong> egy ingyenes, nyílt forráskódú fejlesztői környezet, 
-     amely támogatja számos programozási nyelvet és bővítményt. 
-     Hasznos kódíráshoz, hibakereséshez, verziókezeléshez és modern fejlesztési workflow-khoz.</p>
-  <div class="links">
-    <span class="tag">editor</span>
-    <span class="tag">ide</span>
-    <span class="tag">programozás</span>
-    <span class="tag">debug</span>
-    <span class="tag">git</span>
-    <span class="tag">extensions</span>
-    <span class="tag">toolkit</span>
-  </div>
-</a>
-<a href="programozas/markdown.html" class="card" data-category="programozas">
-  <div class="top">
-    <span class="pill">md</span>
-    <h3>Markdown</h3>
-  </div>
-  <p>A <strong>Markdown</strong> egy egyszerű jelölőnyelv, amelyet szövegek formázására használnak. 
-     Könnyen olvasható és írható, és HTML‑re alakítható. 
-     Széles körben használják dokumentációhoz, README fájlokhoz, blogokhoz és jegyzetekhez.</p>
-  <div class="links">
-    <span class="tag">jelölőnyelv</span>
-    <span class="tag">formázás</span>
-    <span class="tag">szöveg</span>
-    <span class="tag">html</span>
-    <span class="tag">readme</span>
-    <span class="tag">dokumentáció</span>
-    <span class="tag">markdown</span>
-  </div>
-</a>
-<a href="programozas/java.html" class="card" data-category="programozas">
-  <div class="top">
-    <span class="pill">🚧 W.I.P. 🚧</span>
-    <h3>Java</h3>
-  </div>
-  <p>A <strong>Java</strong> egy széles körben használt, objektumorientált programozási nyelv. 
-     Platformfüggetlen, a Java Virtual Machine (JVM) segítségével futtatható. 
-     Gyakran alkalmazzák vállalati rendszerekben, mobilalkalmazásokban (Android), 
-     webes backend fejlesztésben és asztali programokban.</p>
-  <div class="links">
-    <span class="tag">nyelv</span>
-    <span class="tag">oop</span>
-    <span class="tag">platformfüggetlen</span>
-    <span class="tag">backend</span>
-    <span class="tag">android</span>
-    <span class="tag">programozás</span>
-    <span class="tag">java</span>
-  </div>
-</a>
-<a href="programozas/python.html" class="card" data-category="programozas">
-  <div class="top">
-    <span class="pill">🚧 W.I.P. 🚧</span>
-    <h3>Python</h3>
-  </div>
-  <p>A <strong>Python</strong> egy magas szintű, értelmezett programozási nyelv, 
-     amely egyszerű szintaxisával és olvashatóságával népszerű. 
-     Széles körben használják adatfeldolgozásra, webfejlesztésre, 
-     mesterséges intelligenciára, tudományos számításokra és automatizálásra. 
-     Nagy közössége és gazdag könyvtárkészlete miatt az egyik legelterjedtebb nyelv.</p>
-  <div class="links">
-    <span class="tag">nyelv</span>
-    <span class="tag">értelmezett</span>
-    <span class="tag">adatfeldolgozás</span>
-    <span class="tag">webfejlesztés</span>
-    <span class="tag">ai</span>
-    <span class="tag">automatizálás</span>
-    <span class="tag">python</span>
-  </div>
-</a>
-<a href="linux/arch.html" class="card" data-category="linux">
-  <div class="top">
-    <span class="pill">Arch</span>
-    <h3>Arch Linux – Cheatsheet</h3>
-  </div>
-  <p>Az <strong>Arch Linux</strong> egy könnyű, rugalmas és gördülő kiadású Linux disztribúció, 
-     amely a „Keep It Simple” filozófiát követi. 
-     A felhasználó teljes kontrollt kap a rendszer telepítése és konfigurálása során. 
-     Gyakran használják fejlesztők és haladó felhasználók, akik értékelik a minimalizmust, 
-     a testreszabhatóságot és a naprakész csomagokat.</p>
-  <div class="links">
-    <span class="tag">linux</span>
-    <span class="tag">disztribúció</span>
-    <span class="tag">minimalista</span>
-    <span class="tag">gördülő kiadás</span>
-    <span class="tag">testreszabás</span>
-    <span class="tag">haladó</span>
-    <span class="tag">arch</span>
-  </div>
+  <span class="sparkle" style="top: 10px; left: 20px"></span>
 </a>
 
+        <a class="card" 
+   href="#" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <div class="preview">
+    <img src="kepek/wip.avif" alt="" style="width:100%; height:100%; object-fit:cover;">
+  </div>
+  <div class="content">
+    <div class="title">
+      <i class="fa-solid fa-water"></i>
+      Work in progress
+    </div>
+    <span class="badge">W.I.P</span>
+  </div>
+  <span class="sparkle" style="top: 10px; left: 20px"></span>
+</a>
 
-
-
-
+        <a class="card" 
+   href="#" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <div class="preview">
+    <img src="kepek/wip.avif" alt="" style="width:100%; height:100%; object-fit:cover;">
+  </div>
+  <div class="content">
+    <div class="title">
+      <i class="fa-solid fa-water"></i>
+      Work in progress
+    </div>
+    <span class="badge">W.I.P</span>
+  </div>
+  <span class="sparkle" style="top: 10px; left: 20px"></span>
+</a>
       </section>
     </main>
+
+    <footer>
+  <div class="player">
+    <audio controls autoplay loop>
+      <source src="LEASE by Takeshi Abo but slightly bitcrushed for nostalgia.mp3" type="audio/mpeg">
+      A böngésződ nem támogatja a zenelejátszót.
+    </audio>
+  </div>
+</footer>
+
   </div>
 
-  
-
-  <!-- Tiny inline script for theme accent switching -->
+  <!-- Opcionális: kereső élő szűrés a kártyák címére -->
   <script>
-  // Egyszerű kereső funkció
-  document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.querySelector(".search input");
-    const cards = document.querySelectorAll(".card");
-
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
-
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if (text.includes(query)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector(".search input");
+      const cards = Array.from(document.querySelectorAll(".card"));
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const title = card.querySelector(".title")?.innerText.toLowerCase() || "";
+          card.style.display = !q || title.includes(q) ? "" : "none";
+        });
       });
     });
-  });
   </script>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(".category-link");
-    const cards = document.querySelectorAll(".card");
-    const searchInput = document.querySelector(".search input");
-    let activeFilter = "all";
-    let query = "";
-
-    function applyFilters() {
-      cards.forEach(card => {
-        const cat = card.dataset.category || "misc";
-        const text = card.innerText.toLowerCase();
-        const matchesCategory = (activeFilter === "all") || (cat === activeFilter);
-        const matchesSearch = text.includes(query);
-        card.style.display = (matchesCategory && matchesSearch) ? "block" : "none";
-      });
-    }
-
-    links.forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        links.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-        activeFilter = link.dataset.filter;
-        applyFilters();
-      });
-    });
-
-    if (searchInput) {
-      searchInput.addEventListener("input", () => {
-        query = searchInput.value.toLowerCase();
-        applyFilters();
-      });
-    }
-
-    applyFilters();
-  });
-</script>
-
-
-
 </body>
 </html>
