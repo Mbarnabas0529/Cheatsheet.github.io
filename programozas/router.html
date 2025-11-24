@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.6 system-ui, sans-serif;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    pre {
+      margin: 0;
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy:hover { background: #ff5fa3; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back">← Vissza</a>
+    <div class="search">
+      <input type="search" placeholder="Keresés…" aria-label="Keresés" />
+    </div>
+  </header>
+
+  <section class="grid">
+  <!-- Ide kerülnek a kártyák -->
+
+  <div class="card" data-tags="access enable ideiglenes lista">
+    <h2>access-enable</h2>
+    <p>Ezzel a paranccsal a forgalomirányító létrehozhat egy ideiglenes bejegyzést egy dinamikus hozzáférési listában, amely átmeneti engedélyt biztosít bizonyos forgalom számára.</p>
+    <pre><code>access-enable</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="access template ideiglenes lista">
+    <h2>access-template</h2>
+    <p>Manuálisan elhelyez egy ideiglenes hozzáférési lista-bejegyzést azon a forgalomirányítón, amelyhez kapcsolódik, így gyorsan szabályozható a hálózati hozzáférés.</p>
+    <pre><code>access-template</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="boot manual os">
+    <h2>b</h2>
+    <p>Az operációs rendszer manuális betöltésére szolgál, amikor a normál indítási folyamatot meg kell kerülni.</p>
+    <pre><code>b</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="interface bandwidth">
+    <h2>bandwidth</h2>
+    <p>Beállítja az interfész sávszélességét, amelyet a forgalomirányító figyelembe vesz a hálózati tervezés és forgalomszabályozás során.</p>
+    <pre><code>bandwidth</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="banner motd uzenet">
+    <h2>banner motd</h2>
+    <p>Megadja a „nap üzenetét” (Message of the Day), amelyet a felhasználók a bejelentkezéskor látnak.</p>
+    <pre><code>banner motd</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="emergency mode bfe">
+    <h2>bfe</h2>
+    <p>A manuális vészhelyzetmódok beállítására szolgál, amikor speciális körülmények között kell működtetni a rendszert.</p>
+    <pre><code>bfe</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="boot system indulasi forras">
+    <h2>boot system</h2>
+    <p>Megadja, hogy a forgalomirányító induláskor honnan töltse be a rendszerkódot, például flash memóriából vagy hálózati forrásból.</p>
+    <pre><code>boot system</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="calendar hardver naptar">
+    <h2>calendar</h2>
+    <p>Kezeli a hardvernaptárat, amely időalapú funkciókhoz és eseményekhez használható a rendszerben.</p>
+    <pre><code>calendar</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="cd eszkoz valt">
+    <h2>cd</h2>
+    <p>Átvált egy másik eszközre vagy könyvtárra, lehetővé téve a fájlok és konfigurációk kezelését.</p>
+    <pre><code>cd</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="cdp enable discovery">
+    <h2>cdp enable</h2>
+    <p>Engedélyezi a Cisco Discovery Protocolt egy interfészen, amely információt szolgáltat a hálózati eszközök közötti kapcsolatokról.</p>
+    <pre><code>cdp enable</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="clear reset funkcio">
+    <h2>clear</h2>
+    <p>Alaphelyzetbe állítja a funkciókat, törölve a korábbi beállításokat vagy állapotokat.</p>
+    <pre><code>clear</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="clear counters interfesz">
+    <h2>clear counters</h2>
+    <p>Törli az interfész számlálókat, így újraindítja a statisztikák gyűjtését a hálózati forgalomról.</p>
+    <pre><code>clear counters</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+
+  <div class="card" data-tags="clockrate soros interfesz">
+    <h2>clockrate</h2>
+    <p>Beállítja a soros interfészeken keresztüli hardverkapcsolatok órajelét egy elfogadható bitsebességre, biztosítva a stabil adatátvitelt.</p>
+    <pre><code>clockrate</code></pre>
+    <button class="copy">Copy</button>
+  </div>
+  <div class="card" data-tags="cmt fddi kapcsolat">
+  <h2>cmt</h2>
+  <p>Elindítja vagy leállítja az FDDI kapcsolatkezelési funkciókat, így szabályozva a hálózati összeköttetést.</p>
+  <pre><code>cmt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="configure konfiguracio modositas">
+  <h2>configure</h2>
+  <p>Segítségével módosítható egy meglévő konfiguráció, és a konfigurációs információk eltárolhatók egy központi helyre.</p>
+  <pre><code>configure</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="configure memory nvram">
+  <h2>configure memory</h2>
+  <p>Betölti a konfigurációs információkat az NVRAM-ból, így visszaállítható a korábban mentett beállítás.</p>
+  <pre><code>configure memory</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="config register beallitas">
+  <h2>config-register</h2>
+  <p>Megváltoztatja a konfigurációs regiszter beállításait, amelyek meghatározzák az eszköz indítási módját.</p>
+  <pre><code>config-register</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="configure terminal konzol">
+  <h2>configure terminal</h2>
+  <p>Terminál manuális konfigurálása a konzolterminálról, közvetlen parancsbevitellel.</p>
+  <pre><code>configure terminal</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="connect terminal kapcsolat">
+  <h2>connect</h2>
+  <p>Létrehoz egy terminálkapcsolatot, amely lehetővé teszi a közvetlen kommunikációt más eszközökkel.</p>
+  <pre><code>connect</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="copy konfiguracio masolas">
+  <h2>copy</h2>
+  <p>Konfiguráció vagy rendszerkód másolására szolgál, például biztonsági mentéshez vagy frissítéshez.</p>
+  <pre><code>copy</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="copy flash tftp masolas">
+  <h2>copy flash tftp</h2>
+  <p>A rendszerkódot a Flash memóriából egy TFTP kiszolgálóra másolja, biztonsági mentés céljából.</p>
+  <pre><code>copy flash tftp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="copy running config tftp">
+  <h2>copy running-config tftp</h2>
+  <p>A RAM-ban levő aktuális konfigurációt eltárolja egy hálózati TFTP kiszolgálón, így megőrizhető a beállítás.</p>
+  <pre><code>copy running-config tftp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="copy running config startup config">
+  <h2>copy running-config startup-config</h2>
+  <p>A RAM-ban levő aktuális konfigurációt eltárolja az NVRAM-ban, hogy újraindítás után is megmaradjon.</p>
+  <pre><code>copy running-config startup-config</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="copy tftp flash masolas">
+  <h2>copy tftp flash</h2>
+  <p>Átmásol egy új rendszerkódot egy TFTP kiszolgálóról a Flash memóriába, frissítéshez vagy helyreállításhoz.</p>
+  <pre><code>copy tftp flash</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="copy tftp running config">
+  <h2>copy tftp runnig-config</h2>
+  <p>Betölti a konfigurációs információkat egy hálózati TFTP kiszolgálóról, így gyorsan alkalmazható új beállítás.</p>
+  <pre><code>copy tftp runnig-config</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="debug hibakereses">
+  <h2>debug</h2>
+  <p>Hibakeresési funkciók használata, amelyek részletes információt adnak a rendszer működéséről.</p>
+  <pre><code>debug</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="debug ip rip frissites">
+  <h2>debug ip rip</h2>
+  <p>Megjeleníti az elküldött és vett RIP irányítási frissítéseket, segítve a protokoll hibakeresését.</p>
+  <pre><code>debug ip rip</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="delete fajl torles">
+  <h2>delete</h2>
+  <p>Töröl egy fájlt a rendszerből, felszabadítva a tárhelyet vagy eltávolítva felesleges adatokat.</p>
+  <pre><code>delete</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="dir fajl lista">
+  <h2>dir</h2>
+  <p>Felsorolja egy adott eszközön található fájlokat, így gyors áttekintést ad a tartalomról.</p>
+  <pre><code>dir</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="disable privilegizalt kikapcsolas">
+  <h2>disable</h2>
+  <p>Kikapcsolja a privilegizált parancsokat, visszalépve az alap parancsszintre.</p>
+  <pre><code>disable</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="disconnect kapcsolat bontas">
+  <h2>disconnect</h2>
+  <p>Megszakítja egy meglévő hálózati kapcsolatot, lezárva az aktív kommunikációt.</p>
+  <pre><code>disconnect</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="enable privilegizalt bekapcsolas">
+  <h2>enable</h2>
+  <p>Bekapcsolja a privilegizált parancsokat, lehetővé téve a magasabb szintű konfigurációt.</p>
+  <pre><code>enable</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="enable password jelszo">
+  <h2>enable password</h2>
+  <p>Helyi jelszót állít be, amely szabályozza a különböző hozzáférési szintek elérését.</p>
+  <pre><code>enable password</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="enable secret magasabb biztonsag">
+  <h2>enable secret</h2>
+  <p>Az enable passwordnél magasabb biztonsági szintet biztosít titkosított jelszóval.</p>
+  <pre><code>enable secret</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="erase memoria torles">
+  <h2>erase</h2>
+  <p>Törli a flash vagy a konfigurációs memóriát, eltávolítva a korábbi beállításokat.</p>
+  <pre><code>erase</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="erase startup config nvram">
+  <h2>erase startup-config</h2>
+  <p>Törli az NVRAM tartalmát, így eltávolítja az indításkor betöltődő konfigurációt.</p>
+  <pre><code>erase startup-config</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="exit kilepes">
+  <h2>exit</h2>
+  <p>Kilép bármely konfigurációs módból, lezárja az aktív kapcsolatot, és visszatér az EXEC módhoz.</p>
+  <pre><code>exit</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="format eszkoz format">
+  <h2>format</h2>
+  <p>Megformáz egy eszközt, előkészítve azt új adatok vagy rendszerkód tárolására.</p>
+  <pre><code>format</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="help sugo">
+  <h2>help</h2>
+  <p>Az interaktív súgórendszer használata, amely útmutatást ad a parancsokhoz.</p>
+  <pre><code>help</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="history parancs elozmeny">
+  <h2>history</h2>
+  <p>Engedélyezi a parancselőzmény funkciót, így visszanézhetők a korábban kiadott parancsok.</p>
+  <pre><code>history</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="interface konfiguracio">
+  <h2>interface</h2>
+  <p>Beállítja az interfész típusát, és belép az interfész konfigurációs módba.</p>
+  <pre><code>interface</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ip address cim">
+  <h2>ip address</h2>
+  <p>Egy interfészhez hozzárendel egy IP címet és alhálózati maszkot, aktiválva az IP kommunikációt.</p>
+  <pre><code>ip address</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ip default network">
+  <h2>ip default-network</h2>
+  <p>Meghatároz egy alapértelmezett útvonalat, amelyet a forgalomirányító használ.</p>
+  <pre><code>ip default-network</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ip domain lookup">
+  <h2>ip domain-lookup</h2>
+  <p>Engedélyezi a név–cím fordítást, lehetővé téve a hostnevek IP címre váltását.</p>
+  <pre><code>ip domain-lookup</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ip host statikus bejegyzes">
+  <h2>ip host</h2>
+  <p>Statikus név–cím bejegyzést ad a konfigurációhoz, amelyet a forgalomirányító használhat.</p>
+  <pre><code>ip host</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ip name server">
+  <h2>ip name-server</h2>
+  <p>Megadja legfeljebb négy névkiszolgáló címét, amelyek a névfeloldáshoz használhatók.</p>
+  <pre><code>ip name-server</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ip route statikus utvonal">
+  <h2>ip route</h2>
+  <p>Statikus útvonalakat határoz meg, amelyek irányítják a hálózati forgalmat.</p>
+  <pre><code>ip route</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="line konfiguracio">
+  <h2>line</h2>
+  <p>Meghatározza a konfigurálandó vonalat, és belép a vonalkonfigurációs módba.</p>
+  <pre><code>line</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="lock terminal zarolas">
+  <h2>lock</h2>
+  <p>Zárolja a terminált, megakadályozva a jogosulatlan hozzáférést.</p>
+  <pre><code>lock</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="login bejelentkezes">
+  <h2>login</h2>
+  <p>Bejelentkezés egy adott felhasználóként, jelszóellenőrzéssel a hozzáférés biztosítására.</p>
+  <pre><code>login</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="logout kilepes exec">
+  <h2>logout</h2>
+  <p>Kilépés az EXEC módból, lezárva az aktív munkamenetet.</p>
+  <pre><code>logout</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mbranch csoportos uzenet">
+  <h2>mbranch</h2>
+  <p>Csoportos üzenet esetén az adott csoport alatti ágak nyomonkövetése.</p>
+  <pre><code>mbranch</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="mrinfo szomszed verzio info">
+  <h2>mrinfo</h2>
+  <p>Szomszéd- és verzióinformációt kér egy csoport-forgalomirányítótól, így ellenőrizhető a multicast környezet állapota.</p>
+  <pre><code>mrinfo</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mstat statisztika csoportos utvonal">
+  <h2>mstat</h2>
+  <p>Statisztikai adatokat jelenít meg több csoportos útvonalkövetés után, segítve a multicast hálózat teljesítményének elemzését.</p>
+  <pre><code>mstat</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="mtrace utvonal nyomonkovetes multicast">
+  <h2>mtrace</h2>
+  <p>Útvonal nyomonkövetése a forrástól a célig egy csoportos terjesztési fában, megmutatva az adatcsomagok útját.</p>
+  <pre><code>mtrace</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="name connection kapcsolat elnevezes">
+  <h2>name-connection</h2>
+  <p>Elnevez egy meglévő hálózati kapcsolatot, így könnyebben azonosítható és kezelhető.</p>
+  <pre><code>name-connection</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="network cim hozzarendeles">
+  <h2>network</h2>
+  <p>Olyan hálózati kártya alapú címet rendel hozzá, amelyhez a forgalomirányító közvetlenül kapcsolódik.</p>
+  <pre><code>network</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="no shutdown interfesz ujrainditas">
+  <h2>no shutdown</h2>
+  <p>Újraindít egy letiltott interfészt, aktiválva a hálózati kapcsolatot.</p>
+  <pre><code>no shutdown</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ping kapcsolat teszt">
+  <h2>ping</h2>
+  <p>Visszhangválaszt küld, alapvető tesztet biztosítva a hálózati kapcsolat ellenőrzésére.</p>
+  <pre><code>ping</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="ppp point to point protokoll">
+  <h2>ppp</h2>
+  <p>Elindítja az IETF Point-to-Point protokollt, amelyet két hálózati eszköz közötti közvetlen kapcsolat létrehozására használnak.</p>
+  <pre><code>ppp</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="pwd aktualis eszkoz">
+  <h2>pwd</h2>
+  <p>Megjeleníti az aktuális eszközt vagy könyvtárat, amelyben a felhasználó éppen dolgozik.</p>
+  <pre><code>pwd</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="reload ujrainditas">
+  <h2>reload</h2>
+  <p>Leállítja, majd újraindítja az operációs rendszert, ezzel frissítve a rendszer működését.</p>
+  <pre><code>reload</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="rlogin kapcsolat">
+  <h2>rlogin</h2>
+  <p>Távoli rlogin kapcsolat létrehozása egy másik eszközhöz, közvetlen hozzáférést biztosítva.</p>
+  <pre><code>rlogin</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router iranyitas protokoll">
+  <h2>router</h2>
+  <p>Elindít egy irányítási folyamatot, amelyben meghatározható a használt IP irányító protokoll, például RIP vagy OSPF.</p>
+  <pre><code>router</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="rsh tavoli parancs">
+  <h2>rsh</h2>
+  <p>Távoli parancs végrehajtása egy másik eszközön, hálózati kapcsolaton keresztül.</p>
+  <pre><code>rsh</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="sdlc tesztkeret">
+  <h2>sdlc</h2>
+  <p>SDLC tesztkeretek küldése a hálózati kapcsolatok ellenőrzésére.</p>
+  <pre><code>sdlc</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="send uzenet tty">
+  <h2>send</h2>
+  <p>Üzenet küldése tty vonalakon keresztül, kommunikáció céljából.</p>
+  <pre><code>send</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="service password encryption">
+  <h2>service password-encryption</h2>
+  <p>Engedélyezi a jelszótitkosítást, így biztonságosabbá teszi a konfigurációban tárolt jelszavakat.</p>
+  <pre><code>service password-encryption</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="setup program">
+  <h2>setup</h2>
+  <p>Belépés a setup programba, amely segít az alapvető konfigurációk gyors beállításában.</p>
+  <pre><code>setup</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show buffers statisztika">
+  <h2>show buffers</h2>
+  <p>Megjeleníti a hálózati kiszolgáló pufferkészletének statisztikáját, segítve a memóriahasználat elemzését.</p>
+  <pre><code>show buffers</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show cdp entry szomszed">
+  <h2>show cdp entry</h2>
+  <p>Megjeleníti a CDP-táblában szereplő egyik szomszédos eszköz részletes adatait.</p>
+  <pre><code>show cdp entry</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show cdp interface info">
+  <h2>show cdp interface</h2>
+  <p>Információkat jelenít meg azokról az interfészekről, amelyeken a CDP engedélyezve van.</p>
+  <pre><code>show cdp interface</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show cdp neighbors">
+  <h2>show cdp neighbors</h2>
+  <p>Megjeleníti a CDP felfedezési folyamat eredményét, vagyis a közvetlenül kapcsolódó eszközöket.</p>
+  <pre><code>show cdp neighbors</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show flash memoria">
+  <h2>show flash</h2>
+  <p>Megjeleníti a Flash memória elrendezését és tartalmát, így láthatóak a tárolt fájlok.</p>
+  <pre><code>show flash</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show hosts gyorsitotar">
+  <h2>show hosts</h2>
+  <p>Megjeleníti a gyorsítótárban tárolt állomásneveket és címeket, amelyek a névfeloldáshoz használhatók.</p>
+  <pre><code>show hosts</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show interfaces statisztika">
+  <h2>show interfaces</h2>
+  <p>Megjeleníti a forgalomirányító konfigurált interfészeire vonatkozó statisztikai adatokat és állapotokat.</p>
+  <pre><code>show interfaces</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show ip interface allapot">
+  <h2>show ip interface</h2>
+  <p>Megjeleníti egy interfész állapotát és globális IP paramétereit, segítve a hálózati diagnosztikát.</p>
+  <pre><code>show ip interface</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="show ip protocols aktiv protokoll">
+  <h2>show ip protocols</h2>
+  <p>Megjeleníti az aktív irányító protokoll paramétereit és aktuális állapotát, így látható, mely protokollok működnek.</p>
+  <pre><code>show ip protocols</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show ip route iranyito tabla">
+  <h2>show ip route</h2>
+  <p>Megjeleníti az IP-irányítótábla tartalmát, amely az útvonalakat és azok állapotát mutatja.</p>
+  <pre><code>show ip route</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show memory memoria statisztika">
+  <h2>show memory</h2>
+  <p>Megjeleníti a forgalomirányító memóriastatisztikáját, beleértve a szabad és használt memóriaterületet.</p>
+  <pre><code>show memory</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show processes aktiv folyamatok">
+  <h2>show processes</h2>
+  <p>Az aktív folyamatokra vonatkozó információkat jeleníti meg, segítve a rendszer teljesítményének ellenőrzését.</p>
+  <pre><code>show processes</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show protocols konfiguralt protokollok">
+  <h2>show protocols</h2>
+  <p>Megjeleníti a konfigurált protokollokat, beleértve az összes 3. rétegbeli protokoll állapotát.</p>
+  <pre><code>show protocols</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show running config ram">
+  <h2>show running-config</h2>
+  <p>Megjeleníti a RAM-ban levő aktuális konfigurációt, vagyis a pillanatnyilag érvényes beállításokat.</p>
+  <pre><code>show running-config</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show stacks verem megszakitas">
+  <h2>show stacks</h2>
+  <p>Figyeli a folyamatok veremhasználatát és a megszakítási rutinokat, valamint megjeleníti a legutóbbi újrabetöltés okát.</p>
+  <pre><code>show stacks</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show startup config nvram">
+  <h2>show startup-config</h2>
+  <p>Megjeleníti az elmentett konfigurációt, vagyis az NVRAM-ban tárolt beállításokat, amelyek induláskor betöltődnek.</p>
+  <pre><code>show startup-config</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="show version rendszer info">
+  <h2>show version</h2>
+  <p>Megjeleníti a rendszerhardver konfigurációját, a szoftver verzióját, a konfigurációs fájlok nevét és forrását, valamint a rendszerbetöltő kódot.</p>
+  <pre><code>show version</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="shutdown interfesz letiltas">
+  <h2>shutdown</h2>
+  <p>Letilt egy interfészt, megszüntetve annak hálózati működését.</p>
+  <pre><code>shutdown</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="telnet kapcsolat">
+  <h2>telnet</h2>
+  <p>Bejelentkezés egy állomásra, amely támogatja a Telnet protokollt, távoli elérés céljából.</p>
+  <pre><code>telnet</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="term ip maszk formatum">
+  <h2>term ip</h2>
+  <p>Megadja az aktuális kapcsolathoz tartozó hálózati maszkok formátumát, segítve az IP címek kezelését.</p>
+  <pre><code>term ip</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="trace utvonal meghatarozas">
+  <h2>trace</h2>
+  <p>Meghatározza azt az útvonalat, amelyen a csomagok eljutnak a célig, nyomon követve a hálózati útvonalat.</p>
+  <pre><code>trace</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="verify flash ellenorzes">
+  <h2>verify</h2>
+  <p>Ellenőrzi egy Flash memóriában található fájl ellenőrző összegét, így biztosítva a fájl épségét és megbízhatóságát.</p>
+  <pre><code>verify</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="where aktiv kapcsolatok">
+  <h2>where</h2>
+  <p>Felsorolja az aktív hálózati kapcsolatokat, megmutatva a jelenleg használt csatornákat és állomásokat.</p>
+  <pre><code>where</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="which route osi utvonal">
+  <h2>which-route</h2>
+  <p>OSI útvonaltábla-keresést végez, majd megjeleníti az eredményt, segítve az útvonalak diagnosztikáját.</p>
+  <pre><code>which-route</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="write konfiguracio kiiras">
+  <h2>write</h2>
+  <p>Az aktuális konfigurációt kiírja memóriába, hálózatra vagy terminálra, így mentve a beállításokat.</p>
+  <pre><code>write</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="write erase startup config">
+  <h2>write erase</h2>
+  <p>A korábbi indítási konfiguráció törlésére szolgál, de ezt a parancsot az <code>erase startup-config</code> váltotta fel.</p>
+  <pre><code>write erase</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="write memory konfiguracio mentese">
+  <h2>write memory</h2>
+  <p>Az aktuális konfigurációt menti az NVRAM-ba, de ezt a parancsot a <code>copy running-config startup-config</code> váltotta fel.</p>
+  <pre><code>write memory</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+</section>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("input[type=search]");
+      const grid = document.querySelector(".grid");
+
+      // Szűrés kártyákon: data-tags és látható szöveg alapján
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase().trim();
+        const cards = grid.querySelectorAll(".card");
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || "").toLowerCase();
+          const text = card.innerText.toLowerCase();
+          const match = !q || tags.includes(q) || text.includes(q);
+          card.style.display = match ? "" : "none";
+        });
+      });
+
+      // Copy gomb: csak a kódblokk tartalmát másolja; gomb felirata mindig "Copy"
+      grid.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".copy");
+        if (!btn) return;
+        const card = btn.closest(".card");
+        const code = card?.querySelector("code")?.innerText || "";
+        if (!code) return;
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "Másolva!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        } catch {
+          btn.textContent = "Hiba!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
