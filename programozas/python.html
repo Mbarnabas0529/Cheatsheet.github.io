@@ -107,30 +107,1077 @@
 
   <section class="grid">
     <!-- Ide kerülnek a kártyák -->
-     <div class="card" data-tags="wip folyamatban készül fejlesztés">
-  <h2>🚧 W.I.P.</h2>
-  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
-  <pre><code>Work In Progress – 🚧</code></pre>
+     <div class="card" data-tags="python variables strings">
+  <h2>Változók és sztringek</h2>
+  <p>A változók címkéket adnak értékeknek.  
+  A sztring karakterek sorozata, idézőjelek között.  
+  Az f-stringek lehetővé teszik, hogy változókat használjunk sztringekben dinamikus üzenetekhez.</p>
+
+  <h3>Hello világ</h3>
+  <pre><code>print("Hello világ!")</code></pre>
+
+  <h3>Hello világ változóval</h3>
+  <pre><code>uzenet = "Hello világ!"
+print(uzenet)</code></pre>
+
+  <h3>f-stringek (változók használata sztringben)</h3>
+  <pre><code>keresztnev = 'albert'
+vezeteknev = 'einstein'
+teljes_nev = f"{keresztnev} {vezeteknev}"
+print(teljes_nev)</code></pre>
+
   <button class="copy">Copy</button>
 </div>
-<div class="card" data-tags="wip folyamatban készül fejlesztés">
-  <h2>🚧 W.I.P.</h2>
-  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
-  <pre><code>Work In Progress – 🚧</code></pre>
+<div class="card" data-tags="python lists">
+  <h2>Listák</h2>
+  <p>A lista egy sor elemet tárol meghatározott sorrendben.  
+  Az elemek index segítségével vagy ciklusban érhetők el.</p>
+
+  <h3>Lista létrehozása</h3>
+  <pre><code>biciklik = ['trek', 'redline', 'giant']</code></pre>
+
+  <h3>Első elem lekérése</h3>
+  <pre><code>elso_bicikli = biciklik[0]</code></pre>
+
+  <h3>Utolsó elem lekérése</h3>
+  <pre><code>utolso_bicikli = biciklik[-1]</code></pre>
+
+  <h3>Végigiterálás a listán</h3>
+  <pre><code>for bicikli in biciklik:
+    print(bicikli)</code></pre>
+
+  <h3>Elemek hozzáadása a listához</h3>
+  <pre><code>biciklik = []
+biciklik.append('trek')
+biciklik.append('redline')
+biciklik.append('giant')</code></pre>
+
+  <h3>Számlista készítése</h3>
+  <pre><code>negyzetek = []
+for x in range(1, 11):
+    negyzetek.append(x**2)</code></pre>
+
   <button class="copy">Copy</button>
 </div>
-<div class="card" data-tags="wip folyamatban készül fejlesztés">
-  <h2>🚧 W.I.P.</h2>
-  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
-  <pre><code>Work In Progress – 🚧</code></pre>
+<div class="card" data-tags="python lists advanced">
+  <h2>Listák (folytatás)</h2>
+  <p>További műveletek listákkal: listakomprehenziók, szeletelés és másolás.</p>
+
+  <h3>Listakomprehenziók</h3>
+  <p>Egyszerű módja új lista létrehozásának egy kifejezésből.</p>
+  <pre><code>negyzetek = [x**2 for x in range(1, 11)]</code></pre>
+
+  <h3>Lista szeletelése</h3>
+  <p>A lista egy részének kiválasztása indexek alapján.</p>
+  <pre><code>befutok = ['sam', 'bob', 'ada', 'bea']
+elso_ketto = befutok[:2]</code></pre>
+
+  <h3>Lista másolása</h3>
+  <p>Új lista létrehozása a meglévő másolataként.</p>
+  <pre><code>masolat_biciklik = biciklik[:]</code></pre>
+
   <button class="copy">Copy</button>
 </div>
-<div class="card" data-tags="wip folyamatban készül fejlesztés">
-  <h2>🚧 W.I.P.</h2>
-  <p>Ez a tartalom még készülőben van. Hamarosan frissül!</p>
-  <pre><code>Work In Progress – 🚧</code></pre>
+<div class="card" data-tags="python tuples">
+  <h2>Tuple-ök</h2>
+  <p>A tuple hasonló a listához, de az elemei nem módosíthatók.  
+  Hasznos, ha fix értékeket szeretnénk tárolni.</p>
+
+  <h3>Tuple létrehozása (méretek)</h3>
+  <pre><code>meretek = (1920, 1080)</code></pre>
+
+  <h3>Tuple létrehozása (felbontások)</h3>
+  <pre><code>felbontasok = ('720p', '1080p', '4K')</code></pre>
+
   <button class="copy">Copy</button>
 </div>
+<div class="card" data-tags="python if statements">
+  <h2>If utasítások - 1</h2>
+  <p>Az if utasításokat feltételek vizsgálatára használjuk.  
+  Az alábbi példák bemutatják az alapvető feltételes teszteket.</p>
+
+  <h3>Feltételes tesztek</h3>
+  <pre><code># egyenlő
+x == 42
+
+# nem egyenlő
+x != 42
+
+# nagyobb mint
+x > 42
+
+# nagyobb vagy egyenlő
+x >= 42
+
+# kisebb mint
+x < 42
+
+# kisebb vagy egyenlő
+x <= 42</code></pre>
+
+  <h3>Feltételes tesztek listákkal</h3>
+  <pre><code>'trek' in biciklik
+'surly' not in biciklik</code></pre>
+
+  <h3>Logikai (boolean) értékek hozzárendelése</h3>
+  <pre><code>jatek_aktiv = True
+szerkesztheto = False</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python if statements">
+  <h2>If utasítások - 2</h2>
+  <p>Az if utasítások kombinálhatók összetettebb szerkezetekben, például if‑elif‑else ágakkal.</p>
+
+  <h3>Egyszerű if teszt</h3>
+  <pre><code>kor = 18
+if kor >= 18:
+    print("Szavazhatsz!")</code></pre>
+
+  <h3>If-elif-else szerkezet</h3>
+  <pre><code>kor = 20
+if kor < 4:
+    jegyar = 0
+elif kor < 18:
+    jegyar = 10
+elif kor < 65:
+    jegyar = 40
+else:
+    jegyar = 15</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries">
+  <h2>Szótárak - 1</h2>
+  <p>A szótárak információk közötti kapcsolatokat tárolnak.  
+  Minden elem egy kulcs‑érték pár.</p>
+
+  <h3>Egyszerű szótár</h3>
+  <pre><code>alien = {'color': 'green', 'points': 5}</code></pre>
+
+  <h3>Érték elérése</h3>
+  <pre><code>print(f"A földönkívüli színe: {alien['color']}.")</code></pre>
+
+  <h3>Új kulcs‑érték pár hozzáadása</h3>
+  <pre><code>alien['x_position'] = 0</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python dictionaries">
+  <h2>Szótárak - 2</h2>
+  <p>A szótárakon könnyen végig lehet iterálni, akár a kulcsokat, akár az értékeket vizsgálva.</p>
+
+  <h3>Végigiterálás minden kulcs‑érték páron</h3>
+  <pre><code>kedvenc_szamok = {'eric': 7, 'ever': 4, 'erin': 47}
+for nev, szam in kedvenc_szamok.items():
+    print(f"{nev} kedvenc száma a {szam}.")</code></pre>
+
+  <h3>Végigiterálás minden kulcson</h3>
+  <pre><code>kedvenc_szamok = {'eric': 7, 'ever': 4, 'erin': 47}
+for nev in kedvenc_szamok.keys():
+    print(f"{nev} rendelkezik egy kedvenc számmal.")</code></pre>
+
+  <h3>Végigiterálás minden értéken</h3>
+  <pre><code>kedvenc_szamok = {'eric': 7, 'ever': 4, 'erin': 47}
+for szam in kedvenc_szamok.values():
+    print(f"{szam} egy kedvenc szám.")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python user input">
+  <h2>User input - 1</h2>
+  <p>A programok képesek bekérni adatokat a felhasználótól.  
+  Minden input alapértelmezetten sztringként kerül eltárolásra.</p>
+
+  <h3>Érték bekérése</h3>
+  <pre><code>nev = input("Mi a neved? ")
+print(f"Hello, {nev}!")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python user input">
+  <h2>User input - 2</h2>
+  <p>Számok bekérésekor az inputot át kell alakítani megfelelő típusra (int vagy float).</p>
+
+  <h3>Korcsoport bekérése</h3>
+  <pre><code>kor = input("Hány éves vagy? ")
+kor = int(kor)</code></pre>
+
+  <h3>Pi értékének bekérése</h3>
+  <pre><code>pi = input("Mi a pi értéke? ")
+pi = float(pi)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python while loops">
+  <h2>While ciklusok - 1</h2>
+  <p>A while ciklus addig ismétel egy kódrészletet, amíg egy feltétel igaz.  
+  Különösen hasznos, ha előre nem tudjuk, hányszor kell lefutnia a ciklusnak.</p>
+
+  <h3>Egyszerű while ciklus</h3>
+  <pre><code>aktualis_ertek = 1
+while aktualis_ertek <= 5:
+    print(aktualis_ertek)
+    aktualis_ertek += 1</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python while loops">
+  <h2>While ciklusok - 2</h2>
+  <p>A while ciklus segítségével a felhasználó döntheti el, mikor lépjen ki a programból.</p>
+
+  <h3>Kilépés a felhasználó választása alapján</h3>
+  <pre><code>uzenet = ''
+while uzenet != 'quit':
+    uzenet = input("Mi az üzeneted? ")
+    if uzenet != 'quit':
+        print(uzenet)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions">
+  <h2>Függvények - 1</h2>
+  <p>A függvények elnevezett kódrészletek, amelyek egy adott feladatot hajtanak végre.  
+  A függvénynek átadott információt argumentumnak, a függvény által fogadott információt pedig paraméternek nevezzük.</p>
+
+  <h3>Egyszerű függvény</h3>
+  <pre><code>def koszont_felhasznalo():
+    """Egyszerű üdvözlés megjelenítése."""
+    print("Hello!")
+
+koszont_felhasznalo()</code></pre>
+
+  <h3>Argumentum átadása</h3>
+  <pre><code>def koszont_felhasznalo(felhasznalonev):
+    """Személyre szabott üdvözlés megjelenítése."""
+    print(f"Hello, {felhasznalonev}!")
+
+koszont_felhasznalo('jesse')</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python functions">
+  <h2>Függvények - 2</h2>
+  <p>A függvények paramétereihez alapértelmezett értékeket is rendelhetünk, valamint visszaadhatnak értéket.</p>
+
+  <h3>Alapértelmezett paraméterértékek</h3>
+  <pre><code>def keszit_pizza(feltet='ananász'):
+    """Egyszerű, egyfeltétes pizza készítése."""
+    print(f"Készítettem egy {feltet} pizzát!")
+
+keszit_pizza()
+keszit_pizza('gomba')</code></pre>
+
+  <h3>Érték visszaadása</h3>
+  <pre><code>def osszead_szamok(x, y):
+    """Két szám összeadása és az összeg visszaadása."""
+    return x + y
+
+osszeg = osszead_szamok(3, 5)
+print(osszeg)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python classes">
+  <h2>Osztályok - 1</h2>
+  <p>Az osztály meghatározza egy objektum viselkedését és azokat az információkat, amelyeket tárolhat.  
+  Az osztályban tárolt információkat attribútumoknak nevezzük, az osztályhoz tartozó függvényeket pedig metódusoknak.</p>
+
+  <h3>Kutya osztály létrehozása</h3>
+  <pre><code>class Kutya:
+    """Egy kutya reprezentálása."""
+    def __init__(self, nev):
+        """Kutya objektum inicializálása."""
+        self.nev = nev
+
+    def ul(self):
+        """Ülés szimulálása."""
+        print(f"{self.nev} leült.")
+
+en_kutyam = Kutya('Peso')
+print(f"{en_kutyam.nev} egy nagyszerű kutya!")
+en_kutyam.ul()</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python classes">
+  <h2>Osztályok - 2</h2>
+  <p>A gyermekosztály örökli a szülőosztály attribútumait és metódusait, de új viselkedést is hozzáadhat.</p>
+
+  <h3>Öröklődés</h3>
+  <pre><code>class MentesKutya(Kutya):
+    """Mentőkutyát reprezentál."""
+    def __init__(self, nev):
+        """Mentőkutya inicializálása."""
+        super().__init__(nev)
+
+    def keres(self):
+        """Keresés szimulálása."""
+        print(f"{self.nev} keresést végez.")
+
+en_kutyam = MentesKutya('Willie')
+print(f"{en_kutyam.nev} egy mentőkutya.")
+en_kutyam.ul()
+en_kutyam.keres()</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python files">
+  <h2>Fájlok kezelése - 1</h2>
+  <p>A programok képesek fájlokból olvasni és fájlokba írni.  
+  A <code>pathlib</code> könyvtár megkönnyíti a fájlokkal és könyvtárakkal való munkát.  
+  Ha van egy definiált útvonal, használhatjuk a <code>read_text()</code> és <code>write_text()</code> metódusokat.</p>
+
+  <h3>Fájl tartalmának beolvasása</h3>
+  <pre><code>from pathlib import Path
+
+path = Path('siddhartha.txt')
+contents = path.read_text()
+lines = contents.splitlines()
+
+for line in lines:
+    print(line)</code></pre>
+
+  <h3>Írás fájlba</h3>
+  <pre><code>path = Path('journal.txt')
+uzenet = "Szeretem a programozást."
+path.write_text(uzenet)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python exceptions">
+  <h2>Fájlok kezelése - 2 (Kivételkezelés)</h2>
+  <p>A kivételek segítenek megfelelően reagálni a hibákra.  
+  A hibát okozó kódot a <code>try</code> blokkba tesszük.  
+  A hibára reagáló kód az <code>except</code> blokkban van.  
+  Az a kód, amely csak akkor fut le, ha nem történt hiba, az <code>else</code> blokkban található.</p>
+
+  <h3>Kivétel elkapása</h3>
+  <pre><code>prompt = "Hány jegyre van szükséged? "
+jegyek_szama = input(prompt)
+
+try:
+    jegyek_szama = int(jegyek_szama)
+except ValueError:
+    print("Kérlek próbáld újra.")
+else:
+    print("A jegyek nyomtatásra kerülnek.")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists sorting">
+  <h2>Listák rendezése</h2>
+  <p>A <code>sort()</code> metódus véglegesen megváltoztatja a lista sorrendjét.  
+  A <code>sorted()</code> függvény egy másolatot ad vissza, így az eredeti lista változatlan marad.  
+  Rendezhetünk betűrendben, fordított betűrendben, vagy megfordíthatjuk az eredeti sorrendet.  
+  Fontos megjegyezni, hogy a kis- és nagybetűk befolyásolhatják a rendezés sorrendjét.</p>
+
+  <h3>Lista rendezése véglegesen</h3>
+  <pre><code>felhasznalok.sort()</code></pre>
+
+  <h3>Lista rendezése véglegesen fordított betűrendben</h3>
+  <pre><code>felhasznalok.sort(reverse=True)</code></pre>
+
+  <h3>Lista rendezése ideiglenesen</h3>
+  <pre><code>print(sorted(felhasznalok))
+print(sorted(felhasznalok, reverse=True))</code></pre>
+
+  <h3>Lista sorrendjének megfordítása</h3>
+  <pre><code>felhasznalok.reverse()</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists removing">
+  <h2>Elemek eltávolítása listából</h2>
+  <p>Elemeket eltávolíthatunk a pozíciójuk alapján vagy az értékük szerint.  
+  Ha érték alapján távolítunk el egy elemet, a Python csak az első előfordulást törli.</p>
+
+  <h3>Elem törlése pozíció alapján</h3>
+  <pre><code>del felhasznalok[-1]</code></pre>
+
+  <h3>Elem törlése érték alapján</h3>
+  <pre><code>felhasznalok.remove('mia')</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists popping">
+  <h2>Elemek kipoppolása</h2>
+  <p>A <code>pop()</code> metódus eltávolítja és visszaadja a listából az adott elemet.  
+  Alapértelmezés szerint az utolsó elemet adja vissza, de bármely pozícióból kipoppolhatunk.</p>
+
+  <h3>Utolsó elem kipoppolása</h3>
+  <pre><code>legutobbi_felhasznalo = felhasznalok.pop()
+print(legutobbi_felhasznalo)</code></pre>
+
+  <h3>Első elem kipoppolása</h3>
+  <pre><code>elso_felhasznalo = felhasznalok.pop(0)
+print(elso_felhasznalo)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python lists length">
+  <h2>Lista hossza</h2>
+  <p>A <code>len()</code> függvény visszaadja a lista elemeinek számát.</p>
+
+  <h3>Lista hosszának meghatározása</h3>
+  <pre><code>felhasznalok_szama = len(felhasznalok)
+print(f"Összesen {felhasznalok_szama} felhasználónk van.")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists looping">
+  <h2>Összes elem kiíratása</h2>
+  <p>Ha szeretnénk egyszerűen végigmenni a lista minden elemén, használhatunk egy <code>for</code> ciklust.  
+  A ciklus minden elemet egyesével kiír, így könnyen ellenőrizhetjük vagy feldolgozhatjuk a tartalmat.</p>
+
+  <pre><code>for felhasznalo in felhasznalok:
+    print(felhasznalo)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python lists looping">
+  <h2>Üzenet minden elemhez és külön üzenet utána</h2>
+  <p>A ciklus törzsében minden elemhez személyre szabott üzenetet írhatunk ki.  
+  A ciklus után pedig egy összefoglaló üzenetet jeleníthetünk meg, amely mindenkit együtt üdvözöl.</p>
+
+  <pre><code>for felhasznalo in felhasznalok:
+    print(f"\nÜdvözlünk, {felhasznalo}!")
+    print("Nagyon örülünk, hogy csatlakoztál!")
+
+print("\nÜdvözlünk mindenkit, örülünk, hogy itt vagytok!")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python numerical lists">
+  <h2>Számok kiíratása 0-tól 1000-ig</h2>
+  <p>A <code>range()</code> függvény segítségével könnyen generálhatunk számokat egy adott tartományban.  
+  Az alábbi példa 0-tól 1000-ig írja ki a számokat.</p>
+
+  <pre><code>for szam in range(1001):
+    print(szam)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python numerical lists">
+  <h2>Számok kiíratása 1-től 1000-ig</h2>
+  <p>A <code>range()</code> függvény kezdőértéket is megadhat, így az első szám 1 lesz.  
+  Az alábbi példa 1-től 1000-ig írja ki a számokat.</p>
+
+  <pre><code>for szam in range(1, 1001):
+    print(szam)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python numerical lists">
+  <h2>Lista készítése 1-től egymillióig</h2>
+  <p>A <code>list()</code> függvény és a <code>range()</code> kombinációjával létrehozhatunk egy listát, amely tartalmazza az összes számot 1-től egymillióig.  
+  Ez hatékony módja nagy számhalmazok előállításának.</p>
+
+  <pre><code>szamok = list(range(1, 1_000_001))</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python numerical lists statistics">
+  <h2>Minimum érték keresése</h2>
+  <p>A <code>min()</code> függvény visszaadja a lista legkisebb értékét.  
+  Hasznos például a legfiatalabb kor meghatározására.</p>
+
+  <pre><code>korok = [93, 99, 66, 17, 85, 1, 35, 82, 2, 77]
+legfiatalabb = min(korok)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python numerical lists statistics">
+  <h2>Maximum érték keresése</h2>
+  <p>A <code>max()</code> függvény visszaadja a lista legnagyobb értékét.  
+  Hasznos például a legidősebb kor meghatározására.</p>
+
+  <pre><code>korok = [93, 99, 66, 17, 85, 1, 35, 82, 2, 77]
+legidosebb = max(korok)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python numerical lists statistics">
+  <h2>Összeg kiszámítása</h2>
+  <p>A <code>sum()</code> függvény visszaadja a lista összes elemének összegét.  
+  Hasznos például az összes életkor évszámának kiszámítására.</p>
+
+  <pre><code>korok = [93, 99, 66, 17, 85, 1, 35, 82, 2, 77]
+ossz_ev = sum(korok)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists slicing">
+  <h2>Lista szeletelése</h2>
+  <p>A listákból könnyen kiemelhetünk részeket a szeletelés (slicing) segítségével.  
+  A szögletes zárójelekben megadott kezdő és végindex határozza meg, mely elemek kerülnek a részlistába.  
+  A szeletelés rugalmas: megadhatjuk az első néhány elemet, a középső elemeket, vagy az utolsókat.</p>
+
+  <h3>Első három elem</h3>
+  <pre><code>befutok = ['kai', 'abe', 'ada', 'gus', 'zoe']
+elso_harom = befutok[:3]</code></pre>
+
+  <h3>Középső három elem</h3>
+  <pre><code>kozepso_harom = befutok[1:4]</code></pre>
+
+  <h3>Utolsó három elem</h3>
+  <pre><code>utolso_harom = befutok[-3:]</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists copying">
+  <h2>Lista másolása</h2>
+  <p>Ha szeretnénk egy meglévő listáról másolatot készíteni, használhatjuk a szeletelés (slicing) szintaxisát.  
+  Ez biztosítja, hogy az új lista független legyen az eredetitől, így a módosítások nem hatnak vissza rá.</p>
+
+  <h3>Másolat készítése</h3>
+  <pre><code>befutok = ['kai', 'abe', 'ada', 'gus', 'zoe']
+masolat_befutok = befutok[:]</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python list comprehension squares">
+  <h2>Négyzetek listája ciklussal</h2>
+  <p>Egy <code>for</code> ciklus segítségével lépésről lépésre kiszámíthatjuk a számok négyzetét, majd hozzáadhatjuk egy listához.</p>
+
+  <pre><code>negyzetek = []
+for x in range(1, 11):
+    negyzet = x**2
+    negyzetek.append(negyzet)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python list comprehension squares">
+  <h2>Négyzetek listája list comprehension-nel</h2>
+  <p>A list comprehension rövidebb és elegánsabb módja ugyanannak a feladatnak: egy sorban létrehozhatjuk a négyzetek listáját.</p>
+
+  <pre><code>negyzetek = [x**2 for x in range(1, 11)]</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python list comprehension names">
+  <h2>Névlista nagybetűssé alakítása ciklussal</h2>
+  <p>Egy <code>for</code> ciklus segítségével minden nevet külön-külön nagybetűssé alakíthatunk, majd hozzáadhatjuk egy új listához.</p>
+
+  <pre><code>nevek = ['kai', 'abe', 'ada', 'gus', 'zoe']
+nagybetus_nevek = []
+for nev in nevek:
+    nagybetus_nevek.append(nev.upper())</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python list comprehension names">
+  <h2>Névlista nagybetűssé alakítása list comprehension-nel</h2>
+  <p>A list comprehension itt is rövidebb megoldást kínál: egy sorban átalakíthatjuk az összes nevet nagybetűssé.</p>
+
+  <pre><code>nevek = ['kai', 'abe', 'ada', 'gus', 'zoe']
+nagybetus_nevek = [nev.upper() for nev in nevek]</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python lists dogs">
+  <h2>Lista építése és elemek kiíratása</h2>
+  <p>Egy üres listát fokozatosan feltölthetünk elemekkel az <code>append()</code> metódus segítségével.  
+  Ezután egy <code>for</code> ciklussal végigmehetünk rajta, és minden elemhez kiírhatunk üzenetet.  
+  A lista szeletelésével (<code>[:2]</code>) kiválaszthatjuk az első néhány elemet, majd külön kiírhatjuk őket.  
+  Az elemek törlésére használhatjuk a <code>del</code> utasítást pozíció alapján, vagy a <code>remove()</code> metódust érték alapján.</p>
+
+  <pre><code>kutyak = []
+kutyak.append('willie')
+kutyak.append('hootz')
+kutyak.append('peso')
+kutyak.append('goblin')
+
+for kutya in kutyak:
+    print(f"Hello {kutya}!")
+
+print("Szeretem ezeket a kutyákat!")
+
+print("\nAz első két kutyám:")
+regi_kutyak = kutyak[:2]
+for regi_kutya in regi_kutyak:
+    print(regi_kutya)
+
+del kutyak[0]
+kutyak.remove('peso')
+print(kutyak)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries deleting">
+  <h2>Kulcs-érték pár törlése szótárból</h2>
+  <p>A szótárakban (<code>dict</code>) tárolt adatokat kulcs-érték párok alkotják.  
+  Ha egy adott kulcsot törlünk a <code>del</code> utasítással, akkor az ahhoz tartozó érték is eltűnik a szótárból.  
+  Ez hasznos, ha már nincs szükségünk egy bizonyos információra.</p>
+
+  <pre><code>alien_0 = {'color': 'green', 'points': 5}
+print(alien_0)
+
+del alien_0['points']
+print(alien_0)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries looping">
+  <h2>Szótár kulcsainak bejárása</h2>
+  <p>A <code>.keys()</code> metódus segítségével végigmehetünk egy szótár összes kulcsán.  
+  Ez hasznos például akkor, ha szeretnénk kiírni, kik vettek részt egy felmérésben.  
+  A ciklus minden kulcsot egyesével ad át a változónak, amelyet felhasználhatunk a törzsben.</p>
+
+  <pre><code># Mutassuk meg, kik vettek részt a felmérésben.
+for nev in kedvenc_nyelvek.keys():
+    print(nev)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries looping">
+  <h2>Szótár kulcsainak bejárása fordított sorrendben</h2>
+  <p>A <code>sorted()</code> függvény segítségével rendezhetjük a szótár kulcsait.  
+  Ha a <code>reverse=True</code> paramétert adjuk meg, akkor a kulcsok fordított sorrendben jelennek meg.  
+  Így például kiírhatjuk minden személy kedvenc nyelvét név szerinti visszafelé rendezve.</p>
+
+  <pre><code># Mutassuk meg mindenki kedvenc nyelvét,
+# a nevek fordított sorrendjében.
+for nev in sorted(kedvenc_nyelvek.keys(), reverse=True):
+    nyelv = kedvenc_nyelvek[nev]
+    print(f"{nev}: {nyelv}")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries list">
+  <h2>Szótárak tárolása listában</h2>
+  <p>A szótárak (<code>dict</code>) különböző adatokat tárolhatnak kulcs-érték párokban.  
+  Ha több ilyen szótárt szeretnénk együtt kezelni, elhelyezhetjük őket egy listában.  
+  Így könnyen végigmehetünk rajtuk, és kiírhatjuk minden felhasználó összes adatát.</p>
+
+  <pre><code># Üres lista létrehozása
+felhasznalok = []
+
+# Új felhasználó hozzáadása
+uj_felhasznalo = {
+    'vezeteknev': 'fermi',
+    'keresztnev': 'enrico',
+    'felhasznalonev': 'efermi',
+}
+felhasznalok.append(uj_felhasznalo)
+
+# Másik felhasználó hozzáadása
+uj_felhasznalo = {
+    'vezeteknev': 'curie',
+    'keresztnev': 'marie',
+    'felhasznalonev': 'mcurie',
+}
+felhasznalok.append(uj_felhasznalo)
+
+# Összes információ kiíratása
+print("Felhasználói összegzés:")
+for felhasznalo_dict in felhasznalok:
+    for k, v in felhasznalo_dict.items():
+        print(f"{k}: {v}")
+    print("\n")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries list">
+  <h2>Szótárak listában közvetlenül</h2>
+  <p>A szótárakat nem csak <code>append()</code> segítségével adhatjuk hozzá egy listához, hanem közvetlenül is definiálhatjuk őket a lista létrehozásakor.  
+  Ez egyszerűbb és átláthatóbb, ha előre ismert adatokkal dolgozunk.  
+  Ezután egy <code>for</code> ciklussal végigmehetünk a listán, és kiírhatjuk minden felhasználó összes adatát.</p>
+
+  <pre><code># Felhasználók listájának közvetlen definiálása
+felhasznalok = [
+    {
+        'vezeteknev': 'fermi',
+        'keresztnev': 'enrico',
+        'felhasznalonev': 'efermi',
+    },
+    {
+        'vezeteknev': 'curie',
+        'keresztnev': 'marie',
+        'felhasznalonev': 'mcurie',
+    },
+]
+
+# Összes információ kiíratása
+print("Felhasználói összegzés:")
+for felhasznalo_dict in felhasznalok:
+    for k, v in felhasznalo_dict.items():
+        print(f"{k}: {v}")
+    print("\n")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries lists">
+  <h2>Listák tárolása szótárban</h2>
+  <p>A szótárakban nemcsak egyszerű értékeket, hanem listákat is tárolhatunk.  
+  Ez lehetővé teszi, hogy egy kulcshoz több értéket rendeljünk, például egy személy kedvenc nyelveit.  
+  A <code>.items()</code> metódussal végigmehetünk a szótár minden kulcs-érték párján, majd egy belső ciklussal kiírhatjuk a lista elemeit.</p>
+
+  <pre><code># Több nyelv tárolása minden személyhez
+kedvenc_nyelvek = {
+    'jen': ['python', 'ruby'],
+    'sarah': ['c'],
+    'edward': ['ruby', 'go'],
+    'phil': ['python', 'haskell'],
+}
+
+# Összes válasz kiíratása
+for nev, nyelvek in kedvenc_nyelvek.items():
+    print(f"{nev}: ")
+    for nyelv in nyelvek:
+        print(f"- {nyelv}")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries nesting">
+  <h2>Szótárak tárolása szótárban</h2>
+  <p>A szótárakban nemcsak egyszerű értékeket vagy listákat, hanem más szótárakat is tárolhatunk.  
+  Ez lehetővé teszi, hogy összetett adatstruktúrákat hozzunk létre, például felhasználói profilokat, ahol minden felhasználónévhez egy külön szótár tartozik.</p>
+
+  <pre><code>felhasznalok = {
+    'aeinstein': {
+        'keresztnev': 'albert',
+        'vezeteknev': 'einstein',
+        'helyszin': 'princeton',
+    },
+    'mcurie': {
+        'keresztnev': 'marie',
+        'vezeteknev': 'curie',
+        'helyszin': 'paris',
+    },
+}
+
+for felhasznalonev, felhasznalo_dict in felhasznalok.items():
+    teljes_nev = f"{felhasznalo_dict['keresztnev']} {felhasznalo_dict['vezeteknev']}"
+    helyszin = felhasznalo_dict['helyszin']
+
+    print(f"\nFelhasználónév: {felhasznalonev}")
+    print(f"\tTeljes név: {teljes_nev.title()}")
+    print(f"\tHelyszín: {helyszin.title()}")</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries generating">
+  <h2>Egymillió szótár generálása</h2>
+  <p>Ha sok, hasonló adatszerkezetet szeretnénk létrehozni, hatékonyan megtehetjük egy ciklus segítségével.  
+  Ebben a példában egymillió "alien" szótár készül, mindegyik azonos kezdőértékekkel.  
+  A ciklus minden iterációban új szótárt hoz létre, majd hozzáadja egy listához.  
+  A végén a <code>len()</code> függvénnyel ellenőrizhetjük, hogy valóban egymillió elem került a listába.</p>
+
+  <pre><code>alienek = []
+
+# Egymillió zöld alien létrehozása, mindegyik 5 pontot ér
+# és egy sorban indul
+for alien_szam in range(1_000_000):
+    uj_alien = {
+        'szin': 'zold',
+        'pont': 5,
+        'x': 20 * alien_szam,
+        'y': 0
+    }
+    alienek.append(uj_alien)
+
+# Bizonyítsuk, hogy a lista egymillió alien-t tartalmaz
+alienek_szama = len(alienek)
+print("Létrehozott alienek száma:")
+print(alienek_szama)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions arguments">
+  <h2>Pozicionális argumentumok használata</h2>
+  <p>A függvényhívásnál az argumentumokat sorrendben kell megadni.  
+  Az első érték az <code>animal</code> változóhoz, a második a <code>name</code> változóhoz kerül.  
+  Ez egyszerű és gyors, de figyelni kell a helyes sorrendre.</p>
+
+  <pre><code>def describe_pet(allat, nev):
+    """Információ kiíratása egy kedvencről."""
+    print(f"\nVan egy {allat}.")
+    print(f"A neve {nev}.")
+
+describe_pet('hörcsög', 'harry')
+describe_pet('kutya', 'willie')</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="python functions arguments">
+  <h2>Kulcsszavas argumentumok használata</h2>
+  <p>A függvényhívásnál megadhatjuk az argumentumok nevét is.  
+  Így nem számít a sorrend, mert a Python a kulcs alapján párosítja az értéket a paraméterhez.  
+  Ez átláthatóbb, különösen sok paraméter esetén.</p>
+
+  <pre><code>def describe_pet(allat, nev):
+    """Információ kiíratása egy kedvencről."""
+    print(f"\nVan egy {allat}.")
+    print(f"A neve {nev}.")
+
+describe_pet(allat='hörcsög', nev='harry')
+describe_pet(nev='willie', allat='kutya')</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions return-value">
+  <h2>Egyetlen érték visszaadása</h2>
+  <p>A függvények a <code>return</code> utasítással adhatnak vissza értéket.  
+  Ebben a példában a függvény egy teljes nevet formáz meg és adja vissza.  
+  A visszatérési értéket változóban tárolhatjuk, majd kiírhatjuk.</p>
+
+  <pre><code>def get_full_name(keresztnev, vezeteknev):
+    """Formázott teljes név visszaadása."""
+    teljes_nev = f"{keresztnev} {vezeteknev}"
+    return teljes_nev.title()
+
+zenesz = get_full_name('jimi', 'hendrix')
+print(zenesz)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions return-dictionary">
+  <h2>Szótár visszaadása</h2>
+  <p>A függvények nemcsak egyszerű értékeket, hanem összetettebb adatstruktúrákat is visszaadhatnak.  
+  Ebben a példában a függvény egy szótárt ad vissza, amely egy személy adatait tartalmazza.  
+  Így több információt kezelhetünk egyetlen visszatérési értékben.</p>
+
+  <pre><code>def build_person(keresztnev, vezeteknev):
+    """Szótár visszaadása egy személyről."""
+    szemely = {'keresztnev': keresztnev, 'vezeteknev': vezeteknev}
+    return szemely
+
+zenesz = build_person('jimi', 'hendrix')
+print(zenesz)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions return-dictionary optional">
+  <h2>Szótár visszaadása opcionális értékekkel</h2>
+  <p>A függvények rugalmasabbá tehetők opcionális paraméterekkel.  
+  Ha az <code>age</code> paramétert megadjuk, bekerül a szótárba, ha nem, akkor kihagyjuk.  
+  Így ugyanaz a függvény különböző mennyiségű adatot tud visszaadni.</p>
+
+  <pre><code>def build_person(keresztnev, vezeteknev, kor=None):
+    """Szótár visszaadása egy személyről, opcionális korral."""
+    szemely = {'keresztnev': keresztnev, 'vezeteknev': vezeteknev}
+    if kor:
+        szemely['kor'] = kor
+    return szemely
+
+# Példák
+zenesz = build_person('jimi', 'hendrix', 27)
+print(zenesz)
+
+zenesz = build_person('janis', 'joplin')
+print(zenesz)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions email">
+  <h2>Email generálása függvénnyel</h2>
+  <p>A függvények segítségével dinamikusan hozhatunk létre adatokat a felhasználó beviteléből.  
+  Ebben a példában a program bekéri a nevet, az osztály betűjelét és a kezdési évet, majd ezekből összeállít egy e-mail címet.</p>
+
+  <pre><code>def email():
+    nev = input("Adj meg nevet: ")
+    osztaly = input("Add meg az osztályod betűjét: ")
+    ev = input("Add meg a kezdési éved: ")
+
+    return f"{nev}.tech{ev}{osztaly}@bolyaimovar.com"
+
+print(email())</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python file-handling cars">
+  <h2>Autók adatainak feldolgozása fájlból - feladat példa</h2>
+  <p>A program beolvassa az <code>autok.txt</code> fájlt, feldolgozza az autók adatait, majd különböző statisztikákat számol.  
+  Ezután létrehoz egy új fájlt (<code>sotetkek.csv</code>), amelybe a sötétkék autók adatai kerülnek, év szerint rendezve.</p>
+
+  <pre><code>with open("autok.txt", "r", encoding="utf-8") as f:
+    autok = [sor.strip().split(";") for sor in f]
+
+    # 5 ajtós autók száma
+    ajto = sum(int(auto[2]) == 5 for auto in autok)
+
+    # Toyota típusok száma
+    toyota = sum("Toyota" in auto[0] for auto in autok)
+
+    # Legfiatalabb autó típusa
+    lft = max(autok, key=lambda x: int(x[1]))[0]
+
+    # Homok színű autók életkora
+    hsz = [(2023 - int(auto[1])) for auto in autok if auto[3] == "Homok"]
+
+    # Átlag életkor
+    hae = sum(hsz) / len(hsz)
+
+    print("5 ajtós autóból:", ajto)
+    print("Ennyi Toyota van:", toyota)
+    print("Legfiatalabb típusa:", lft)
+    print("Életkor:", hsz)
+    print("Átlag életkor:", round(hae, 2))
+
+# Sötétkék autók kiírása CSV fájlba, év szerint rendezve
+with open("sotetkek.csv", "w", encoding="utf-8") as file:
+    autok.sort(key=lambda x: int(x[1]))
+    for auto in autok:
+        if auto[3] == "Sotetkek":
+            print(";".join(auto), file=file)</code></pre>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions average">
+  <h2>Autók átlagfogyasztásának számítása</h2>
+  <p>A program bekéri az autók nevét, fogyasztását és évjáratát, majd szótárban tárolja az adatokat.  
+  Ezután egy függvény segítségével kiszámolja az összes autó átlagfogyasztását.  
+  Az <code>None</code> értékek és hibás évszámok kezelése is be van építve.</p>
+<h3>Példa</h3>
+  <pre><code>def atlag_fogyasztas(adatok):
+    """Számolja ki az autók átlagfogyasztását."""
+    osszeg = 0
+    for auto in adatok.values():
+        osszeg += auto["fogyasztas"]
+    return osszeg / len(adatok)
+
+adat = {}
+
+while True:
+    auto = input("Adja meg az autó nevét (vege = kilépés): ")
+    if auto == "vege":
+        break
+    fogyasztas = int(input("Adja meg az autó fogyasztását: "))
+    evj = int(input("Adja meg az autó évjáratát: "))
+    if evj > 2023:
+        print("Hamis évszám!")
+        evj = int(input("Adja meg az autó évjáratát újra: "))
+
+    adat[auto] = {"fogyasztas": fogyasztas, "evjarat": evj}
+    print(adat)
+
+print("\nFeladat b)")
+for auto, info in adat.items():
+    print(f"{auto} -> fogyasztás: {info['fogyasztas']}")
+
+print("Az autók átlagfogyasztása:", atlag_fogyasztas(adat))</code></pre>
+<p><strong>Eredmény:</strong><br>
+  Opel fogyasztás: 7<br>
+  Ford fogyasztás: 6<br>
+  Az autók átlagfogyasztása: 6.5</p>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="math average">
+  <h2>Átlagolás egyszerűen</h2>
+
+  <h3>Magyarázat</h3>
+  <p>Az átlag kiszámítása nagyon egyszerű: összeadjuk az összes értéket, majd elosztjuk az elemek számával.  
+  Így kapunk egyetlen számot, amely jellemzi az egész adathalmazt.</p>
+
+  <h3>Példa – kézi számítás</h3>
+  <pre><code>szamok = [4, 6, 8]
+
+osszeg = sum(szamok)        # 4 + 6 + 8 = 18
+darab = len(szamok)         # 3 elem van
+atlag = osszeg / darab      # 18 / 3 = 6
+
+print("Az átlag:", atlag)</code></pre>
+  <p><strong>Eredmény:</strong> Az átlag 6.</p>
+
+  <h3>Példa – avg() függvénnyel</h3>
+  <pre><code>szamok = [4, 6, 8]
+
+atlag = avg(szamok)
+
+print("Az átlag:", atlag)</code></pre>
+  <p><strong>Eredmény:</strong> Az átlag 6.</p>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python functions average">
+  <h2>Átlagolás feladat</h2>
+
+  <h3>Magyarázat</h3>
+  <p>A program bekéri a tanulók nevét és jegyeit öt tantárgyból.  
+  Ezeket egy szótárban tárolja, majd egy függvény kiszámolja az átlagot.  
+  Az átlagot úgy kapjuk meg, hogy összeadjuk az öt jegyet, majd elosztjuk öttel.</p>
+
+  <h3>Példa</h3>
+  <pre><code>osztaly = {}
+
+def atlag(M, MA, A, T, I):
+    """Visszaadja az öt jegy átlagát."""
+    osszeg = M + MA + A + T + I
+    return osszeg / 5
+
+nev = input("Adja meg a nevet (Finish = kilépés): ")
+while nev != 'Finish':
+    _Magyar = int(input("Magyar jegy: "))
+    _Matek = int(input("Matek jegy: "))
+    _Angol = int(input("Angol jegy: "))
+    _Tori = int(input("Töri jegy: "))
+    _Info = int(input("Infó jegy: "))
+
+    osztaly[nev] = {
+        "Magyar": _Magyar,
+        "Matek": _Matek,
+        "Angol": _Angol,
+        "Töri": _Tori,
+        "Infó": _Info,
+        "Átlag": atlag(_Magyar, _Matek, _Angol, _Tori, _Info)
+    }
+
+    print(f"{nev} átlaga: {osztaly[nev]['Átlag']:.2f}")
+    nev = input("\nAdja meg a következő nevet (Finish = kilépés): ")
+
+print("\nOsztály adatai:")
+for tanulo, adatok in osztaly.items():
+    print(tanulo, "->", adatok)</code></pre>
+<p><strong>Eredmény:</strong><br>
+  Péter átlaga: 4.20<br>
+  Anna átlaga: 3.60<br>
+</p>
+
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="python dictionaries items">
+  <h2>A .items() magyarázata</h2>
+
+  <h3>Magyarázat</h3>
+  <p>A <code>.items()</code> metódus a szótár minden kulcs-érték párját adja vissza.  
+  Ez különösen hasznos, ha egyszerre szeretnénk hozzáférni a kulcshoz (pl. név) és az értékhez (pl. jegyek).  
+  A ciklusban két változót használunk: az első a kulcsot, a második az értéket tárolja.</p>
+
+  <h3>Példa</h3>
+  <pre><code>osztaly = {
+    "Péter": {"Magyar": 4, "Matek": 5},
+    "Anna": {"Magyar": 3, "Matek": 4}
+}
+
+for nev, adatok in osztaly.items():
+    print(f"{nev} jegyei: {adatok}")</code></pre>
+
+  <p><strong>Eredmény:</strong><br>
+  Péter jegyei: {'Magyar': 4, 'Matek': 5}<br>
+  Anna jegyei: {'Magyar': 3, 'Matek': 4}</p>
+
+  <button class="copy">Copy</button>
+</div>
+
   </section>
 
   <script>
