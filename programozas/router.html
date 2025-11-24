@@ -1076,6 +1076,114 @@ crypto key generate rsa modulus 2048</code></pre>
   <pre><code>ip ssh authentication-retries 3</code></pre>
   <button class="copy">Copy</button>
 </div>
+<div class="card" data-tags="switch port mode">
+  <h2>Dynamic Desirable mód</h2>
+  <p>Aktívan próbál tárgyalni trunk kapcsolatot a távoli végponttal.</p>
+  <pre><code>switchport mode dynamic desirable</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="switch port mode">
+  <h2>Dynamic Auto mód</h2>
+  <p>Csak akkor alakít ki trunk kapcsolatot, ha a távoli végpont kéri.</p>
+  <pre><code>switchport mode dynamic auto</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="switch port mode">
+  <h2>Access mód</h2>
+  <p>Soha nem hoz létre trunk kapcsolatot.</p>
+  <pre><code>switchport mode access</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="switch port encapsulation">
+  <h2>Trunk encapsulation dot1q</h2>
+  <p>Beállítja a trunk kapcsolat kapszulázási módját IEEE 802.1Q szabvány szerint.  
+  Ez határozza meg, hogyan jelöli meg a switch a VLAN-okat a trunk vonalon.</p>
+  <pre><code>switchport trunk encapsulation dot1q</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="vtp configuration">
+  <h2>VTP mód beállítása</h2>
+  <p>A kapcsoló VTP szerver módban működik, így képes VLAN információkat létrehozni és terjeszteni a VTP domainen belül.</p>
+  <pre><code>vtp mode server</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vtp configuration">
+  <h2>VTP domain név</h2>
+  <p>Meghatározza a VTP tartomány nevét, amelyhez a kapcsoló tartozik. Csak azonos domainben lévő eszközök osztják meg a VLAN információkat.</p>
+  <pre><code>vtp domain LASVEGAS</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vtp configuration">
+  <h2>VTP jelszó</h2>
+  <p>Biztonsági jelszó beállítása a VTP domainhez. Csak az azonos jelszót használó eszközök tudnak csatlakozni és információt cserélni.</p>
+  <pre><code>vtp password Presl3y</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vtp configuration">
+  <h2>VTP verzió</h2>
+  <p>A VTP protokoll verziójának meghatározása. A verzió 2 támogatja a VLAN típusok szélesebb körét és kompatibilitást biztosít.</p>
+  <pre><code>vtp version 2</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="vtp configuration">
+  <h2>VTP pruning</h2>
+  <p>Engedélyezi a VTP pruning funkciót, amely eltávolítja a felesleges VLAN forgalmat a trunk vonalakról, így optimalizálja a hálózatot.</p>
+  <pre><code>vtp pruning</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="troubleshoot vlan">
+  <h2>show vlan</h2>
+  <p>Megjeleníti az aktuális VLAN konfigurációt és hozzárendelt portokat.  
+  Hasznos annak ellenőrzésére, hogy egy interfész a megfelelő VLAN‑ban van-e.</p>
+  <pre><code>show vlan</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="troubleshoot interface">
+  <h2>show interface status</h2>
+  <p>Listázza az interfészek állapotát (adminisztratív és operatív), sebességet, duplex módot.  
+  Segít azonosítani, ha egy port le van tiltva vagy hibásan működik.</p>
+  <pre><code>show interface status</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="troubleshoot switchport">
+  <h2>show interface switchport</h2>
+  <p>Megmutatja az interfész switchport beállításait (mód: access/trunk, VLAN hozzárendelés).  
+  Ellenőrizhető vele, hogy a port helyesen van-e konfigurálva.</p>
+  <pre><code>show interface switchport</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="troubleshoot trunk">
+  <h2>show interface trunk</h2>
+  <p>Megjeleníti az aktív trunk kapcsolatokat és az engedélyezett VLAN‑okat.  
+  Hasznos annak vizsgálatára, hogy a trunk megfelelően működik-e.</p>
+  <pre><code>show interface trunk</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="troubleshoot vtp">
+  <h2>show vtp status</h2>
+  <p>Megmutatja a VTP domain nevét, módját, verzióját és a VLAN adatbázis állapotát.  
+  Hibakeresésnél ellenőrizhető, hogy a VTP szinkronizáció rendben van-e.</p>
+  <pre><code>show vtp status</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="troubleshoot vtp">
+  <h2>show vtp password</h2>
+  <p>Megjeleníti a VTP domainhez beállított jelszót.  
+  Segít ellenőrizni, hogy azonos jelszóval működnek-e az eszközök a domainben.</p>
+  <pre><code>show vtp password</code></pre>
+  <button class="copy">Copy</button>
+</div>
 
 
 </section>
