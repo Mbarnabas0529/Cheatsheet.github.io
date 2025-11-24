@@ -773,6 +773,310 @@
   <pre><code>write memory</code></pre>
   <button class="copy">Copy</button>
 </div>
+<div class="card" data-tags="router dhcp config">
+  <h2>ip dhcp pool</h2>
+  <p>DHCP pool létrehozása, amely meghatározza a kiosztott IP címek tartományát.</p>
+  <pre><code>ip dhcp pool LAN</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>network</h2>
+  <p>A DHCP poolhoz tartozó hálózat és maszk beállítása.</p>
+  <pre><code>network 192.168.1.0 255.255.255.0</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>default-router</h2>
+  <p>Az alapértelmezett átjáró (gateway) címe a kliens gépek számára.</p>
+  <pre><code>default-router 192.168.1.1</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>dns-server</h2>
+  <p>A DHCP által kiosztott DNS szerver címe.</p>
+  <pre><code>dns-server 8.8.8.8 1.1.1.1</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>lease</h2>
+  <p>A bérleti idő (lease time) beállítása órában, napban, vagy másodpercben.</p>
+  <pre><code>lease 1 12 0</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>ip dhcp excluded-address</h2>
+  <p>Azok az IP címek, amelyeket a DHCP nem oszthat ki (pl. statikus eszközöknek fenntartva).</p>
+  <pre><code>ip dhcp excluded-address 192.168.1.1 192.168.1.10</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>ip dhcp relay</h2>
+  <p>DHCP relay beállítása, ha a szerver más hálózaton található.</p>
+  <pre><code>ip helper-address 192.168.100.10</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router dhcp config">
+  <h2>static dhcp binding</h2>
+  <p>Statikus DHCP hozzárendelés egy adott MAC címhez.</p>
+  <pre><code>ip dhcp pool Printer
+host 192.168.1.50 255.255.255.0
+client-identifier 0100.1A2B.3C4D.5E</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="switch trunk config">
+  <h2>switchport mode trunk</h2>
+  <p>Az interfész trunk módba állítása, hogy több VLAN forgalmát tudja továbbítani.</p>
+  <pre><code>interface GigabitEthernet0/1
+switchport mode trunk</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="switch trunk config">
+  <h2>allowed VLANs</h2>
+  <p>A trunk interfészen engedélyezett VLAN-ok listája.</p>
+  <pre><code>switchport trunk allowed vlan 10,20,30</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="switch vlan config">
+  <h2>vlan</h2>
+  <p>Új VLAN létrehozása és elnevezése.</p>
+  <pre><code>vlan 10
+name HR</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router nat config">
+  <h2>NAT overload</h2>
+  <p>Dinamikus NAT beállítása, hogy a belső hálózat egyetlen publikus IP-t használjon.</p>
+  <pre><code>ip nat inside source list 1 interface GigabitEthernet0/0 overload</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router acl config">
+  <h2>access-list</h2>
+  <p>Hozzáférés-vezérlési lista létrehozása a forgalom szűrésére.</p>
+  <pre><code>access-list 100 permit ip 192.168.1.0 0.0.0.255 any</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router routing config">
+  <h2>static route</h2>
+  <p>Statikus útvonal beállítása egy távoli hálózat eléréséhez.</p>
+  <pre><code>ip route 10.0.0.0 255.255.255.0 192.168.1.254</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router ospf config">
+  <h2>OSPF</h2>
+  <p>OSPF dinamikus routing protokoll konfigurálása.</p>
+  <pre><code>router ospf 1
+network 192.168.1.0 0.0.0.255 area 0</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router bgp config">
+  <h2>BGP</h2>
+  <p>BGP szomszéd konfigurálása és prefix hirdetése.</p>
+  <pre><code>router bgp 65001
+neighbor 203.0.113.1 remote-as 65002
+network 192.168.1.0 mask 255.255.255.0</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="switch port-security config">
+  <h2>port-security</h2>
+  <p>Port biztonság beállítása, hogy csak meghatározott számú MAC cím csatlakozhasson.</p>
+  <pre><code>interface FastEthernet0/1
+switchport mode access
+switchport port-security
+switchport port-security maximum 2
+switchport port-security violation restrict
+switchport port-security mac-address sticky</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router qos config">
+  <h2>QoS class-map</h2>
+  <p>Forgalom osztályozása QoS szabályokhoz.</p>
+  <pre><code>class-map match-any VOICE
+ match ip dscp ef</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router qos config">
+  <h2>QoS policy-map</h2>
+  <p>QoS policy létrehozása a forgalom kezelésére.</p>
+  <pre><code>policy-map QOS-POLICY
+ class VOICE
+  priority percent 30
+ class class-default
+  fair-queue</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router qos config">
+  <h2>QoS alkalmazása interfészre</h2>
+  <p>A QoS policy hozzárendelése egy interfészhez.</p>
+  <pre><code>interface GigabitEthernet0/0
+service-policy output QOS-POLICY</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router vpn config">
+  <h2>IPSec VPN - ISAKMP policy</h2>
+  <p>ISAKMP policy létrehozása VPN kapcsolathoz.</p>
+  <pre><code>crypto isakmp policy 10
+ encr aes
+ hash sha256
+ authentication pre-share
+ group 2
+ lifetime 86400</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router vpn config">
+  <h2>IPSec VPN - pre-shared key</h2>
+  <p>Előre megosztott kulcs beállítása a peerhez.</p>
+  <pre><code>crypto isakmp key MySecretKey address 203.0.113.1</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router vpn config">
+  <h2>IPSec transform-set</h2>
+  <p>Transform-set létrehozása az IPSec titkosításhoz.</p>
+  <pre><code>crypto ipsec transform-set MYSET esp-aes esp-sha-hmac</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router vpn config">
+  <h2>Crypto map</h2>
+  <p>Crypto map konfigurálása és hozzárendelése interfészhez.</p>
+  <pre><code>crypto map VPN-MAP 10 ipsec-isakmp
+ set peer 203.0.113.1
+ set transform-set MYSET
+ match address 101
+
+interface GigabitEthernet0/0
+ crypto map VPN-MAP</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="router hsrp config">
+  <h2>HSRP</h2>
+  <p>Hot Standby Router Protocol konfigurálása redundáns gateway-hez.</p>
+  <pre><code>interface GigabitEthernet0/1
+ ip address 192.168.1.2 255.255.255.0
+ standby 1 ip 192.168.1.1
+ standby 1 priority 110
+ standby 1 preempt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router vrrp config">
+  <h2>VRRP</h2>
+  <p>Virtual Router Redundancy Protocol konfigurálása.</p>
+  <pre><code>interface GigabitEthernet0/1
+ ip address 192.168.1.3 255.255.255.0
+ vrrp 10 ip 192.168.1.1
+ vrrp 10 priority 120
+ vrrp 10 preempt</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router aaa config">
+  <h2>AAA újra engedélyezése</h2>
+  <p>AAA funkciók bekapcsolása a routeren.</p>
+  <pre><code>aaa new-model</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router aaa config">
+  <h2>AAA authentication</h2>
+  <p>Felhasználó hitelesítés beállítása konzolhoz és vty vonalakhoz.</p>
+  <pre><code>aaa authentication login default local
+aaa authorization exec default local</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router aaa config">
+  <h2>Felhasználó létrehozása</h2>
+  <p>Lokális felhasználó hozzáadása jelszóval.</p>
+  <pre><code>username admin privilege 15 secret StrongPassword123</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router snmp config">
+  <h2>SNMP community</h2>
+  <p>SNMP közösségi string beállítása olvasási joggal.</p>
+  <pre><code>snmp-server community public RO</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router snmp config">
+  <h2>SNMP host</h2>
+  <p>SNMP trap küldése egy menedzsment szervernek.</p>
+  <pre><code>snmp-server host 192.168.100.10 version 2c public</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router snmp config">
+  <h2>SNMP contact/location</h2>
+  <p>SNMP információk beállítása (admin és hely).</p>
+  <pre><code>snmp-server contact NetworkAdmin
+snmp-server location DataCenter1</code></pre>
+  <button class="copy">Copy</button>
+</div>
+<div class="card" data-tags="router ssh config">
+  <h2>SSH engedélyezése</h2>
+  <p>SSH bekapcsolása a routeren, szükséges a domain név és a kulcs generálása.</p>
+  <pre><code>ip domain-name mynetwork.local
+crypto key generate rsa modulus 2048</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router ssh config">
+  <h2>SSH verzió beállítása</h2>
+  <p>Az SSH protokoll verziójának meghatározása (ajánlott a 2-es verzió).</p>
+  <pre><code>ip ssh version 2</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router ssh config">
+  <h2>Felhasználó létrehozása SSH-hoz</h2>
+  <p>Lokális felhasználó hozzáadása jelszóval az SSH belépéshez.</p>
+  <pre><code>username admin privilege 15 secret StrongPassword123</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router ssh config">
+  <h2>VTY vonalak konfigurálása</h2>
+  <p>VTY vonalak beállítása SSH eléréshez, jelszóval és AAA hitelesítéssel.</p>
+  <pre><code>line vty 0 4
+ transport input ssh
+ login local</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router ssh config">
+  <h2>SSH idle timeout</h2>
+  <p>SSH kapcsolat időkorlát beállítása (percben).</p>
+  <pre><code>ip ssh time-out 60</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
+<div class="card" data-tags="router ssh config">
+  <h2>SSH próbálkozások száma</h2>
+  <p>Maximális próbálkozások száma sikertelen bejelentkezés esetén.</p>
+  <pre><code>ip ssh authentication-retries 3</code></pre>
+  <button class="copy">Copy</button>
+</div>
+
 
 </section>
 
