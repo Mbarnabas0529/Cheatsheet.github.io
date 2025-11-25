@@ -31,14 +31,17 @@ python.html – Python alap parancsok, példák.
 
 sqlprog.html – SQL parancsok, lekérdezések, táblakezelés.
 
+
+markdown.html – Markdown szintaxis, formázási példák.
+
+
 # 📂 Hálózat
 winserv.html – Windows Server parancsok, szolgáltatások kezelése.
 
 router.html - Alapvető router konfigurációs parancsok
 
 # 📂 programcsomag
+
 telepitofileok.html – Telepítési fájlok, csomagok listája.
 
 vsc.html – Visual Studio Code parancsok, gyorsbillentyűk.
-
-markdown.html – Markdown szintaxis, formázási példák.
