@@ -36,7 +36,7 @@ winserv.html – Windows Server parancsok, szolgáltatások kezelése.
 
 router.html - Alapvető router konfigurációs parancsok
 
-# 📂 Telepítések / Toolkit
+# 📂 programcsomag
 telepitofileok.html – Telepítési fájlok, csomagok listája.
 
 vsc.html – Visual Studio Code parancsok, gyorsbillentyűk.
