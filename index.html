@@ -326,6 +326,24 @@ a {
   from { background-position: 200% 0; }
   to   { background-position: -200% 0; }
 }
+/* Toolkit → lila animált border */
+.card[data-category="CCNA"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, #ff0000, transparent);
+  background-size: 200% 100%;
+  animation: borderMoveCCNA 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+@keyframes borderMoveCCNA {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
 
 /* Windows → kék animált border */
 .card[data-category="windows"]::before {
@@ -936,3 +954,4 @@ a {
 
 </body>
 </html>
+
