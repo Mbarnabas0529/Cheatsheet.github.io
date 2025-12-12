@@ -45,3 +45,7 @@ router.html - Alapvető router konfigurációs parancsok
 telepitofileok.html – Telepítési fájlok, csomagok listája.
 
 vsc.html – Visual Studio Code parancsok, gyorsbillentyűk.
+
+# 📂 programcsomag
+
+ciscopt.html - Netacad vizsgafájlok
