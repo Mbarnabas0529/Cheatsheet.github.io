@@ -46,6 +46,6 @@ telepitofileok.html – Telepítési fájlok, csomagok listája.
 
 vsc.html – Visual Studio Code parancsok, gyorsbillentyűk.
 
-# 📂 programcsomag
+# 📂 CiscoPT
 
 ciscopt.html - Netacad vizsgafájlok
