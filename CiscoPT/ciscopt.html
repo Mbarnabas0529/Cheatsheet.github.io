@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyors referencia</title>
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151821;
+      --text: #e6e6e9;
+      --muted: #9aa0a6;
+      --border: #222632;
+      --accent: #ff2e88;
+      --radius: 12px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.6 system-ui, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Bal oldali oszlop (vissza gomb + sidebar) */
+    .left-panel {
+      width: 240px;
+      background: #0c0e13;
+      border-right: 1px solid var(--border);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .back {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+      text-align: center;
+    }
+
+    /* Sidebar menü */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu-item {
+      background: var(--panel);
+      padding: 10px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .menu-item:hover {
+      background: #1b1f2b;
+    }
+
+    /* Jobb oldali tartalom */
+    .content {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .search {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0c0e13;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    pre {
+      margin: 0;
+      background: #10131a;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: ui-monospace, monospace;
+      color: #ffaad4;
+      white-space: pre-wrap;
+    }
+
+    .copy {
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .copy:hover {
+      background: #ff5fa3;
+    }
+
+    /* Kezdetben rejtett kártyák */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BAL OLDALI PANEL -->
+  <div class="left-panel">
+
+    <a href="../index.html" class="back">← Vissza</a>
+
+    <div class="sidebar">
+      <div class="menu-item" data-category="srwe">CCNA2<br>SRWE Gyakorló Záróvizsga</div>
+    </div>
+    <div class="sidebar">
+      <div class="menu-item" data-category="srwefinal">CCNA2<br>SRWE Záróvizsga</div>
+    </div>
+
+  </div>
+
+  <!-- JOBB OLDALI TARTALOM -->
+  <div class="content">
+
+    <div class="search">
+      <input type="search" placeholder="Keresés…" aria-label="Keresés" />
+    </div>
+
+    <div class="grid">
+
+      <div class="card hidden" data-category="srwe">
+        <h2>ITN Practice PT Skills Assessment (PTSA)</h2>
+        <p>ITN gyakorlati PT készségértékelés (PTSA)</p>
+        <pre><code>Ez a PT gyakorlati készségértékelés a tanulók sikerét támogatja azzal, hogy további gyakorlási lehetőséget biztosít a kurzus végi készségértékelés előtt.</code></pre>
+
+        <a href="https://drive.google.com/file/d/1OZyO6rlcRGhG_HDJz6zhm-_Yd96vgAPD/view" class="copy" target="_blank">Packet Tracer</a>
+        <a href="https://drive.google.com/file/d/1VNK-U8dQKygWbPNpofzZPz_qSl1fvT4f/view" class="copy" target="_blank">PDF</a>
+      </div>
+
+      <div class="card hidden" data-category="srwe">
+        <h2>SRWE Practice PT Skills Assessment (PTSA) - Part 1</h2>
+        <p>SRWE Practice PT készségértékelés (PTSA) - 1. rész</p>
+        <pre><code>Ez a PT gyakorlati készségértékelés a tanulók sikerét támogatja azzal, hogy további gyakorlási lehetőséget biztosít a kurzus végi készségértékelés előtt.</code></pre>
+
+        <a href="https://drive.google.com/file/d/16EQFZ3mBln8h0MvhQpObAbZ-WWEX-zs5/view" class="copy" target="_blank">Packet Tracer</a>
+        <a href="https://drive.google.com/file/d/1Kux5MxU3jyiRAgDaKx6SOPsHkXafMfLE/view" class="copy" target="_blank">PDF</a>
+      </div>
+      <div class="card hidden" data-category="srwe">
+        <h2>SRWE Practice PT Skills Assessment (PTSA) - Part 2</h2>
+        <p>SRWE Practice PT készségértékelés (PTSA) - 2. rész</p>
+        <pre><code>Ez a PT gyakorlati készségértékelés a tanulók sikerét támogatja azzal, hogy további gyakorlási lehetőséget biztosít a kurzus végi készségértékelés előtt.</code></pre>
+
+        <a href="https://drive.google.com/file/d/1_2UqyITO2D-vFlyHovOWb_nU3b-jqmjG/view" class="copy" target="_blank">Packet Tracer</a>
+        <a href="https://drive.google.com/file/d/1uxHAuIUXFAczu3Y0MuRZ_MkbNNgMd_wN/view" class="copy" target="_blank">PDF</a>
+      </div>
+      <div class="card hidden" data-category="srwefinal">
+        <h2>SRWE Final PT Skills Assessment</h2>
+        <p>SRWE zárókészségvizsga</p>
+        <pre><code>Ez a felmérés a tanulók készségeit és tudását méri fel egy valósághűen szimulált Packet Tracer hálózat konfigurálásán keresztül. A felmérés a Packet Tracer fizikai módját használja, hogy valósághűbbé tegye a hálózat összeállításának, csatlakoztatásának és konfigurálásának élményét.</code></pre>
+
+        <a href="https://drive.google.com/file/d/1SquRMfCQ9F7Pa59rlIJZ67iYx5OTWi0V/view" class="copy" target="_blank">Packet Tracer</a>
+        <a href="https://drive.google.com/file/d/1On5f7wUFRgN5TmYejFK2LnzKGhcS00-a/view" class="copy" target="_blank">PDF</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const menuItems = document.querySelectorAll(".menu-item");
+      const cards = document.querySelectorAll(".card");
+      const searchInput = document.querySelector("input[type=search]");
+
+      // Menü kattintás → kártyák megjelenítése
+      menuItems.forEach(item => {
+        item.addEventListener("click", () => {
+          const category = item.dataset.category;
+
+          cards.forEach(card => {
+            card.classList.toggle("hidden", card.dataset.category !== category);
+          });
+        });
+      });
+
+      // Kereső
+      searchInput.addEventListener("input", () => {
+        const q = searchInput.value.toLowerCase().trim();
+
+        cards.forEach(card => {
+          const text = card.innerText.toLowerCase();
+          if (!card.classList.contains("hidden")) {
+            card.style.display = text.includes(q) ? "" : "none";
+          }
+        });
+      });
+
+      // Copy funkció
+      document.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".copy");
+        if (!btn) return;
+
+        const card = btn.closest(".card");
+        const code = card?.querySelector("code")?.innerText || "";
+
+        if (!code) return;
+
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "Másolva!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        } catch {
+          btn.textContent = "Hiba!";
+          setTimeout(() => btn.textContent = "Copy", 1200);
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
